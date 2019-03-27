@@ -44,7 +44,7 @@ var CatalogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n      <app-product-card-min class=\"product-list\"></app-product-card-min>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min\r\n        *ngFor=\"let product of products | search:search.searchStr\"\r\n        [product] = \"product\"\r\n      ></app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\na\r\n"
 
 /***/ }),
 
@@ -55,7 +55,7 @@ module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".head-banner {\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 991.98px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 767.98px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2F0YWxvZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUF1QixFQUFBO0VBRHpCO0lBSUksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXhCRjtNQTBCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2F0YWxvZy9jYXRhbG9nLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgaGVpZ2h0OiAyMzZweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgYWxpZ24tc2VsZjogZmxleC1lbmQ7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDg0cHg7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxuICAgIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLW1zLXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgJl9faW1nIHtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY3Ljk4cHgpIHtcclxuICAgIC5jb250YWluZXIge1xyXG4gICAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIHdpZHRoOiAxMjNweDtcclxuICAgICAgaGVpZ2h0OiAxMDFweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5jYXRhbG9nIHtcclxuICBtYXJnaW46IDQ4cHggMCA5N3B4O1xyXG59XHJcblxyXG4ucHJvZHVjdC1saXN0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtd3JhcDogd3JhcDtcclxuICBtYXJnaW46IDEzcHggLTE1cHg7XHJcbn1cclxuIl19 */"
+module.exports = ".head-banner {\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 991.98px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 767.98px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2F0YWxvZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUF1QixFQUFBO0VBRHpCO0lBSUksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXhCRjtNQTBCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBR25CO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2F0YWxvZy9jYXRhbG9nLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgaGVpZ2h0OiAyMzZweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgYWxpZ24tc2VsZjogZmxleC1lbmQ7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDg0cHg7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxuICAgIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLW1zLXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgJl9faW1nIHtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY3Ljk4cHgpIHtcclxuICAgIC5jb250YWluZXIge1xyXG4gICAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIHdpZHRoOiAxMjNweDtcclxuICAgICAgaGVpZ2h0OiAxMDFweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5jYXRhbG9nIHtcclxuICBtYXJnaW46IDQ4cHggMCA5N3B4O1xyXG59XHJcblxyXG4ucHJvZHVjdC1saXN0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtd3JhcDogd3JhcDtcclxuICBtYXJnaW46IDEzcHggLTE1cHg7XHJcbn1cclxuXHJcbmFwcC1wcm9kdWN0LWNhcmQtbWluIHtcclxuICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiAzIC0gMzBweCk7XHJcbiAgbWFyZ2luOiAxM3B4IDE1cHg7XHJcbn1cclxuXHJcbi5zZWFyY2gge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1hcmdpbjogMCAxNXB4O1xyXG4gIGlucHV0IHtcclxuICAgIGhlaWdodDogNDBweDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -72,11 +72,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../products/products */ "./src/app/pages/products/products.ts");
+/* harmony import */ var src_app_search_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/search.service */ "./src/app/search.service.ts");
+
 
 
 
 var CatalogComponent = /** @class */ (function () {
-    function CatalogComponent() {
+    function CatalogComponent(search) {
+        this.search = search;
         this.products = _products_products__WEBPACK_IMPORTED_MODULE_2__["Products"];
     }
     CatalogComponent.prototype.ngOnInit = function () {
@@ -87,7 +90,7 @@ var CatalogComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./catalog.component.html */ "./src/app/pages/catalog/catalog.component.html"),
             styles: [__webpack_require__(/*! ./catalog.component.scss */ "./src/app/pages/catalog/catalog.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_search_service__WEBPACK_IMPORTED_MODULE_3__["SearchService"]])
     ], CatalogComponent);
     return CatalogComponent;
 }());
@@ -109,11 +112,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _catalog_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./catalog-routing.module */ "./src/app/pages/catalog/catalog-routing.module.ts");
-/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
-/* harmony import */ var _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pagination/pagination.component */ "./src/app/pages/catalog/pagination/pagination.component.ts");
-/* harmony import */ var _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sorting/sorting.component */ "./src/app/pages/catalog/sorting/sorting.component.ts");
-/* harmony import */ var _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./product-card-min/product-card-min.component */ "./src/app/pages/catalog/product-card-min/product-card-min.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _catalog_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./catalog-routing.module */ "./src/app/pages/catalog/catalog-routing.module.ts");
+/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
+/* harmony import */ var _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pagination/pagination.component */ "./src/app/pages/catalog/pagination/pagination.component.ts");
+/* harmony import */ var _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./sorting/sorting.component */ "./src/app/pages/catalog/sorting/sorting.component.ts");
+/* harmony import */ var _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./product-card-min/product-card-min.component */ "./src/app/pages/catalog/product-card-min/product-card-min.component.ts");
+/* harmony import */ var _search_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./search.pipe */ "./src/app/pages/catalog/search.pipe.ts");
+
+
 
 
 
@@ -127,13 +134,15 @@ var CatalogModule = /** @class */ (function () {
     }
     CatalogModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_catalog_component__WEBPACK_IMPORTED_MODULE_4__["CatalogComponent"],
-                _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_5__["PaginationComponent"],
-                _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_6__["SortingComponent"],
-                _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_7__["ProductCardMinComponent"]],
+            declarations: [_catalog_component__WEBPACK_IMPORTED_MODULE_5__["CatalogComponent"],
+                _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_6__["PaginationComponent"],
+                _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_7__["SortingComponent"],
+                _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_8__["ProductCardMinComponent"],
+                _search_pipe__WEBPACK_IMPORTED_MODULE_9__["SearchPipe"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _catalog_routing_module__WEBPACK_IMPORTED_MODULE_3__["CatalogRoutingModule"]
+                _catalog_routing_module__WEBPACK_IMPORTED_MODULE_4__["CatalogRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
             ]
         })
     ], CatalogModule);
@@ -207,7 +216,7 @@ var PaginationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngFor=\"let product of products\" class=\"{{product.type}}\">\n  <div class=\"{{product.type}}__img\">\n    <img src=\".{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"{{product.type}}__name\">\n    <a routerLink=\"product\">{{product.name}}</a>\n  </div>\n  <div class=\"{{product.type}}__price\">\n    {{product.price | currency:'₽ ':'symbol':'0.0-0'}}\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\">В корзину</button>\n</div>\n"
+module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\".{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"product\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\">В корзину</button>\n</div>\n"
 
 /***/ }),
 
@@ -218,7 +227,7 @@ module.exports = "<div *ngFor=\"let product of products\" class=\"{{product.type
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".product-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 384px;\n  background-color: white;\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px;\n  border-radius: 5px; }\n  .product-card:hover {\n    box-shadow: 0 9px 21px rgba(168, 172, 185, 0.44); }\n  .product-card__img {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 229px;\n    height: 223px; }\n  .product-card__img img {\n      width: auto; }\n  .product-card__name {\n    margin: 15px 0;\n    font-size: 16px;\n    font-weight: 500;\n    line-height: 20px; }\n  .product-card__price {\n    margin-bottom: 25px;\n    font-size: 24px;\n    font-weight: 700;\n    line-height: 20px; }\n  @media (max-width: 991.98px) {\n    .product-card {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 767.98px) {\n    .product-card {\n      width: calc(100% - 30px); } }\n  .banner {\n  display: flex;\n  flex-direction: column;\n  height: 384px;\n  margin: 13px 15px;\n  padding-left: 40px;\n  box-sizing: border-box;\n  width: calc(100% / 12 * 6 - 30px); }\n  .banner:hover {\n    box-shadow: 0 9px 21px rgba(168, 172, 185, 0.44); }\n  .banner__img {\n    margin-left: -40px;\n    position: relative;\n    z-index: 0; }\n  .banner__img img {\n      height: 100%;\n      width: 100%; }\n  .banner__name {\n    margin-top: 123px;\n    position: absolute;\n    z-index: 1;\n    width: 300px; }\n  .banner__name a {\n      font-size: 36px;\n      font-weight: 700; }\n  .banner .btn-min {\n    margin-top: 228px;\n    position: absolute; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9wcm9kdWN0LWNhcmQtbWluL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxwcm9kdWN0LWNhcmQtbWluXFxwcm9kdWN0LWNhcmQtbWluLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLHNCQUFzQjtFQUN0QixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixpQ0FBaUM7RUFDakMsaUJBQWlCO0VBQ2pCLGtCQUFrQixFQUFBO0VBUnBCO0lBV0ksZ0RBQWdELEVBQUE7RUFHbEQ7SUFDRSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixZQUFZO0lBQ1osYUFBYSxFQUFBO0VBTGQ7TUFRRyxXQUFXLEVBQUE7RUFJZjtJQUNFLGNBQWM7SUFDZCxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLGlCQUFpQixFQUFBO0VBR25CO0lBQ0UsbUJBQW1CO0lBQ25CLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsaUJBQWlCLEVBQUE7RUFFbkI7SUF2Q0Y7TUF3Q0ksaUNBQWlDLEVBQUEsRUFLcEM7RUFIQztJQTFDRjtNQTJDSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsYUFBYTtFQUNiLHNCQUFzQjtFQUN0QixhQUFhO0VBQ2IsaUJBQWlCO0VBQ2pCLGtCQUFrQjtFQUNsQixzQkFBc0I7RUFDdEIsaUNBQWlDLEVBQUE7RUFQbkM7SUFVSSxnREFBZ0QsRUFBQTtFQUdsRDtJQUNFLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsVUFBVSxFQUFBO0VBSFg7TUFLRyxZQUFZO01BQ1osV0FBVyxFQUFBO0VBSWY7SUFDRSxpQkFBaUI7SUFDakIsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixZQUFZLEVBQUE7RUFKYjtNQU9HLGVBQWU7TUFDZixnQkFBZ0IsRUFBQTtFQS9CdEI7SUFtQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2F0YWxvZy9wcm9kdWN0LWNhcmQtbWluL3Byb2R1Y3QtY2FyZC1taW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucHJvZHVjdC1jYXJkIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBoZWlnaHQ6IDM4NHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDMgLSAzMHB4KTtcclxuICBtYXJnaW46IDEzcHggMTVweDtcclxuICBib3JkZXItcmFkaXVzOiA1cHg7XHJcblxyXG4gICY6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogMCA5cHggMjFweCByZ2JhKDE2OCwgMTcyLCAxODUsIDAuNDQpO1xyXG4gIH1cclxuXHJcbiAgJl9faW1nIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogMjI5cHg7XHJcbiAgICBoZWlnaHQ6IDIyM3B4O1xyXG5cclxuICAgIGltZyB7XHJcbiAgICAgIHdpZHRoOiBhdXRvO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgJl9fbmFtZSB7XHJcbiAgICBtYXJnaW46IDE1cHggMDtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICBsaW5lLWhlaWdodDogMjBweDtcclxuICB9XHJcblxyXG4gICZfX3ByaWNlIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDI1cHg7XHJcbiAgICBmb250LXNpemU6IDI0cHg7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgbGluZS1oZWlnaHQ6IDIwcHg7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogNCAtIDMwcHgpO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY3Ljk4cHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAzMHB4KTtcclxuICB9XHJcbn1cclxuXHJcbi5iYW5uZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICBoZWlnaHQ6IDM4NHB4O1xyXG4gIG1hcmdpbjogMTNweCAxNXB4O1xyXG4gIHBhZGRpbmctbGVmdDogNDBweDtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDYgLSAzMHB4KTtcclxuXHJcbiAgJjpob3ZlciB7XHJcbiAgICBib3gtc2hhZG93OiAwIDlweCAyMXB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC40NCk7XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgbWFyZ2luLWxlZnQ6IC00MHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgei1pbmRleDogMDtcclxuICAgIGltZyB7XHJcbiAgICAgIGhlaWdodDogMTAwJTtcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAmX19uYW1lIHtcclxuICAgIG1hcmdpbi10b3A6IDEyM3B4O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuXHJcbiAgICBhIHtcclxuICAgICAgZm9udC1zaXplOiAzNnB4O1xyXG4gICAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgfVxyXG4gIH1cclxuICAuYnRuLW1pbiB7XHJcbiAgICBtYXJnaW4tdG9wOiAyMjhweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICB9XHJcbn1cclxuIl19 */"
+module.exports = ".product-card {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 384px;\n  background-color: white;\n  border-radius: 5px; }\n  .product-card:hover {\n    box-shadow: 0 9px 21px rgba(168, 172, 185, 0.44); }\n  .product-card__img {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 229px;\n    height: 223px; }\n  .product-card__img img {\n      width: auto; }\n  .product-card__name {\n    margin: 15px 0;\n    font-size: 16px;\n    font-weight: 500;\n    line-height: 20px; }\n  .product-card__price {\n    margin-bottom: 25px;\n    font-size: 24px;\n    font-weight: 700;\n    line-height: 20px; }\n  @media (max-width: 991.98px) {\n    .product-card {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 767.98px) {\n    .product-card {\n      width: calc(100% - 30px); } }\n  .banner {\n  display: flex;\n  flex-direction: column;\n  height: 384px;\n  margin: 13px 15px;\n  padding-left: 40px;\n  box-sizing: border-box;\n  width: calc(100% / 12 * 6 - 30px); }\n  .banner:hover {\n    box-shadow: 0 9px 21px rgba(168, 172, 185, 0.44); }\n  .banner__img {\n    margin-left: -40px;\n    position: relative;\n    z-index: 0; }\n  .banner__img img {\n      height: 100%;\n      width: 100%; }\n  .banner__name {\n    margin-top: 123px;\n    position: absolute;\n    z-index: 1;\n    width: 300px; }\n  .banner__name a {\n      font-size: 36px;\n      font-weight: 700; }\n  .banner__price {\n    display: none; }\n  .banner .btn-min {\n    margin-top: 228px;\n    position: absolute; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9wcm9kdWN0LWNhcmQtbWluL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxwcm9kdWN0LWNhcmQtbWluXFxwcm9kdWN0LWNhcmQtbWluLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLHNCQUFzQjtFQUN0QixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLHVCQUF1QjtFQUN2QixrQkFBa0IsRUFBQTtFQU5wQjtJQVNJLGdEQUFnRCxFQUFBO0VBR2xEO0lBQ0UsYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsWUFBWTtJQUNaLGFBQWEsRUFBQTtFQUxkO01BUUcsV0FBVyxFQUFBO0VBSWY7SUFDRSxjQUFjO0lBQ2QsZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixpQkFBaUIsRUFBQTtFQUduQjtJQUNFLG1CQUFtQjtJQUNuQixlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLGlCQUFpQixFQUFBO0VBRW5CO0lBckNGO01Bc0NJLGlDQUFpQyxFQUFBLEVBS3BDO0VBSEM7SUF4Q0Y7TUF5Q0ksd0JBQXdCLEVBQUEsRUFFM0I7RUFFRDtFQUNFLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsYUFBYTtFQUNiLGlCQUFpQjtFQUNqQixrQkFBa0I7RUFDbEIsc0JBQXNCO0VBQ3RCLGlDQUFpQyxFQUFBO0VBUG5DO0lBVUksZ0RBQWdELEVBQUE7RUFHbEQ7SUFDRSxrQkFBa0I7SUFDbEIsa0JBQWtCO0lBQ2xCLFVBQVUsRUFBQTtFQUhYO01BS0csWUFBWTtNQUNaLFdBQVcsRUFBQTtFQUlmO0lBQ0UsaUJBQWlCO0lBQ2pCLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsWUFBWSxFQUFBO0VBSmI7TUFPRyxlQUFlO01BQ2YsZ0JBQWdCLEVBQUE7RUFJcEI7SUFDRSxhQUFhLEVBQUE7RUFwQ2pCO0lBd0NJLGlCQUFpQjtJQUNqQixrQkFBa0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvcHJvZHVjdC1jYXJkLW1pbi9wcm9kdWN0LWNhcmQtbWluLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnByb2R1Y3QtY2FyZCB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgaGVpZ2h0OiAzODRweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICBib3JkZXItcmFkaXVzOiA1cHg7XHJcblxyXG4gICY6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogMCA5cHggMjFweCByZ2JhKDE2OCwgMTcyLCAxODUsIDAuNDQpO1xyXG4gIH1cclxuXHJcbiAgJl9faW1nIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogMjI5cHg7XHJcbiAgICBoZWlnaHQ6IDIyM3B4O1xyXG5cclxuICAgIGltZyB7XHJcbiAgICAgIHdpZHRoOiBhdXRvO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgJl9fbmFtZSB7XHJcbiAgICBtYXJnaW46IDE1cHggMDtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XHJcbiAgICBsaW5lLWhlaWdodDogMjBweDtcclxuICB9XHJcblxyXG4gICZfX3ByaWNlIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDI1cHg7XHJcbiAgICBmb250LXNpemU6IDI0cHg7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgbGluZS1oZWlnaHQ6IDIwcHg7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogNCAtIDMwcHgpO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY3Ljk4cHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAzMHB4KTtcclxuICB9XHJcbn1cclxuXHJcbi5iYW5uZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICBoZWlnaHQ6IDM4NHB4O1xyXG4gIG1hcmdpbjogMTNweCAxNXB4O1xyXG4gIHBhZGRpbmctbGVmdDogNDBweDtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDYgLSAzMHB4KTtcclxuXHJcbiAgJjpob3ZlciB7XHJcbiAgICBib3gtc2hhZG93OiAwIDlweCAyMXB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC40NCk7XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgbWFyZ2luLWxlZnQ6IC00MHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgei1pbmRleDogMDtcclxuICAgIGltZyB7XHJcbiAgICAgIGhlaWdodDogMTAwJTtcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAmX19uYW1lIHtcclxuICAgIG1hcmdpbi10b3A6IDEyM3B4O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuXHJcbiAgICBhIHtcclxuICAgICAgZm9udC1zaXplOiAzNnB4O1xyXG4gICAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgJl9fcHJpY2Uge1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxuICB9XHJcblxyXG4gIC5idG4tbWluIHtcclxuICAgIG1hcmdpbi10b3A6IDIyOHB4O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIH1cclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -234,16 +243,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductCardMinComponent", function() { return ProductCardMinComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../products/products */ "./src/app/pages/products/products.ts");
-
 
 
 var ProductCardMinComponent = /** @class */ (function () {
     function ProductCardMinComponent() {
-        this.products = _products_products__WEBPACK_IMPORTED_MODULE_2__["Products"];
     }
     ProductCardMinComponent.prototype.ngOnInit = function () {
     };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], ProductCardMinComponent.prototype, "product", void 0);
     ProductCardMinComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-product-card-min',
@@ -253,6 +263,43 @@ var ProductCardMinComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], ProductCardMinComponent);
     return ProductCardMinComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/catalog/search.pipe.ts":
+/*!**********************************************!*\
+  !*** ./src/app/pages/catalog/search.pipe.ts ***!
+  \**********************************************/
+/*! exports provided: SearchPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchPipe", function() { return SearchPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SearchPipe = /** @class */ (function () {
+    function SearchPipe() {
+    }
+    SearchPipe.prototype.transform = function (products, searchStr) {
+        if (!products || !searchStr) {
+            return products;
+        }
+        return products.filter(function (product) {
+            return product.name.toLowerCase().indexOf(searchStr.toLowerCase()) !== -1;
+        });
+    };
+    SearchPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+            name: 'search'
+        })
+    ], SearchPipe);
+    return SearchPipe;
 }());
 
 
@@ -332,7 +379,7 @@ var Products = [
     { type: 'product-card', id: 4, name: 'Стул Стелла', price: 3500, imgURL: '/assets/img/content/4.jpg' },
     { type: 'product-card', id: 5, name: 'Стул Бланес', price: 4300, imgURL: '/assets/img/content/5.jpg' },
     { type: 'product-card', id: 6, name: 'Кресло Гоа', price: 8499, imgURL: '/assets/img/content/6.jpg' },
-    { type: 'banner', id: 15, name: 'Товары для дома со скидкой', price: 8499, imgURL: '/assets/img/content/content-cardbanner.jpg' },
+    //  {type:'banner',  id: 15, name: 'Товары для дома со скидкой', price: 8499, imgURL: '/assets/img/content/content-cardbanner.jpg'},
     { type: 'product-card', id: 7, name: 'Кресло Мильтон', price: 12599, imgURL: '/assets/img/content/7.jpg' },
     { type: 'product-card', id: 8, name: 'Кресло Ханна', price: 9399, imgURL: '/assets/img/content/8.jpg' },
     { type: 'product-card', id: 9, name: 'Стул Рикардо', price: 9399, imgURL: '/assets/img/content/9.jpg' },

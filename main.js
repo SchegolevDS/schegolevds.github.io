@@ -215,6 +215,55 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/app.service.ts":
+/*!********************************!*\
+  !*** ./src/app/app.service.ts ***!
+  \********************************/
+/*! exports provided: AppService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppService", function() { return AppService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AppService = /** @class */ (function () {
+    function AppService() {
+        this.minValue = 1;
+        this.maxValue = 15000;
+        this.options = {
+            floor: 0,
+            translate: function (value) {
+                return ' ';
+            }
+        };
+        this.cart = [];
+        this.Type = 'name';
+    }
+    AppService.prototype.sortingName = function () {
+        this.Type = 'name';
+    };
+    AppService.prototype.sortingPriceUp = function () {
+        this.Type = '-price';
+    };
+    AppService.prototype.sortingPriceDown = function () {
+        this.Type = 'price';
+    };
+    AppService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AppService);
+    return AppService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/main/content/content.component.html":
 /*!*****************************************************!*\
   !*** ./src/app/main/content/content.component.html ***!
@@ -426,7 +475,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_search_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/search.service */ "./src/app/search.service.ts");
+/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
 
 
 
@@ -442,7 +491,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/main/header/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/main/header/search/search.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_search_service__WEBPACK_IMPORTED_MODULE_2__["SearchService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -740,36 +789,6 @@ var OrderstatusLinkComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], OrderstatusLinkComponent);
     return OrderstatusLinkComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/search.service.ts":
-/*!***********************************!*\
-  !*** ./src/app/search.service.ts ***!
-  \***********************************/
-/*! exports provided: SearchService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchService", function() { return SearchService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var SearchService = /** @class */ (function () {
-    function SearchService() {
-    }
-    SearchService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], SearchService);
-    return SearchService;
 }());
 
 

@@ -6350,7 +6350,7 @@ var CatalogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search:productService.searchStr\r\n        | orderBy: productService.Type\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <div *ngFor=\"let us of user\" >\r\n      <p>Имя пользователя: {{us.name}}</p>\r\n      <p>Возраст пользователя: {{us.age}}</p>\r\n    </div>\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search:productService.searchStr\r\n        | orderBy: productService.Type\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6377,26 +6377,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CatalogComponent", function() { return CatalogComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../products/products */ "./src/app/pages/products/products.ts");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
+/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
+/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
 
 
 
 
 var CatalogComponent = /** @class */ (function () {
-    function CatalogComponent(productService) {
+    function CatalogComponent(productService, prodService) {
         this.productService = productService;
-        this.products = _products_products__WEBPACK_IMPORTED_MODULE_2__["Products"];
+        this.prodService = prodService;
+        this.products = [];
     }
     CatalogComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.prodService.getData().subscribe(function (data) { return _this.products = data["productList"]; });
     };
     CatalogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-catalog',
             template: __webpack_require__(/*! ./catalog.component.html */ "./src/app/pages/catalog/catalog.component.html"),
+            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
             styles: [__webpack_require__(/*! ./catalog.component.scss */ "./src/app/pages/catalog/catalog.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
+            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]])
     ], CatalogComponent);
     return CatalogComponent;
 }());
@@ -6687,33 +6692,36 @@ var SortingComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/products/products.ts":
-/*!********************************************!*\
-  !*** ./src/app/pages/products/products.ts ***!
-  \********************************************/
-/*! exports provided: Products */
+/***/ "./src/app/services/product.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/product.service.ts ***!
+  \*********************************************/
+/*! exports provided: ProductService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Products", function() { return Products; });
-var Products = [
-    { type: 'product-card', id: 1, name: 'Стул Ханна', price: 9399, imgURL: '/assets/img/content/1.jpg' },
-    { type: 'product-card', id: 2, name: 'Стул Эдинбург', price: 5690, imgURL: '/assets/img/content/2.jpg' },
-    { type: 'product-card', id: 3, name: 'Стул Сольер', price: 2390, imgURL: '/assets/img/content/3.jpg' },
-    { type: 'product-card', id: 4, name: 'Стул Стелла', price: 3500, imgURL: '/assets/img/content/4.jpg' },
-    { type: 'product-card', id: 5, name: 'Стул Бланес', price: 4300, imgURL: '/assets/img/content/5.jpg' },
-    { type: 'product-card', id: 6, name: 'Кресло Гоа', price: 8499, imgURL: '/assets/img/content/6.jpg' },
-    //  {type:'banner',  id: 15, name: 'Товары для дома со скидкой', price: 8499, imgURL: '/assets/img/content/content-cardbanner.jpg'},
-    { type: 'product-card', id: 7, name: 'Кресло Мильтон', price: 12599, imgURL: '/assets/img/content/7.jpg' },
-    { type: 'product-card', id: 8, name: 'Кресло Ханна', price: 9399, imgURL: '/assets/img/content/8.jpg' },
-    { type: 'product-card', id: 9, name: 'Стул Рикардо', price: 9399, imgURL: '/assets/img/content/9.jpg' },
-    { type: 'product-card', id: 10, name: 'Стул Версаль', price: 9399, imgURL: '/assets/img/content/10.jpg' },
-    { type: 'product-card', id: 11, name: 'Стул Лина', price: 9399, imgURL: '/assets/img/content/11.jpg' },
-    { type: 'product-card', id: 12, name: 'Кресло София', price: 9399, imgURL: '/assets/img/content/12.jpg' },
-    { type: 'product-card', id: 13, name: 'Стул Родос', price: 9399, imgURL: '/assets/img/content/13.jpg' },
-    { type: 'product-card', id: 14, name: 'Стул Бетти', price: 9399, imgURL: '/assets/img/content/14.jpg' }
-];
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductService", function() { return ProductService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var ProductService = /** @class */ (function () {
+    function ProductService(http) {
+        this.http = http;
+    }
+    ProductService.prototype.getData = function () {
+        return this.http.get('assets/product.json');
+    };
+    ProductService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ProductService);
+    return ProductService;
+}());
+
 
 
 /***/ })

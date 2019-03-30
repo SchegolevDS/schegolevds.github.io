@@ -1,0 +1,20 @@
+{
+  "productList":
+  [
+    {"type":"product-card", "id": 1, "name": "Стул Ханна", "price": 9399, "imgURL": "/assets/img/content/1.jpg"},
+    {"type":"product-card", "id": 2, "name": "Стул Эдинбург", "price": 5690, "imgURL": "/assets/img/content/2.jpg"},
+    {"type":"product-card", "id": 3, "name": "Стул Сольер", "price": 2390, "imgURL": "/assets/img/content/3.jpg"},
+    {"type":"product-card", "id": 4, "name": "Стул Стелла", "price": 3500, "imgURL": "/assets/img/content/4.jpg"},
+    {"type":"product-card", "id": 5, "name": "Стул Бланес", "price":  4300, "imgURL": "/assets/img/content/5.jpg"},
+    {"type":"product-card", "id": 6, "name": "Кресло Гоа", "price": 8499, "imgURL": "/assets/img/content/6.jpg"},
+    {"type":"product-card", "id": 7, "name": "Кресло Мильтон", "price":  12599, "imgURL": "/assets/img/content/7.jpg"},
+    {"type":"product-card", "id": 8, "name": "Кресло Ханна", "price": 9399, "imgURL": "/assets/img/content/8.jpg"},
+    {"type":"product-card", "id": 9, "name": "Стул Рикардо", "price": 9399, "imgURL": "/assets/img/content/9.jpg"},
+    {"type":"product-card", "id": 10, "name": "Стул Версаль", "price": 9399, "imgURL": "/assets/img/content/10.jpg"},
+    {"type":"product-card", "id": 11, "name": "Стул Лина", "price": 9399, "imgURL": "/assets/img/content/11.jpg"},
+    {"type":"product-card", "id": 12, "name": "Кресло София", "price": 9399, "imgURL": "/assets/img/content/12.jpg"},
+    {"type":"product-card", "id": 13, "name": "Стул Родос", "price": 9399, "imgURL": "/assets/img/content/13.jpg"},
+    {"type":"product-card", "id": 14, "name": "Стул Бетти", "price": 9399, "imgURL": "/assets/img/content/14.jpg"}
+  ]
+
+}

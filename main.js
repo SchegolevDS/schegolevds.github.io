@@ -94,7 +94,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<app-content></app-content>\n<app-footer></app-footer>\n"
+module.exports = "<app-header></app-header>\n<app-content>\n</app-content>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -156,16 +156,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
-/* harmony import */ var _main_header_search_search_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/header/search/search.component */ "./src/app/main/header/search/search.component.ts");
-/* harmony import */ var _main_logo_logo_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/logo/logo.component */ "./src/app/main/logo/logo.component.ts");
-/* harmony import */ var _main_nav_nav_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/nav/nav.component */ "./src/app/main/nav/nav.component.ts");
-/* harmony import */ var _main_header_shoppingcart_indicator_shoppingcart_indicator_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/header/shoppingcart-indicator/shoppingcart-indicator.component */ "./src/app/main/header/shoppingcart-indicator/shoppingcart-indicator.component.ts");
-/* harmony import */ var _main_orderstatus_link_orderstatus_link_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/orderstatus-link/orderstatus-link.component */ "./src/app/main/orderstatus-link/orderstatus-link.component.ts");
-/* harmony import */ var _main_content_content_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/content/content.component */ "./src/app/main/content/content.component.ts");
-/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _main_header_header_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/header/header.component */ "./src/app/main/header/header.component.ts");
+/* harmony import */ var _main_header_search_search_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/header/search/search.component */ "./src/app/main/header/search/search.component.ts");
+/* harmony import */ var _main_logo_logo_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/logo/logo.component */ "./src/app/main/logo/logo.component.ts");
+/* harmony import */ var _main_nav_nav_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/nav/nav.component */ "./src/app/main/nav/nav.component.ts");
+/* harmony import */ var _main_header_shoppingcart_indicator_shoppingcart_indicator_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/header/shoppingcart-indicator/shoppingcart-indicator.component */ "./src/app/main/header/shoppingcart-indicator/shoppingcart-indicator.component.ts");
+/* harmony import */ var _main_orderstatus_link_orderstatus_link_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/orderstatus-link/orderstatus-link.component */ "./src/app/main/orderstatus-link/orderstatus-link.component.ts");
+/* harmony import */ var _main_content_content_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/content/content.component */ "./src/app/main/content/content.component.ts");
+/* harmony import */ var _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/footer/footer.component */ "./src/app/main/footer/footer.component.ts");
+
 
 
 
@@ -186,23 +188,24 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _main_header_header_component__WEBPACK_IMPORTED_MODULE_6__["HeaderComponent"],
-                _main_header_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"],
-                _main_logo_logo_component__WEBPACK_IMPORTED_MODULE_8__["LogoComponent"],
-                _main_nav_nav_component__WEBPACK_IMPORTED_MODULE_9__["NavComponent"],
-                _main_header_shoppingcart_indicator_shoppingcart_indicator_component__WEBPACK_IMPORTED_MODULE_10__["ShoppingcartIndicatorComponent"],
-                _main_orderstatus_link_orderstatus_link_component__WEBPACK_IMPORTED_MODULE_11__["OrderstatusLinkComponent"],
-                _main_content_content_component__WEBPACK_IMPORTED_MODULE_12__["ContentComponent"],
-                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_13__["FooterComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _main_header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"],
+                _main_header_search_search_component__WEBPACK_IMPORTED_MODULE_8__["SearchComponent"],
+                _main_logo_logo_component__WEBPACK_IMPORTED_MODULE_9__["LogoComponent"],
+                _main_nav_nav_component__WEBPACK_IMPORTED_MODULE_10__["NavComponent"],
+                _main_header_shoppingcart_indicator_shoppingcart_indicator_component__WEBPACK_IMPORTED_MODULE_11__["ShoppingcartIndicatorComponent"],
+                _main_orderstatus_link_orderstatus_link_component__WEBPACK_IMPORTED_MODULE_12__["OrderstatusLinkComponent"],
+                _main_content_content_component__WEBPACK_IMPORTED_MODULE_13__["ContentComponent"],
+                _main_footer_footer_component__WEBPACK_IMPORTED_MODULE_14__["FooterComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -239,6 +242,9 @@ var AppService = /** @class */ (function () {
         this.cart = [];
         this.Type = 'name';
     }
+    AppService.prototype.getProducts = function () {
+        throw new Error("Method not implemented.");
+    };
     AppService.prototype.sortingName = function () {
         this.Type = 'name';
     };

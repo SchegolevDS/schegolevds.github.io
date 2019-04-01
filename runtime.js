@@ -63,7 +63,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"common":"common","pages-order-status-order-status-module":"pages-order-status-order-status-module","pages-shopping-cart-shopping-cart-module":"pages-shopping-cart-shopping-cart-module","pages-catalog-catalog-module":"pages-catalog-catalog-module","pages-product-card-product-card-module":"pages-product-card-product-card-module"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"common":"common","pages-catalog-catalog-module":"pages-catalog-catalog-module","pages-shopping-cart-shopping-cart-module":"pages-shopping-cart-shopping-cart-module","pages-order-status-order-status-module":"pages-order-status-order-status-module","pages-product-card-product-card-module":"pages-product-card-product-card-module"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function

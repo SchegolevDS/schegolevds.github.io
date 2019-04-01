@@ -6350,7 +6350,7 @@ var CatalogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <div *ngFor=\"let us of user\" >\r\n      <p>Имя пользователя: {{us.name}}</p>\r\n      <p>Возраст пользователя: {{us.age}}</p>\r\n    </div>\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search:productService.searchStr\r\n        | orderBy: productService.Type\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search: _filterService.searchStr\r\n        | orderBy: _filterService.Type\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6384,14 +6384,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var CatalogComponent = /** @class */ (function () {
-    function CatalogComponent(productService, prodService) {
-        this.productService = productService;
-        this.prodService = prodService;
+    function CatalogComponent(_filterService, _productService) {
+        this._filterService = _filterService;
+        this._productService = _productService;
         this.products = [];
     }
     CatalogComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.prodService.getData().subscribe(function (data) { return _this.products = data["productList"]; });
+        this._productService.getProducts().subscribe(function (data) { return _this.products = data; });
     };
     CatalogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6454,9 +6454,7 @@ var CatalogModule = /** @class */ (function () {
                 _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_9__["SortingComponent"],
                 _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_10__["ProductCardMinComponent"],
                 _search_pipe__WEBPACK_IMPORTED_MODULE_11__["SearchPipe"],
-                angular_pipes__WEBPACK_IMPORTED_MODULE_5__["OrderByPipe"],
-                angular_pipes__WEBPACK_IMPORTED_MODULE_5__["SomePipe"],
-                angular_pipes__WEBPACK_IMPORTED_MODULE_5__["TakeWhilePipe"],],
+                angular_pipes__WEBPACK_IMPORTED_MODULE_5__["OrderByPipe"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _catalog_routing_module__WEBPACK_IMPORTED_MODULE_6__["CatalogRoutingModule"],
@@ -6535,7 +6533,7 @@ var PaginationComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\".{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"product\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button [disabled]=\"disabled\" type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n\n</div>\n"
+module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\".{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"product\">{{product.id}}{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n</div>\n"
 
 /***/ }),
 
@@ -6562,17 +6560,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductCardMinComponent", function() { return ProductCardMinComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
+/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
 
 
 
 var ProductCardMinComponent = /** @class */ (function () {
-    function ProductCardMinComponent(cartService) {
-        this.cartService = cartService;
+    function ProductCardMinComponent(_cartService) {
+        this._cartService = _cartService;
     }
     ProductCardMinComponent.prototype.addCart = function (product) {
-        this.disabled = true;
-        this.cartService.cart.push(product);
+        this._cartService.add(product);
     };
     ProductCardMinComponent.prototype.ngOnInit = function () {
     };
@@ -6586,7 +6583,7 @@ var ProductCardMinComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./product-card-min.component.html */ "./src/app/pages/catalog/product-card-min/product-card-min.component.html"),
             styles: [__webpack_require__(/*! ./product-card-min.component.scss */ "./src/app/pages/catalog/product-card-min/product-card-min.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingCartService"]])
     ], ProductCardMinComponent);
     return ProductCardMinComponent;
 }());
@@ -6639,7 +6636,7 @@ var SearchPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sorting\">\n    <div class=\"sorting-block\">\n      <div class=\"sorting-price\">\n          Цена\n          <div class=\"sorting-price__form custom-slider\">\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"filter.minValue\">\n                        —\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"filter.maxValue\">\n            <ng5-slider [(value)]=\"filter.minValue\" [(highValue)]=\"filter.maxValue\" [options]=\"filter.options\"></ng5-slider>\n          </div>\n      </div>\n      <div class=\"sorting__side\">\n        <div class=\"sorting-view\">\n            <span>Сортировка</span>\n            <div class=\"sorting-view__select\">\n              <select class=\"sorting__select\" name=\"sorting\">\n                  <option class=\"sorting__option\" value=\"\" (click)=\"filter.sortingName()\">По наименованию</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"filter.sortingPriceUp()\">Дорогие сверху</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"filter.sortingPriceDown()\">Дешевые сверху</option>\n              </select>\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n              </svg>\n            </div>\n        </div>\n        <div class=\"sorting-quantity\">\n          <span>Товаров на странице</span>\n          <div class=\"sorting-quantity__select\">\n            <select class=\"sorting__select\" name=\"sorting\">\n                <option class=\"sorting__option\" value=\"\">14</option>\n                <option class=\"sorting__option\" value=\"\">22</option>\n                <option class=\"sorting__option\" value=\"\">30</option>\n            </select>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n            </svg>\n          </div>\n        </div>\n      </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"sorting\">\n    <div class=\"sorting-block\">\n      <div class=\"sorting-price\">\n          Цена\n          <div class=\"sorting-price__form custom-slider\">\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"minValue\">\n                        —\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"maxValue\">\n            <ng5-slider [(value)]=\"minValue\" [(highValue)]=\"maxValue\" [options]=\"options\"></ng5-slider>\n          </div>\n      </div>\n      <div class=\"sorting__side\">\n        <div class=\"sorting-view\">\n            <span>Сортировка</span>\n            <div class=\"sorting-view__select\">\n              <select class=\"sorting__select\" name=\"sorting\">\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingName()\">По наименованию</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceUp()\">Дорогие сверху</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceDown()\">Дешевые сверху</option>\n              </select>\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n              </svg>\n            </div>\n        </div>\n        <div class=\"sorting-quantity\">\n          <span>Товаров на странице</span>\n          <div class=\"sorting-quantity__select\">\n            <select class=\"sorting__select\" name=\"sorting\">\n                <option class=\"sorting__option\" value=\"\">14</option>\n                <option class=\"sorting__option\" value=\"\">22</option>\n                <option class=\"sorting__option\" value=\"\">30</option>\n            </select>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n            </svg>\n          </div>\n        </div>\n      </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -6673,8 +6670,24 @@ __webpack_require__.r(__webpack_exports__);
 var SortingComponent = /** @class */ (function () {
     function SortingComponent(filter) {
         this.filter = filter;
-        this.options = {};
+        this.minValue = 1;
+        this.maxValue = 15000;
+        this.options = {
+            floor: 0,
+            translate: function () {
+                return ' ';
+            }
+        };
     }
+    SortingComponent.prototype.sortingName = function () {
+        this.filter.sortingName();
+    };
+    SortingComponent.prototype.sortingPriceUp = function () {
+        this.filter.sortingPriceUp();
+    };
+    SortingComponent.prototype.sortingPriceDown = function () {
+        this.filter.sortingPriceDown();
+    };
     SortingComponent.prototype.ngOnInit = function () {
     };
     SortingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -6705,6 +6718,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
 
 
 
@@ -6712,8 +6727,17 @@ var ProductService = /** @class */ (function () {
     function ProductService(http) {
         this.http = http;
     }
-    ProductService.prototype.getData = function () {
-        return this.http.get('assets/product.json');
+    ProductService.prototype.getProducts = function () {
+        return this.http.get('assets/product.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
+            var productList = data["productList"];
+            return productList.map(function (product) {
+                return { id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    imgURL: product.imgURL,
+                };
+            });
+        }));
     };
     ProductService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),

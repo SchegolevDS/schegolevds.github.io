@@ -201,7 +201,7 @@ var ShoppingCartModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card-product\">\r\n  <div class=\"card-product__info\">\r\n    <img src=\".{{product.imgURL}}\" class=\"card-product__img\" alt=\"\">\r\n    <div class=\"card-product__name\">\r\n      {{product.name}}\r\n      <div class=\"card-product__code\">\r\n        {{product.id}}\r\n      </div>\r\n      <div class=\"card-product__sum\">\r\n        {{product.price}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"card-product__cost\">\r\n    <div class=\"card-product__price\">\r\n      {{product.price}}\r\n    </div>\r\n    <div class=\"card-product__quantity\">\r\n      <button class=\"card-product__btn\" onclick=\"this.parentNode.querySelector('.card-product__input').stepDown()\">\r\n        <svg\r\n             xmlns=\"http://www.w3.org/2000/svg\"\r\n             xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n             width=\"18px\" height=\"2px\">\r\n            <path fill-rule=\"evenodd\"  fill=\"rgb(242, 72, 65)\"\r\n             d=\"M-0.000,-0.000 L18.000,-0.000 L18.000,2.000 L-0.000,2.000 L-0.000,-0.000 Z\"/>\r\n        </svg>\r\n      </button>\r\n      <input type=\"number\" value=\"1\" class=\"card-product__input\">\r\n      <button class=\"card-product__btn\" onclick=\"this.parentNode.querySelector('.card-product__input').stepUp()\">\r\n        <svg\r\n             xmlns=\"http://www.w3.org/2000/svg\"\r\n             xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n             width=\"18px\" height=\"16px\">\r\n            <path fill-rule=\"evenodd\"  fill=\"rgb(242, 72, 65)\"\r\n             d=\"M10.000,-0.000 L7.999,-0.000 L7.999,7.000 L-0.000,7.000 L-0.000,9.000 L7.999,9.000 L7.999,16.000 L10.000,16.000 L10.000,9.000 L18.000,9.000 L18.000,7.000 L10.000,7.000 L10.000,-0.000 Z\"/>\r\n        </svg>\r\n      </button>\r\n    </div>\r\n    <div class=\"card-product__price\">\r\n      {{product.price}}\r\n    </div>\r\n    <svg\r\n         xmlns=\"http://www.w3.org/2000/svg\"\r\n         xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n         width=\"14px\" height=\"14px\">\r\n        <path fill-rule=\"evenodd\"  fill=\"rgb(161, 168, 189)\"\r\n         d=\"M8.360,6.993 L13.713,1.642 C14.087,1.265 14.087,0.653 13.713,0.276 C13.335,-0.101 12.721,-0.101 12.346,0.276 L6.993,5.627 L1.642,0.276 C1.265,-0.101 0.653,-0.101 0.275,0.276 C-0.102,0.653 -0.102,1.265 0.275,1.642 L5.627,6.993 L0.275,12.346 C-0.102,12.721 -0.102,13.336 0.275,13.713 C0.653,14.088 1.265,14.088 1.642,13.713 L6.993,8.360 L12.346,13.713 C12.721,14.088 13.335,14.088 13.713,13.713 C14.087,13.336 14.087,12.721 13.713,12.346 L8.360,6.993 Z\"/>\r\n    </svg>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card-product\">\r\n  <div class=\"card-product__info\">\r\n    <img src=\".{{product.imgURL}}\" class=\"card-product__img\" alt=\"\">\r\n    <div class=\"card-product__name\">\r\n      {{product.name}}\r\n      <div class=\"card-product__code\">\r\n        {{product.id}}\r\n      </div>\r\n      <div class=\"card-product__sum\">\r\n        {{product.price}}\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"card-product__cost\">\r\n    <div class=\"card-product__price\">\r\n      {{product.price}}\r\n    </div>\r\n    <div class=\"card-product__quantity\">\r\n      <button class=\"card-product__btn\" onclick=\"this.parentNode.querySelector('.card-product__input').stepDown()\">\r\n        <svg\r\n             xmlns=\"http://www.w3.org/2000/svg\"\r\n             xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n             width=\"18px\" height=\"2px\">\r\n            <path fill-rule=\"evenodd\"  fill=\"rgb(242, 72, 65)\"\r\n             d=\"M-0.000,-0.000 L18.000,-0.000 L18.000,2.000 L-0.000,2.000 L-0.000,-0.000 Z\"/>\r\n        </svg>\r\n      </button>\r\n      <input type=\"number\" value=\"1\" class=\"card-product__input\">\r\n      <button class=\"card-product__btn\" onclick=\"this.parentNode.querySelector('.card-product__input').stepUp()\">\r\n        <svg\r\n             xmlns=\"http://www.w3.org/2000/svg\"\r\n             xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n             width=\"18px\" height=\"16px\">\r\n            <path fill-rule=\"evenodd\"  fill=\"rgb(242, 72, 65)\"\r\n             d=\"M10.000,-0.000 L7.999,-0.000 L7.999,7.000 L-0.000,7.000 L-0.000,9.000 L7.999,9.000 L7.999,16.000 L10.000,16.000 L10.000,9.000 L18.000,9.000 L18.000,7.000 L10.000,7.000 L10.000,-0.000 Z\"/>\r\n        </svg>\r\n      </button>\r\n    </div>\r\n    <div class=\"card-product__price\">\r\n      {{product.price}}\r\n    </div>\r\n    <span>\r\n      <svg (click)=\"deleteProduct()\"\r\n           xmlns=\"http://www.w3.org/2000/svg\"\r\n           xmlns:xlink=\"http://www.w3.org/1999/xlink\"\r\n           width=\"14px\" height=\"14px\">\r\n          <path fill-rule=\"evenodd\"  fill=\"rgb(161, 168, 189)\"\r\n           d=\"M8.360,6.993 L13.713,1.642 C14.087,1.265 14.087,0.653 13.713,0.276 C13.335,-0.101 12.721,-0.101 12.346,0.276 L6.993,5.627 L1.642,0.276 C1.265,-0.101 0.653,-0.101 0.275,0.276 C-0.102,0.653 -0.102,1.265 0.275,1.642 L5.627,6.993 L0.275,12.346 C-0.102,12.721 -0.102,13.336 0.275,13.713 C0.653,14.088 1.265,14.088 1.642,13.713 L6.993,8.360 L12.346,13.713 C12.721,14.088 13.335,14.088 13.713,13.713 C14.087,13.336 14.087,12.721 13.713,12.346 L8.360,6.993 Z\"/>\r\n      </svg>\r\n    </span>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -228,24 +228,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductComponent", function() { return ProductComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
+
 
 
 var ProductComponent = /** @class */ (function () {
-    function ProductComponent() {
+    function ProductComponent(_cartService) {
+        this._cartService = _cartService;
     }
+    ProductComponent.prototype.deleteProduct = function () {
+        this._cartService.delete(this.id);
+    };
     ProductComponent.prototype.ngOnInit = function () {
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
     ], ProductComponent.prototype, "product", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], ProductComponent.prototype, "id", void 0);
     ProductComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-product',
             template: __webpack_require__(/*! ./product.component.html */ "./src/app/pages/shopping-cart/shopping-cart/product/product.component.html"),
             styles: [__webpack_require__(/*! ./product.component.scss */ "./src/app/pages/shopping-cart/shopping-cart/product/product.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingCartService"]])
     ], ProductComponent);
     return ProductComponent;
 }());
@@ -261,7 +271,7 @@ var ProductComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container container--shoping-card\">\n    <div class=\"shopping-card\">\n        <div class=\"shopping-card__headline\">\n            <h2>Корзина</h2>\n        </div>\n        <app-product *ngFor=\"let product of productService.cart\"\n        [product]=\"product\"></app-product>\n        <div class=\"shopping-card__total\">\n          <div class=\"shopping-card__quantity\">\n            3 товара\n          </div>\n          <div class=\"shopping-card__amount\">\n            К оплате:  28 197 ₽\n          </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container container--shoping-card\">\n    <div class=\"shopping-card\">\n        <div class=\"shopping-card__headline\">\n            <h2>Корзина</h2>\n        </div>\n        <app-product *ngFor=\"let product of _cartService.cart; let i = index\"\n        [product]=\"product\"\n        [id]='i'></app-product>\n        <div class=\"shopping-card__total\">\n          <div class=\"shopping-card__quantity\">\n            3 товара\n          </div>\n          <div class=\"shopping-card__amount\">\n            К оплате: {{_cartService.cartSum}} ₽\n          </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -288,25 +298,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShoppingCartComponent", function() { return ShoppingCartComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _products_shopping_cart_products__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../products/shopping-cart-products */ "./src/app/pages/products/shopping-cart-products.ts");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-
+/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
 
 
 
 var ShoppingCartComponent = /** @class */ (function () {
-    function ShoppingCartComponent(productService) {
-        this.productService = productService;
-        this.products = _products_shopping_cart_products__WEBPACK_IMPORTED_MODULE_2__["Products"];
+    function ShoppingCartComponent(_cartService) {
+        this._cartService = _cartService;
     }
-    ShoppingCartComponent.prototype.ngOnInit = function () { };
+    ShoppingCartComponent.prototype.removeItem = function () {
+    };
+    ShoppingCartComponent.prototype.ngOnInit = function () {
+        this._cartService.cart = JSON.parse(localStorage.getItem('Shopping-cart-Product'));
+        this._cartService.arraySum(this._cartService.cartPrice);
+    };
     ShoppingCartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-shopping-cart',
             template: __webpack_require__(/*! ./shopping-cart.component.html */ "./src/app/pages/shopping-cart/shopping-cart/shopping-cart.component.html"),
             styles: [__webpack_require__(/*! ./shopping-cart.component.scss */ "./src/app/pages/shopping-cart/shopping-cart/shopping-cart.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_3__["AppService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingCartService"]])
     ], ShoppingCartComponent);
     return ShoppingCartComponent;
 }());

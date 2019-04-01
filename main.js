@@ -10,11 +10,11 @@
 var map = {
 	"./pages/catalog/catalog.module": [
 		"./src/app/pages/catalog/catalog.module.ts",
+		"common",
 		"pages-catalog-catalog-module"
 	],
 	"./pages/order-status/order-status.module": [
 		"./src/app/pages/order-status/order-status.module.ts",
-		"common",
 		"pages-order-status-order-status-module"
 	],
 	"./pages/product-card/product-card.module": [
@@ -231,20 +231,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppService = /** @class */ (function () {
     function AppService() {
-        this.minValue = 1;
-        this.maxValue = 15000;
-        this.options = {
-            floor: 0,
-            translate: function (value) {
-                return ' ';
-            }
-        };
         this.cart = [];
         this.Type = 'name';
     }
-    AppService.prototype.getProducts = function () {
-        throw new Error("Method not implemented.");
-    };
     AppService.prototype.sortingName = function () {
         this.Type = 'name';
     };

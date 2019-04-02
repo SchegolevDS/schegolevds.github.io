@@ -42,7 +42,7 @@ export class ProductComponent implements OnInit {
   }
 
   deleteProduct() {
-    this._cartService.cartPrices(-this.product.price);
+    this._cartService.cartPrices(-this.product.price*this.quantity);
     this._cartService.arraySum()
     this._cartService.delete(this.id);
   }

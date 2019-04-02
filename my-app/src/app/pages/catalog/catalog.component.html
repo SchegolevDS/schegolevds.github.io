@@ -1,0 +1,19 @@
+<div class="head-banner">
+  <div class="container">
+    <h1>Стулья <br>и кресла</h1>
+    <img src="/assets/img/general/head-banner.png" alt="" class="head-banner__img">
+  </div>
+</div>
+<div class="container">
+  <div class="catalog">
+    <app-sorting></app-sorting>
+    <div class="product-list">
+      <app-product-card-min *ngFor="let product of products
+        | search: _filterService.searchStr
+        | orderBy: _filterService.Type"
+        [product]="product">
+      </app-product-card-min>
+    </div>
+    <app-pagination></app-pagination>
+  </div>
+</div>

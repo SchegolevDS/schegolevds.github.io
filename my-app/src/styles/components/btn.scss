@@ -1,0 +1,66 @@
+.btn-min {
+    width: 99px;
+    height: 36px;
+    border-radius: 3px;
+    border: 2px solid $light-gray;
+    color: #343e5c;
+    background: none;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      border-color: $accent;
+      color: $accent;
+    }
+
+    &:active {
+      border-color: darken($accent, 10%);
+      color: darken($accent, 10%);
+        margin: 0;
+        padding: 0;
+    }
+
+    &:disabled {
+        border-color: $light-gray;
+        color: $dark-gray;
+    }
+
+    &--auth {
+        border-radius: 5px;
+        @media (max-width: 1000px) {
+            display: none;
+        }
+    }
+
+    &--cardbanner {
+        border-color: rgba(#143458,.16);
+    }
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 51px;
+    border-radius: 5px;
+    background-color: lighten($accent, 3%);
+    color: white;
+    transition: all .2s ease-in-out;
+    &:hover {
+        background-color: $accent;
+        border: none;
+        color: white;
+    }
+
+    &:active {
+        background-color: darken($accent, 10%);
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    &:disabled {
+        background-color: $dark-gray;
+    }
+
+}

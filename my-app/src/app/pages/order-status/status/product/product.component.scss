@@ -1,0 +1,38 @@
+.status-product {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    margin-top: 65px;
+
+    &__quantity {
+        padding-bottom: 14px;
+        border-bottom: 1px solid #f0f2f7;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        height: 100px;
+        border-bottom: 1px solid #f0f2f7;
+    }
+
+    &__img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 99px;
+      width: 99px;
+    }
+
+    &__name {
+        font-size: 16px;
+        font-weight: 400;
+        margin-left: 20px;
+    }
+
+    &__code {
+        color: #a1a8bd;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

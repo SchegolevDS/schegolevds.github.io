@@ -1,0 +1,135 @@
+@import "../../../styles/variables.scss";
+
+footer {
+  height: 187px;
+  background-color: $dark;
+  @media (max-width: 1000px) {
+    height: 216px;
+    padding-top: 30px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 576px) {
+    height: 526px;
+  }
+
+  a {
+    color: $dark-gray;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 1000px) {
+    align-items: flex-start;
+  }
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  &__side {
+    display: flex;
+    width: auto;
+    height: 96px;
+    align-items: center;
+    @media (max-width: 1000px) {
+      width: calc((100% + 30px) / 12 * 4 - 30px);
+      flex-direction: column;
+      align-items: flex-start;
+      flex-grow: 0;
+    }
+    @media (max-width: 576px) {
+      width: auto;
+    }
+
+    &--end {
+      justify-content: space-between;
+      border-top: 1px solid rgba(#fff,.1);
+      height: 90px;
+      flex-grow: 1;
+      @media (max-width: 1000px) {
+        border: none;
+        align-items: flex-start;
+        min-width: 186px!important;
+        flex-grow: 0;
+        height: auto;
+      }
+      @media (max-width: 576px) {
+        border-top: 1px solid rgba(#fff,.1);
+        margin-top: 12px;
+        padding-top: 30px;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: calc((100% + 30px) / 12 * 10 - 30px);
+    @media (max-width: 1000px) {
+      width: calc((100% + 30px) / 12 * 4 - 30px);
+      flex-grow: 0;
+    }
+    @media (max-width: 576px) {
+      width: auto;
+    }
+  }
+
+  &__item {
+    display: flex;
+    width: calc((100% + 30px) / 12 * 3 - 30px);
+    height: 40px;
+    color: $dark-gray;
+    font-size: 14px;
+    @media (max-width: 1000px) {
+      width:auto;
+      height: auto;
+      margin-bottom: 25px;
+    }
+    @media (max-width: 576px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+  }
+
+  &__tel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__number {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  #copyright-1 {
+    padding-top: 20px;
+    display: none;
+    @media (max-width: 1000px) {
+      display: block;
+    }
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+  #copyright-2 {
+    @media (max-width: 1000px) {
+      display: none;
+    }
+    @media (max-width: 576px) {
+      display: flex;
+    }
+  }
+}

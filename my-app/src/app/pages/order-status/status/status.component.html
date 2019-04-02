@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="headline">
+        <h2>Проверить статус заказа</h2>
+    </div>
+    <div class="status">
+        <div class="status-head">
+          <div class="status__headline">
+              Заказ ARU04889781
+              <div class="status__date">
+                  Дата заказа: 7 февраля 2019
+              </div>
+          </div>
+          <a routerLink="/order-status" class="status__exit">Проверить другой заказ</a>
+        </div>
+        <div class="current-state">
+            <div class="progress-bar">
+                <div class="progress-bar__circle progress-bar__circle--current">1</div>
+                <div class="progress-bar__line"></div>
+                <div class="progress-bar__circle">2</div>
+                <div class="progress-bar__line"></div>
+                <div class="progress-bar__circle">3</div>
+            </div>
+            <div class="status-name">
+                <div class="status-name__confirm status-name__confirm--current">Подтверждение</div>
+                <div class="status-name__ready">Готовится к отправке</div>
+                <div class="status-name__sent">Отправлен</div>
+            </div>
+        </div>
+        <div class="status-product">
+            <div class="status-product__quantity">
+                3 товара
+            </div>
+            <app-product></app-product>
+        </div>
+        <div class="status-adress">
+            <div class="status__headline">
+                Адрес доставки
+            </div>
+            Севастополь, Победы пр-кт, д. 2А
+            Россия
+        </div>
+        <div class="recipient">
+            <div class="status__headline">
+                Получатель
+            </div>
+            Иван Иванов
+            ivanov@gmail.com
+            +7 (978) 123-45-67
+        </div>
+    </div>
+</div>

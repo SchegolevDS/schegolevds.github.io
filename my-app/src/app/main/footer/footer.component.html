@@ -1,0 +1,36 @@
+<footer>
+  <div class="container">
+    <div class="footer">
+      <div class="footer__side">
+        <app-logo [classMod]="'logo--footer'"></app-logo>
+        <div id="copyright-1" class="footer__item">
+          © Все права защищены, 2019
+        </div>
+      </div>
+      <div class="footer__nav">
+      <app-nav [classMod]="'menu--footer'"></app-nav>
+      </div>
+      <div class="footer__side footer__side--end">
+        <div id="copyright-2" class="footer__item">
+          © Все права защищены, 2019
+        </div>
+        <div class="footer__item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" style="margin: 2px 9px 0 0">
+            <path id="phone" fill="#a1a8bd" d="M315.722,37a0.683,0.683,0,0,0-.722.723A12.268,12.268,0,0,0,327.278,50,0.682,0.682,0,0,0,328,49.277V46.749a0.682,0.682,0,0,0-.722-0.722,7.869,7.869,0,0,1-2.6-.433,0.693,0.693,0,0,0-.722.217L322.366,47.4a11.241,11.241,0,0,1-4.766-4.767l1.589-1.589a0.734,0.734,0,0,0,.216-0.722,8.174,8.174,0,0,1-.433-2.6A0.683,0.683,0,0,0,318.25,37"
+              transform="translate(-315 -37)" />
+          </svg>
+          <div class="footer__tel">
+            Техническая поддержка
+            <a href="tel:+7 (499) 653-9-900" class="footer__number">+7 (499) 653-9-900</a>
+          </div>
+        </div>
+        <div class="footer__item">
+          <app-orderstatus-link [classMod]="'orderstatus--footer'"></app-orderstatus-link>
+        </div>
+        <div class="footer__item">
+          <a href="">Войти в систему</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

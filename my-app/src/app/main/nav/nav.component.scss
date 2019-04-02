@@ -1,0 +1,109 @@
+.nav {
+    &__check {
+        display: none;
+    }
+
+    @media (max-width: 1000px) {
+        margin-right: 10px;
+
+        &__check:checked~.menu {
+            transform: translateY(0);
+        }
+    }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  @media (max-width: 1000px) {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    margin: 0;
+    background-color: white;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    color: #142558;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    box-sizing: border-box;
+    transition: all .0s ease-in-out;
+
+    &:active,
+    &:focus,
+    &:hover {
+      padding-top: 3px;
+      border-bottom: 3px solid #f54732;
+      @media (max-width: 1000px) {
+        padding: 0;
+        border: none;
+      }
+    }
+
+    &:hover {
+      color: #f54732;
+    }
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 770px;
+    @media (max-width: 1000px) {
+      display: flex;
+      position: relative;
+      width: auto;
+      height: auto;
+      margin: 0;
+      background: none;
+      transform: translateY(0);
+      transition: transform 0.3s;
+    }
+
+    .menu__item {
+      color: white;
+      height: 40px;
+
+      &:active,
+      &:focus,
+      &:hover {
+        border-bottom: none;
+        padding-top: 0;
+        color: #f54732;
+      }
+      @media (max-width: 1000px)  {
+        justify-content: flex-start;
+        height: auto;
+        margin-bottom: 21px;
+      }
+      @media (max-width: 576px) {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 1000px) {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0;
+      width: auto;
+    }
+  }
+}

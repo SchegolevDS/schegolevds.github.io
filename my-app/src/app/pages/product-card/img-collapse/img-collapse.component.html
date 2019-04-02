@@ -1,0 +1,19 @@
+<div class="img-collapse">
+  <div class="img-collapse__side">
+    <button (click)="select()" class="img-collapse__button">
+      <img src="{{productImg[0]}}" class="img-collapse__min-img" alt="">
+    </button>
+    <button (click)="select1()" class="img-collapse__button">
+      <img src="{{productImg[1]}}" class="img-collapse__min-img" alt="">
+    </button>
+    <button (click)="select2()" class="img-collapse__button">
+      <img src="{{productImg[2]}}" class="img-collapse__min-img" alt="">
+    </button>
+    <button (click)="select3()" class="img-collapse__button">
+      <img src="{{productImg[3]}}" class="img-collapse__min-img" alt="">
+    </button>
+  </div>
+  <div class="img-collapse__select-img">
+    <img src="{{selectImg}}" class="img-collapse__img" alt="">
+  </div>
+</div>

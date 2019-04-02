@@ -1,0 +1,13 @@
+<div  class="product-card">
+  <div class="product-card__img">
+    <img src=".{{product.imgURL}}" alt="">
+  </div>
+  <div class="product-card__name">
+    <a routerLink="product">{{product.name}}</a>
+  </div>
+  <div class="product-card__price">
+    {{product.price | currency:' ':'':'0.0-0'}} ₽
+  </div>
+  <button type="button" name="button" class="btn-min" (click)="addCart(product)">В корзину</button>
+
+</div>

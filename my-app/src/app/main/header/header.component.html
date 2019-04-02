@@ -1,0 +1,42 @@
+<header class="header">
+
+  <div class="container">
+    <div class="header__top">
+      <div class="header__side">
+        <label class="header__show-menu" for="showmenu">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="14px">
+                <path fill-rule="evenodd"  fill="rgb(52, 62, 92)"
+                 d="M10.285,13.999 L7.728,13.999 L-0.000,13.999 L-0.000,11.999 L7.728,11.999 L10.285,11.999 L18.000,11.999 L18.000,13.999 L10.285,13.999 ZM7.728,7.999 L-0.000,7.999 L-0.000,6.000 L7.728,6.000 L10.285,6.000 L18.000,6.000 L18.000,7.999 L10.285,7.999 L7.728,7.999 ZM7.728,1.999 L-0.000,1.999 L-0.000,-0.001 L7.728,-0.001 L10.285,-0.001 L18.000,-0.001 L18.000,1.999 L10.285,1.999 L7.728,1.999 Z"/>
+              </svg>
+        </label>
+        <app-logo></app-logo>
+        <div class="tel header__tel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" style="margin-right: 10px">
+            <path id="phone" fill="#a1a8bd" d="M315.722,37a0.683,0.683,0,0,0-.722.723A12.268,12.268,0,0,0,327.278,50,0.682,0.682,0,0,0,328,49.277V46.749a0.682,0.682,0,0,0-.722-0.722,7.869,7.869,0,0,1-2.6-.433,0.693,0.693,0,0,0-.722.217L322.366,47.4a11.241,11.241,0,0,1-4.766-4.767l1.589-1.589a0.734,0.734,0,0,0,.216-0.722,8.174,8.174,0,0,1-.433-2.6A0.683,0.683,0,0,0,318.25,37"
+              transform="translate(-315 -37)" />
+          </svg>
+          <a href="tel:+7 (499) 653-9-900" class="tel__number">+7 (499) 653-9-900</a>
+        </div>
+      </div>
+      <div class="header__side header__side--right">
+        <label class="header__show-search" for="showsearch">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13px" height="13px">
+            <path fill-rule="evenodd"  fill="rgb(52, 62, 92)"
+             d="M12.613,12.610 C12.113,13.109 11.301,13.109 10.800,12.610 L8.158,9.966 C6.087,11.221 3.359,10.970 1.571,9.182 C-0.532,7.079 -0.532,3.669 1.571,1.568 C3.673,-0.537 7.082,-0.537 9.185,1.568 C10.973,3.356 11.225,6.083 9.971,8.153 L12.613,10.798 C13.114,11.297 13.114,12.108 12.613,12.610 ZM7.735,3.017 C6.433,1.715 4.322,1.715 3.021,3.017 C1.719,4.319 1.719,6.430 3.021,7.730 C4.322,9.033 6.433,9.033 7.735,7.730 C9.036,6.430 9.036,4.319 7.735,3.017 Z"/>
+          </svg>
+        </label>
+        <app-orderstatus-link class="header__order-status-link"></app-orderstatus-link>
+        <app-shoppingcart-indicator></app-shoppingcart-indicator>
+        <button class="btn-min btn-min--auth">Вход</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__bottom">
+    <div class="container header__bottom-flex">
+      <app-nav class="header__nav"></app-nav>
+      <app-search class="header__search"></app-search>
+    </div>
+  </div>
+
+</header>

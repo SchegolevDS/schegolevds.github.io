@@ -1,0 +1,24 @@
+.headline {
+    margin: 70px 0 40px;
+    text-align: center;
+}
+
+.status-auth {
+    width: 571px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 43px 128px 57px;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    &__text {
+        width: 291px;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 21px;
+    }
+    @media (max-width: 575.98px) {
+      width: 100%;
+      padding: 43px 23px 57px;
+    }
+}

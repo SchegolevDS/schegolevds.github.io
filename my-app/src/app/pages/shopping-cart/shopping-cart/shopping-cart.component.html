@@ -1,0 +1,18 @@
+<div class="container container--shoping-card">
+    <div class="shopping-card">
+        <div class="shopping-card__headline">
+            <h2>Корзина</h2>
+        </div>
+        <app-product *ngFor="let product of _cartService.cart; let i = index"
+        [product]="product"
+        [id]='i'></app-product>
+        <div class="shopping-card__total">
+          <div class="shopping-card__quantity">
+            {{_cartService.totalQuantity}} {{_cartService.totalQuantityStr}}
+          </div>
+          <div class="shopping-card__amount">
+            К оплате: {{_cartService.cartSum}} ₽
+          </div>
+        </div>
+    </div>
+</div>

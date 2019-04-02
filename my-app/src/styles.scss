@@ -1,0 +1,10 @@
+// Common styles of the project
+@import "/styles/reset.scss";
+@import "/styles/fonts.scss";
+@import "/styles/variables.scss";
+@import "/styles/base.scss";
+@import "/styles/loading.scss";
+
+// Components
+@import "/styles/components/btn.scss";
+@import "./styles/components/input.scss";

@@ -1,0 +1,50 @@
+.orderstatus {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-right: 67px;
+
+  &__icon {
+    margin-left: 5px;
+
+    &-item-1 {
+      fill: #dadee2;
+    }
+
+    &-item-2 {
+      fill: #142558;
+    }
+  }
+
+  &:hover {
+    .orderstatus__icon {
+      .orderstatus__icon-item-2 {
+        fill: #f24841;
+      }
+    }
+  }
+
+  &--footer {
+    color: #a1a8bd;
+
+    .orderstatus__icon {
+      .orderstatus__icon-item-1,
+      .orderstatus__icon-item-2 {
+        fill: #9ca2b7;
+      }
+    }
+
+
+    &:hover {
+      color: white;
+      .orderstatus__icon {
+        .orderstatus__icon-item-2 {
+          fill: white;
+        }
+      }
+    }
+    @media (max-width: 576px) {
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.content {
+  min-height: calc(100vh - 147px - 187px);
+  box-sizing: border-box;
+  @media (max-width: 1000px) {
+    padding-top: 1px;
+    margin-top: 70px;
+    min-height: calc(100vh - 71px - 216px);
+  }
+  @media (max-width: 576px) {
+    min-height: calc(100vh - 71px - 526px);
+  }
+}

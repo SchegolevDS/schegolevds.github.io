@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 import { Product } from 'src/app/models/product';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-catalog',
@@ -15,6 +16,11 @@ import { Product } from 'src/app/models/product';
 export class CatalogComponent implements OnInit {
   products: Product[] = [];
   error: any;
+  public config: PaginationInstance = {
+        id: 'custom',
+        itemsPerPage: 16,
+        currentPage: 1
+    };
 
   constructor(private _filterService: AppService,
     private _productService: ProductService,

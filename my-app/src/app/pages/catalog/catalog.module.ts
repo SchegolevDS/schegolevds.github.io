@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
 import { OrderByPipe} from 'angular-pipes';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { CatalogComponent } from './catalog.component';
-import { PaginationComponent } from './pagination/pagination.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { ProductCardMinComponent } from './product-card-min/product-card-min.component';
 import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [CatalogComponent,
-    PaginationComponent,
     SortingComponent,
     ProductCardMinComponent,
     SearchPipe,
@@ -22,7 +21,8 @@ import { SearchPipe } from './search.pipe';
     CommonModule,
     CatalogRoutingModule,
     FormsModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    NgxPaginationModule
   ]
 })
 export class CatalogModule { }

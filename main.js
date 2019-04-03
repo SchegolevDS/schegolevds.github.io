@@ -229,7 +229,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppService = /** @class */ (function () {
     function AppService() {
-        this.cart = [];
         this.Type = 'name';
     }
     AppService.prototype.sortingName = function () {

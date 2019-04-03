@@ -6306,6 +6306,562 @@ Ng5SliderModule.ctorParameters = function () { return []; };
 
 /***/ }),
 
+/***/ "./node_modules/ngx-pagination/dist/ngx-pagination.js":
+/*!************************************************************!*\
+  !*** ./node_modules/ngx-pagination/dist/ngx-pagination.js ***!
+  \************************************************************/
+/*! exports provided: ɵb, ɵa, NgxPaginationModule, PaginationService, PaginationControlsComponent, PaginationControlsDirective, PaginatePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵb", function() { return DEFAULT_STYLES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa", function() { return DEFAULT_TEMPLATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgxPaginationModule", function() { return NgxPaginationModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginationService", function() { return PaginationService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginationControlsComponent", function() { return PaginationControlsComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginationControlsDirective", function() { return PaginationControlsDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginatePipe", function() { return PaginatePipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+
+
+
+var PaginationService = (function () {
+    function PaginationService() {
+        this.change = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.instances = {};
+        this.DEFAULT_ID = 'DEFAULT_PAGINATION_ID';
+    }
+    PaginationService.prototype.defaultId = function () { return this.DEFAULT_ID; };
+    PaginationService.prototype.register = function (instance) {
+        if (instance.id == null) {
+            instance.id = this.DEFAULT_ID;
+        }
+        if (!this.instances[instance.id]) {
+            this.instances[instance.id] = instance;
+            this.change.emit(instance.id);
+        }
+        else {
+            var changed = this.updateInstance(instance);
+            if (changed) {
+                this.change.emit(instance.id);
+            }
+        }
+    };
+    /**
+     * Check each property of the instance and update any that have changed. Return
+     * true if any changes were made, else return false.
+     */
+    PaginationService.prototype.updateInstance = function (instance) {
+        var changed = false;
+        for (var prop in this.instances[instance.id]) {
+            if (instance[prop] !== this.instances[instance.id][prop]) {
+                this.instances[instance.id][prop] = instance[prop];
+                changed = true;
+            }
+        }
+        return changed;
+    };
+    /**
+     * Returns the current page number.
+     */
+    PaginationService.prototype.getCurrentPage = function (id) {
+        if (this.instances[id]) {
+            return this.instances[id].currentPage;
+        }
+    };
+    /**
+     * Sets the current page number.
+     */
+    PaginationService.prototype.setCurrentPage = function (id, page) {
+        if (this.instances[id]) {
+            var instance = this.instances[id];
+            var maxPage = Math.ceil(instance.totalItems / instance.itemsPerPage);
+            if (page <= maxPage && 1 <= page) {
+                this.instances[id].currentPage = page;
+                this.change.emit(id);
+            }
+        }
+    };
+    /**
+     * Sets the value of instance.totalItems
+     */
+    PaginationService.prototype.setTotalItems = function (id, totalItems) {
+        if (this.instances[id] && 0 <= totalItems) {
+            this.instances[id].totalItems = totalItems;
+            this.change.emit(id);
+        }
+    };
+    /**
+     * Sets the value of instance.itemsPerPage.
+     */
+    PaginationService.prototype.setItemsPerPage = function (id, itemsPerPage) {
+        if (this.instances[id]) {
+            this.instances[id].itemsPerPage = itemsPerPage;
+            this.change.emit(id);
+        }
+    };
+    /**
+     * Returns a clone of the pagination instance object matching the id. If no
+     * id specified, returns the instance corresponding to the default id.
+     */
+    PaginationService.prototype.getInstance = function (id) {
+        if (id === void 0) { id = this.DEFAULT_ID; }
+        if (this.instances[id]) {
+            return this.clone(this.instances[id]);
+        }
+        return {};
+    };
+    /**
+     * Perform a shallow clone of an object.
+     */
+    PaginationService.prototype.clone = function (obj) {
+        var target = {};
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                target[i] = obj[i];
+            }
+        }
+        return target;
+    };
+    return PaginationService;
+}());
+
+var LARGE_NUMBER = Number.MAX_SAFE_INTEGER;
+var PaginatePipe = (function () {
+    function PaginatePipe(service) {
+        this.service = service;
+        // store the values from the last time the pipe was invoked
+        this.state = {};
+    }
+    PaginatePipe.prototype.transform = function (collection, args) {
+        // When an observable is passed through the AsyncPipe, it will output
+        // `null` until the subscription resolves. In this case, we want to
+        // use the cached data from the `state` object to prevent the NgFor
+        // from flashing empty until the real values arrive.
+        if (args instanceof Array) {
+            // compatible with angular2 before beta16
+            args = args[0];
+        }
+        if (!(collection instanceof Array)) {
+            var _id = args.id || this.service.defaultId;
+            if (this.state[_id]) {
+                return this.state[_id].slice;
+            }
+            else {
+                return collection;
+            }
+        }
+        var serverSideMode = args.totalItems && args.totalItems !== collection.length;
+        var instance = this.createInstance(collection, args);
+        var id = instance.id;
+        var start, end;
+        var perPage = instance.itemsPerPage;
+        this.service.register(instance);
+        if (!serverSideMode && collection instanceof Array) {
+            perPage = +perPage || LARGE_NUMBER;
+            start = (instance.currentPage - 1) * perPage;
+            end = start + perPage;
+            var isIdentical = this.stateIsIdentical(id, collection, start, end);
+            if (isIdentical) {
+                return this.state[id].slice;
+            }
+            else {
+                var slice = collection.slice(start, end);
+                this.saveState(id, collection, slice, start, end);
+                this.service.change.emit(id);
+                return slice;
+            }
+        }
+        // save the state for server-side collection to avoid null
+        // flash as new data loads.
+        this.saveState(id, collection, collection, start, end);
+        return collection;
+    };
+    /**
+     * Create an PaginationInstance object, using defaults for any optional properties not supplied.
+     */
+    PaginatePipe.prototype.createInstance = function (collection, args) {
+        var config = args;
+        this.checkConfig(config);
+        return {
+            id: config.id != null ? config.id : this.service.defaultId(),
+            itemsPerPage: +config.itemsPerPage || 0,
+            currentPage: +config.currentPage || 1,
+            totalItems: +config.totalItems || collection.length
+        };
+    };
+    /**
+     * Ensure the argument passed to the filter contains the required properties.
+     */
+    PaginatePipe.prototype.checkConfig = function (config) {
+        var required = ['itemsPerPage', 'currentPage'];
+        var missing = required.filter(function (prop) { return !(prop in config); });
+        if (0 < missing.length) {
+            throw new Error("PaginatePipe: Argument is missing the following required properties: " + missing.join(', '));
+        }
+    };
+    /**
+     * To avoid returning a brand new array each time the pipe is run, we store the state of the sliced
+     * array for a given id. This means that the next time the pipe is run on this collection & id, we just
+     * need to check that the collection, start and end points are all identical, and if so, return the
+     * last sliced array.
+     */
+    PaginatePipe.prototype.saveState = function (id, collection, slice, start, end) {
+        this.state[id] = {
+            collection: collection,
+            size: collection.length,
+            slice: slice,
+            start: start,
+            end: end
+        };
+    };
+    /**
+     * For a given id, returns true if the collection, size, start and end values are identical.
+     */
+    PaginatePipe.prototype.stateIsIdentical = function (id, collection, start, end) {
+        var state = this.state[id];
+        if (!state) {
+            return false;
+        }
+        var isMetaDataIdentical = state.size === collection.length &&
+            state.start === start &&
+            state.end === end;
+        if (!isMetaDataIdentical) {
+            return false;
+        }
+        return state.slice.every(function (element, index) { return element === collection[start + index]; });
+    };
+    PaginatePipe.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"], args: [{
+                    name: 'paginate',
+                    pure: false
+                },] },
+    ];
+    /** @nocollapse */
+    PaginatePipe.ctorParameters = function () { return [
+        { type: PaginationService, },
+    ]; };
+    return PaginatePipe;
+}());
+
+/**
+ * The default template and styles for the pagination links are borrowed directly
+ * from Zurb Foundation 6: http://foundation.zurb.com/sites/docs/pagination.html
+ */
+var DEFAULT_TEMPLATE = "\n    <pagination-template  #p=\"paginationApi\"\n                         [id]=\"id\"\n                         [maxSize]=\"maxSize\"\n                         (pageChange)=\"pageChange.emit($event)\">\n    <ul class=\"ngx-pagination\" \n        role=\"navigation\" \n        [attr.aria-label]=\"screenReaderPaginationLabel\" \n        [class.responsive]=\"responsive\"\n        *ngIf=\"!(autoHide && p.pages.length <= 1)\">\n\n        <li class=\"pagination-previous\" [class.disabled]=\"p.isFirstPage()\" *ngIf=\"directionLinks\"> \n            <a tabindex=\"0\" *ngIf=\"1 < p.getCurrent()\" (keyup.enter)=\"p.previous()\" (click)=\"p.previous()\" [attr.aria-label]=\"previousLabel + ' ' + screenReaderPageLabel\">\n                {{ previousLabel }} <span class=\"show-for-sr\">{{ screenReaderPageLabel }}</span>\n            </a>\n            <span *ngIf=\"p.isFirstPage()\">\n                {{ previousLabel }} <span class=\"show-for-sr\">{{ screenReaderPageLabel }}</span>\n            </span>\n        </li> \n\n        <li class=\"small-screen\">\n            {{ p.getCurrent() }} / {{ p.getLastPage() }}\n        </li>\n\n        <li [class.current]=\"p.getCurrent() === page.value\" \n            [class.ellipsis]=\"page.label === '...'\"\n            *ngFor=\"let page of p.pages\">\n            <a tabindex=\"0\" (keyup.enter)=\"p.setCurrent(page.value)\" (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span class=\"show-for-sr\">{{ screenReaderPageLabel }} </span>\n                <span>{{ page.label }}</span>\n            </a>\n            <ng-container *ngIf=\"p.getCurrent() === page.value\">\n                <span class=\"show-for-sr\">{{ screenReaderCurrentLabel }} </span>\n                <span>{{ page.label }}</span> \n            </ng-container>\n        </li>\n\n        <li class=\"pagination-next\" [class.disabled]=\"p.isLastPage()\" *ngIf=\"directionLinks\">\n            <a tabindex=\"0\" *ngIf=\"!p.isLastPage()\" (keyup.enter)=\"p.next()\" (click)=\"p.next()\" [attr.aria-label]=\"nextLabel + ' ' + screenReaderPageLabel\">\n                 {{ nextLabel }} <span class=\"show-for-sr\">{{ screenReaderPageLabel }}</span>\n            </a>\n            <span *ngIf=\"p.isLastPage()\">\n                 {{ nextLabel }} <span class=\"show-for-sr\">{{ screenReaderPageLabel }}</span>\n            </span>\n        </li>\n\n    </ul>\n    </pagination-template>\n    ";
+var DEFAULT_STYLES = "\n.ngx-pagination {\n  margin-left: 0;\n  margin-bottom: 1rem; }\n  .ngx-pagination::before, .ngx-pagination::after {\n    content: ' ';\n    display: table; }\n  .ngx-pagination::after {\n    clear: both; }\n  .ngx-pagination li {\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    margin-right: 0.0625rem;\n    border-radius: 0; }\n  .ngx-pagination li {\n    display: inline-block; }\n  .ngx-pagination a,\n  .ngx-pagination button {\n    color: #0a0a0a; \n    display: block;\n    padding: 0.1875rem 0.625rem;\n    border-radius: 0; }\n    .ngx-pagination a:hover,\n    .ngx-pagination button:hover {\n      background: #e6e6e6; }\n  .ngx-pagination .current {\n    padding: 0.1875rem 0.625rem;\n    background: #2199e8;\n    color: #fefefe;\n    cursor: default; }\n  .ngx-pagination .disabled {\n    padding: 0.1875rem 0.625rem;\n    color: #cacaca;\n    cursor: default; } \n    .ngx-pagination .disabled:hover {\n      background: transparent; }\n  .ngx-pagination a, .ngx-pagination button {\n    cursor: pointer; }\n\n.ngx-pagination .pagination-previous a::before,\n.ngx-pagination .pagination-previous.disabled::before { \n  content: '\u00AB';\n  display: inline-block;\n  margin-right: 0.5rem; }\n\n.ngx-pagination .pagination-next a::after,\n.ngx-pagination .pagination-next.disabled::after {\n  content: '\u00BB';\n  display: inline-block;\n  margin-left: 0.5rem; }\n\n.ngx-pagination .show-for-sr {\n  position: absolute !important;\n  width: 1px;\n  height: 1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0); }\n.ngx-pagination .small-screen {\n  display: none; }\n@media screen and (max-width: 601px) {\n  .ngx-pagination.responsive .small-screen {\n    display: inline-block; } \n  .ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {\n    display: none; }\n}\n  ";
+
+function coerceToBoolean(input) {
+    return !!input && input !== 'false';
+}
+/**
+ * The default pagination controls component. Actually just a default implementation of a custom template.
+ */
+var PaginationControlsComponent = (function () {
+    function PaginationControlsComponent() {
+        this.maxSize = 7;
+        this.previousLabel = 'Previous';
+        this.nextLabel = 'Next';
+        this.screenReaderPaginationLabel = 'Pagination';
+        this.screenReaderPageLabel = 'page';
+        this.screenReaderCurrentLabel = "You're on page";
+        this.pageChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this._directionLinks = true;
+        this._autoHide = false;
+        this._responsive = false;
+    }
+    Object.defineProperty(PaginationControlsComponent.prototype, "directionLinks", {
+        get: function () {
+            return this._directionLinks;
+        },
+        set: function (value) {
+            this._directionLinks = coerceToBoolean(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PaginationControlsComponent.prototype, "autoHide", {
+        get: function () {
+            return this._autoHide;
+        },
+        set: function (value) {
+            this._autoHide = coerceToBoolean(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PaginationControlsComponent.prototype, "responsive", {
+        get: function () {
+            return this._responsive;
+        },
+        set: function (value) {
+            this._responsive = coerceToBoolean(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PaginationControlsComponent.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{
+                    selector: 'pagination-controls',
+                    template: DEFAULT_TEMPLATE,
+                    styles: [DEFAULT_STYLES],
+                    changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                    encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
+                },] },
+    ];
+    /** @nocollapse */
+    PaginationControlsComponent.ctorParameters = function () { return []; };
+    PaginationControlsComponent.propDecorators = {
+        'id': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'maxSize': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'directionLinks': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'autoHide': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'responsive': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'previousLabel': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'nextLabel': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'screenReaderPaginationLabel': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'screenReaderPageLabel': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'screenReaderCurrentLabel': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'pageChange': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    };
+    return PaginationControlsComponent;
+}());
+
+/**
+ * This directive is what powers all pagination controls components, including the default one.
+ * It exposes an API which is hooked up to the PaginationService to keep the PaginatePipe in sync
+ * with the pagination controls.
+ */
+var PaginationControlsDirective = (function () {
+    function PaginationControlsDirective(service, changeDetectorRef) {
+        var _this = this;
+        this.service = service;
+        this.changeDetectorRef = changeDetectorRef;
+        this.maxSize = 7;
+        this.pageChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.pages = [];
+        this.changeSub = this.service.change
+            .subscribe(function (id) {
+            if (_this.id === id) {
+                _this.updatePageLinks();
+                _this.changeDetectorRef.markForCheck();
+                _this.changeDetectorRef.detectChanges();
+            }
+        });
+    }
+    PaginationControlsDirective.prototype.ngOnInit = function () {
+        if (this.id === undefined) {
+            this.id = this.service.defaultId();
+        }
+        this.updatePageLinks();
+    };
+    PaginationControlsDirective.prototype.ngOnChanges = function (changes) {
+        this.updatePageLinks();
+    };
+    PaginationControlsDirective.prototype.ngOnDestroy = function () {
+        this.changeSub.unsubscribe();
+    };
+    /**
+     * Go to the previous page
+     */
+    PaginationControlsDirective.prototype.previous = function () {
+        this.checkValidId();
+        this.setCurrent(this.getCurrent() - 1);
+    };
+    /**
+     * Go to the next page
+     */
+    PaginationControlsDirective.prototype.next = function () {
+        this.checkValidId();
+        this.setCurrent(this.getCurrent() + 1);
+    };
+    /**
+     * Returns true if current page is first page
+     */
+    PaginationControlsDirective.prototype.isFirstPage = function () {
+        return this.getCurrent() === 1;
+    };
+    /**
+     * Returns true if current page is last page
+     */
+    PaginationControlsDirective.prototype.isLastPage = function () {
+        return this.getLastPage() === this.getCurrent();
+    };
+    /**
+     * Set the current page number.
+     */
+    PaginationControlsDirective.prototype.setCurrent = function (page) {
+        this.pageChange.emit(page);
+    };
+    /**
+     * Get the current page number.
+     */
+    PaginationControlsDirective.prototype.getCurrent = function () {
+        return this.service.getCurrentPage(this.id);
+    };
+    /**
+     * Returns the last page number
+     */
+    PaginationControlsDirective.prototype.getLastPage = function () {
+        var inst = this.service.getInstance(this.id);
+        if (inst.totalItems < 1) {
+            // when there are 0 or fewer (an error case) items, there are no "pages" as such,
+            // but it makes sense to consider a single, empty page as the last page.
+            return 1;
+        }
+        return Math.ceil(inst.totalItems / inst.itemsPerPage);
+    };
+    PaginationControlsDirective.prototype.getTotalItems = function () {
+        return this.service.getInstance(this.id).totalItems;
+    };
+    PaginationControlsDirective.prototype.checkValidId = function () {
+        if (this.service.getInstance(this.id).id == null) {
+            console.warn("PaginationControlsDirective: the specified id \"" + this.id + "\" does not match any registered PaginationInstance");
+        }
+    };
+    /**
+     * Updates the page links and checks that the current page is valid. Should run whenever the
+     * PaginationService.change stream emits a value matching the current ID, or when any of the
+     * input values changes.
+     */
+    PaginationControlsDirective.prototype.updatePageLinks = function () {
+        var _this = this;
+        var inst = this.service.getInstance(this.id);
+        var correctedCurrentPage = this.outOfBoundCorrection(inst);
+        if (correctedCurrentPage !== inst.currentPage) {
+            setTimeout(function () {
+                _this.setCurrent(correctedCurrentPage);
+                _this.pages = _this.createPageArray(inst.currentPage, inst.itemsPerPage, inst.totalItems, _this.maxSize);
+            });
+        }
+        else {
+            this.pages = this.createPageArray(inst.currentPage, inst.itemsPerPage, inst.totalItems, this.maxSize);
+        }
+    };
+    /**
+     * Checks that the instance.currentPage property is within bounds for the current page range.
+     * If not, return a correct value for currentPage, or the current value if OK.
+     */
+    PaginationControlsDirective.prototype.outOfBoundCorrection = function (instance) {
+        var totalPages = Math.ceil(instance.totalItems / instance.itemsPerPage);
+        if (totalPages < instance.currentPage && 0 < totalPages) {
+            return totalPages;
+        }
+        else if (instance.currentPage < 1) {
+            return 1;
+        }
+        return instance.currentPage;
+    };
+    /**
+     * Returns an array of Page objects to use in the pagination controls.
+     */
+    PaginationControlsDirective.prototype.createPageArray = function (currentPage, itemsPerPage, totalItems, paginationRange) {
+        // paginationRange could be a string if passed from attribute, so cast to number.
+        paginationRange = +paginationRange;
+        var pages = [];
+        var totalPages = Math.ceil(totalItems / itemsPerPage);
+        var halfWay = Math.ceil(paginationRange / 2);
+        var isStart = currentPage <= halfWay;
+        var isEnd = totalPages - halfWay < currentPage;
+        var isMiddle = !isStart && !isEnd;
+        var ellipsesNeeded = paginationRange < totalPages;
+        var i = 1;
+        while (i <= totalPages && i <= paginationRange) {
+            var label = void 0;
+            var pageNumber = this.calculatePageNumber(i, currentPage, paginationRange, totalPages);
+            var openingEllipsesNeeded = (i === 2 && (isMiddle || isEnd));
+            var closingEllipsesNeeded = (i === paginationRange - 1 && (isMiddle || isStart));
+            if (ellipsesNeeded && (openingEllipsesNeeded || closingEllipsesNeeded)) {
+                label = '...';
+            }
+            else {
+                label = pageNumber;
+            }
+            pages.push({
+                label: label,
+                value: pageNumber
+            });
+            i++;
+        }
+        return pages;
+    };
+    /**
+     * Given the position in the sequence of pagination links [i],
+     * figure out what page number corresponds to that position.
+     */
+    PaginationControlsDirective.prototype.calculatePageNumber = function (i, currentPage, paginationRange, totalPages) {
+        var halfWay = Math.ceil(paginationRange / 2);
+        if (i === paginationRange) {
+            return totalPages;
+        }
+        else if (i === 1) {
+            return i;
+        }
+        else if (paginationRange < totalPages) {
+            if (totalPages - halfWay < currentPage) {
+                return totalPages - paginationRange + i;
+            }
+            else if (halfWay < currentPage) {
+                return currentPage - halfWay + i;
+            }
+            else {
+                return i;
+            }
+        }
+        else {
+            return i;
+        }
+    };
+    PaginationControlsDirective.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"], args: [{
+                    selector: 'pagination-template,[pagination-template]',
+                    exportAs: 'paginationApi'
+                },] },
+    ];
+    /** @nocollapse */
+    PaginationControlsDirective.ctorParameters = function () { return [
+        { type: PaginationService, },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], },
+    ]; };
+    PaginationControlsDirective.propDecorators = {
+        'id': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'maxSize': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+        'pageChange': [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    };
+    return PaginationControlsDirective;
+}());
+
+var NgxPaginationModule = (function () {
+    function NgxPaginationModule() {
+    }
+    NgxPaginationModule.decorators = [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"], args: [{
+                    imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"]],
+                    declarations: [
+                        PaginatePipe,
+                        PaginationControlsComponent,
+                        PaginationControlsDirective
+                    ],
+                    providers: [PaginationService],
+                    exports: [PaginatePipe, PaginationControlsComponent, PaginationControlsDirective]
+                },] },
+    ];
+    /** @nocollapse */
+    NgxPaginationModule.ctorParameters = function () { return []; };
+    return NgxPaginationModule;
+}());
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/catalog/catalog-routing.module.ts":
 /*!*********************************************************!*\
   !*** ./src/app/pages/catalog/catalog-routing.module.ts ***!
@@ -6350,7 +6906,7 @@ var CatalogRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search: _filterService.searchStr\r\n        | orderBy: _filterService.Type\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n    <app-pagination></app-pagination>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n    <h1>Стулья <br>и кресла</h1>\r\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\r\n  </div>\r\n</div>\r\n<div class=\"container\">\r\n  <div class=\"catalog\">\r\n    <app-sorting></app-sorting>\r\n    <div class=\"product-list\">\r\n      <app-product-card-min *ngFor=\"let product of products\r\n        | search: _filterService.searchStr\r\n        | orderBy: _filterService.Type\r\n        | paginate: config\"\r\n        [product]=\"product\">\r\n      </app-product-card-min>\r\n    </div>\r\n\r\n<pagination-template #p=\"paginationApi\"\r\n                     [id]=\"config.id\"\r\n                     (pageChange)=\"config.currentPage = $event\"\r\n                     [maxSize]=\"10\">\r\n\r\n\r\n    <div class=\"pagination\">\r\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\r\n            <a (click)=\"p.previous()\">\r\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\r\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\r\n              </svg>\r\n            </a>\r\n        </div>\r\n\r\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\r\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\r\n                <span>{{ page.label }}</span>\r\n            </a>\r\n            <div *ngIf=\"p.getCurrent() === page.value\">\r\n                <span>{{ page.label }}</span>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\r\n            <a (click)=\"p.next()\">\r\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\r\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\r\n              </svg>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</pagination-template>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -6361,7 +6917,7 @@ module.exports = "<div class=\"head-banner\">\r\n  <div class=\"container\">\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".head-banner {\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2F0YWxvZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUF1QixFQUFBO0VBRHpCO0lBSUksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXhCRjtNQTBCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2F0YWxvZy9jYXRhbG9nLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgaGVpZ2h0OiAyMzZweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgYWxpZ24tc2VsZjogZmxleC1lbmQ7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDg0cHg7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxuICAgIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLW1zLXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiAxMDAwcHgpIHtcclxuICAgICZfX2ltZyB7XHJcbiAgICAgIG1hcmdpbi1yaWdodDogMTBweDtcclxuICAgIH1cclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KSB7XHJcbiAgICAuY29udGFpbmVyIHtcclxuICAgICAgaGVpZ2h0OiAxMjBweDtcclxuICAgIH1cclxuXHJcbiAgICAmX19pbWcge1xyXG4gICAgICB3aWR0aDogMTIzcHg7XHJcbiAgICAgIGhlaWdodDogMTAxcHg7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4uY2F0YWxvZyB7XHJcbiAgbWFyZ2luOiA0OHB4IDAgOTdweDtcclxufVxyXG5cclxuLnByb2R1Y3QtbGlzdCB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgbWFyZ2luOiAxM3B4IC0xNXB4O1xyXG59XHJcblxyXG5hcHAtcHJvZHVjdC1jYXJkLW1pbiB7XHJcbiAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogMyAtIDMwcHgpO1xyXG4gIG1hcmdpbjogMTNweCAxNXB4O1xyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiAxMDAwcHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDQgLSAzMHB4KTtcclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KSB7XHJcbiAgICB3aWR0aDogY2FsYygxMDAlIC0gMzBweCk7XHJcbiAgfVxyXG59XHJcblxyXG4uc2VhcmNoIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBtYXJnaW46IDAgMTVweDtcclxuICBpbnB1dCB7XHJcbiAgICBoZWlnaHQ6IDQwcHg7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgfVxyXG59XHJcbiJdfQ== */"
+module.exports = ".head-banner {\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2F0YWxvZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUF1QixFQUFBO0VBRHpCO0lBSUksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXhCRjtNQTBCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvY2F0YWxvZy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkLWJhbm5lciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcblxyXG4gIC5jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGhlaWdodDogMjM2cHg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIH1cclxuXHJcbiAgJl9faW1nIHtcclxuICAgIGFsaWduLXNlbGY6IGZsZXgtZW5kO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA4NHB4O1xyXG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XHJcbiAgICAtbW96LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLXdlYmtpdC11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC1tcy11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIHVzZXItc2VsZWN0OiBub25lO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICAmX19pbWcge1xyXG4gICAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7XHJcbiAgICB9XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgLmNvbnRhaW5lciB7XHJcbiAgICAgIGhlaWdodDogMTIwcHg7XHJcbiAgICB9XHJcblxyXG4gICAgJl9faW1nIHtcclxuICAgICAgd2lkdGg6IDEyM3B4O1xyXG4gICAgICBoZWlnaHQ6IDEwMXB4O1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuLmNhdGFsb2cge1xyXG4gIG1hcmdpbjogNDhweCAwIDk3cHg7XHJcbn1cclxuXHJcbi5wcm9kdWN0LWxpc3Qge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC13cmFwOiB3cmFwO1xyXG4gIG1hcmdpbjogMTNweCAtMTVweDtcclxufVxyXG5cclxuYXBwLXByb2R1Y3QtY2FyZC1taW4ge1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDMgLSAzMHB4KTtcclxuICBtYXJnaW46IDEzcHggMTVweDtcclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiA0IC0gMzBweCk7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDMwcHgpO1xyXG4gIH1cclxufVxyXG5cclxuLnNlYXJjaCB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgbWFyZ2luOiAwIDE1cHg7XHJcbiAgaW5wdXQge1xyXG4gICAgaGVpZ2h0OiA0MHB4O1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gIH1cclxufVxyXG5cclxuXHJcbi8vcGFnaW5hdGlvblxyXG5cclxuLnBhZ2luYXRpb24ge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgaGVpZ2h0OiA5MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgbWFyZ2luLWJvdHRvbTogOTdweDtcclxuICBwYWRkaW5nOiAwIDI0MnB4O1xyXG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDk5MS45OHB4KSB7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gIH1cclxuXHJcbiAgLmN1cnJlbnR7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgd2lkdGg6IDQ4cHg7XHJcbiAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJveC1zaGFkb3c6IDAgOXB4IDE4cHggcmdiYSgxNjgsIDE3MiwgMTg1LCAwLjUzKTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgICBjb2xvcjogI2Y1NDczMjtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIH1cclxuXHJcbiAgJl9fcHJldmlvdXMsICZfX25leHQge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkICNlM2U4ZjA7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gIH1cclxuXHJcbiAgfVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -6391,6 +6947,11 @@ var CatalogComponent = /** @class */ (function () {
         this._productService = _productService;
         this._cartService = _cartService;
         this.products = [];
+        this.config = {
+            id: 'custom',
+            itemsPerPage: 16,
+            currentPage: 1
+        };
     }
     CatalogComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -6433,9 +6994,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ng5_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng5-slider */ "./node_modules/ng5-slider/esm5/ng5-slider.js");
 /* harmony import */ var angular_pipes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angular-pipes */ "./node_modules/angular-pipes/fesm5/angular-pipes.js");
-/* harmony import */ var _catalog_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./catalog-routing.module */ "./src/app/pages/catalog/catalog-routing.module.ts");
-/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
-/* harmony import */ var _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pagination/pagination.component */ "./src/app/pages/catalog/pagination/pagination.component.ts");
+/* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
+/* harmony import */ var _catalog_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./catalog-routing.module */ "./src/app/pages/catalog/catalog-routing.module.ts");
+/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
 /* harmony import */ var _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./sorting/sorting.component */ "./src/app/pages/catalog/sorting/sorting.component.ts");
 /* harmony import */ var _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./product-card-min/product-card-min.component */ "./src/app/pages/catalog/product-card-min/product-card-min.component.ts");
 /* harmony import */ var _search_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./search.pipe */ "./src/app/pages/catalog/search.pipe.ts");
@@ -6456,77 +7017,21 @@ var CatalogModule = /** @class */ (function () {
     }
     CatalogModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_catalog_component__WEBPACK_IMPORTED_MODULE_7__["CatalogComponent"],
-                _pagination_pagination_component__WEBPACK_IMPORTED_MODULE_8__["PaginationComponent"],
+            declarations: [_catalog_component__WEBPACK_IMPORTED_MODULE_8__["CatalogComponent"],
                 _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_9__["SortingComponent"],
                 _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_10__["ProductCardMinComponent"],
                 _search_pipe__WEBPACK_IMPORTED_MODULE_11__["SearchPipe"],
                 angular_pipes__WEBPACK_IMPORTED_MODULE_5__["OrderByPipe"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                _catalog_routing_module__WEBPACK_IMPORTED_MODULE_6__["CatalogRoutingModule"],
+                _catalog_routing_module__WEBPACK_IMPORTED_MODULE_7__["CatalogRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                ng5_slider__WEBPACK_IMPORTED_MODULE_4__["Ng5SliderModule"]
+                ng5_slider__WEBPACK_IMPORTED_MODULE_4__["Ng5SliderModule"],
+                ngx_pagination__WEBPACK_IMPORTED_MODULE_6__["NgxPaginationModule"]
             ]
         })
     ], CatalogModule);
     return CatalogModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/pagination/pagination.component.html":
-/*!********************************************************************!*\
-  !*** ./src/app/pages/catalog/pagination/pagination.component.html ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"pagination\">\n    <button type=\"button\" name=\"button\" class=\"pagination__btn-switch\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n            <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n        </svg>\n        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n            <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n        </svg>\n    </button>\n    <button type=\"button\" name=\"button\" class=\"pagination__btn-switch\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n            <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n        </svg>\n    </button>\n    <a href=\"\" class=\"pagination__page\">1</a>\n    <a href=\"\" class=\"pagination__page\">2</a>\n    <a href=\"\" class=\"pagination__page\">3</a>\n    <a href=\"\" class=\"pagination__page pagination__page--active\">4</a>\n    <a href=\"\" class=\"pagination__page\">5</a>\n    <a href=\"\" class=\"pagination__page\">6</a>\n    <a href=\"\" class=\"pagination__page\">7</a>\n    <a href=\"\" class=\"pagination__page\">8</a>\n    <button type=\"button\" name=\"button\" class=\"pagination__btn-switch\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n            <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n            </svg>\n    </button>\n    <button type=\"button\" name=\"button\" class=\"pagination__btn-switch\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n            <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n            </svg>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n            </svg>\n    </button>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/pagination/pagination.component.scss":
-/*!********************************************************************!*\
-  !*** ./src/app/pages/catalog/pagination/pagination.component.scss ***!
-  \********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination__btn-switch {\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n  .pagination__page {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%; }\n  @media (max-width: 575.98px) {\n      .pagination__page {\n        display: none; } }\n  .pagination__page:hover {\n      color: #f54732; }\n  .pagination__page--active {\n      box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n      background-color: #ffffff;\n      color: #f54732;\n      font-weight: 700; }\n  @media (max-width: 575.98px) {\n        .pagination__page--active {\n          display: flex; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9wYWdpbmF0aW9uL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxwYWdpbmF0aW9uXFxwYWdpbmF0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEo7TUFVTSxhQUFhLEVBQUEsRUFzQ2xCO0VBbkNHO0lBQ0ksV0FBVztJQUNYLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIseUJBQXlCO0lBQ3pCLGdCQUFnQixFQUFBO0VBSXBCO0lBQ0ksYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsV0FBVztJQUNYLFlBQVk7SUFDWixnQkFBZ0I7SUFDaEIsWUFBWTtJQUNaLG1CQUFtQixFQUFBO0VBQ25CO01BVEo7UUFVTSxhQUFhLEVBQUEsRUFlbEI7RUF6QkE7TUFjTyxjQUFjLEVBQUE7RUFFbEI7TUFDRSxnREFBZ0Q7TUFDaEQseUJBQXlCO01BQ3pCLGNBQWM7TUFDZCxnQkFBZ0IsRUFBQTtFQUNoQjtRQUxGO1VBTUksYUFBYSxFQUFBLEVBRWhCIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2F0YWxvZy9wYWdpbmF0aW9uL3BhZ2luYXRpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFnaW5hdGlvbiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICAgIGhlaWdodDogOTBweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA5N3B4O1xyXG4gICAgcGFkZGluZzogMCAyNDJweDtcclxuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgICBAbWVkaWEgKG1heC13aWR0aDogOTkxLjk4cHgpIHtcclxuICAgICAgcGFkZGluZzogMTBweDtcclxuICAgIH1cclxuXHJcbiAgICAmX19idG4tc3dpdGNoIHtcclxuICAgICAgICB3aWR0aDogNDhweDtcclxuICAgICAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgICAgICBib3JkZXI6IDJweCBzb2xpZCAjZTNlOGYwO1xyXG4gICAgICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcbiAgICB9XHJcblxyXG5cclxuICAgICZfX3BhZ2Uge1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICB3aWR0aDogNDhweDtcclxuICAgICAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICAgICAgYmFja2dyb3VuZDogbm9uZTtcclxuICAgICAgICBib3JkZXI6IG5vbmU7XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgICAgICBAbWVkaWEgKG1heC13aWR0aDogNTc1Ljk4cHgpIHtcclxuICAgICAgICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAmOmhvdmVyIHtcclxuICAgICAgICAgICAgY29sb3I6ICNmNTQ3MzI7XHJcbiAgICAgICAgfVxyXG4gICAgICAgICYtLWFjdGl2ZSB7XHJcbiAgICAgICAgICBib3gtc2hhZG93OiAwIDlweCAxOHB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC41Myk7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gICAgICAgICAgY29sb3I6ICNmNTQ3MzI7XHJcbiAgICAgICAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgICAgICAgQG1lZGlhIChtYXgtd2lkdGg6IDU3NS45OHB4KSB7XHJcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgICB9XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG59XHJcbiJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/pagination/pagination.component.ts":
-/*!******************************************************************!*\
-  !*** ./src/app/pages/catalog/pagination/pagination.component.ts ***!
-  \******************************************************************/
-/*! exports provided: PaginationComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginationComponent", function() { return PaginationComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var PaginationComponent = /** @class */ (function () {
-    function PaginationComponent() {
-    }
-    PaginationComponent.prototype.ngOnInit = function () {
-    };
-    PaginationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-pagination',
-            template: __webpack_require__(/*! ./pagination.component.html */ "./src/app/pages/catalog/pagination/pagination.component.html"),
-            styles: [__webpack_require__(/*! ./pagination.component.scss */ "./src/app/pages/catalog/pagination/pagination.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], PaginationComponent);
-    return PaginationComponent;
 }());
 
 
@@ -6644,7 +7149,7 @@ var SearchPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"sorting\">\n    <div class=\"sorting-block\">\n      <div class=\"sorting-price\">\n          Цена\n          <div class=\"sorting-price__form custom-slider\">\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"minValue\">\n                        —\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"maxValue\">\n            <ng5-slider [(value)]=\"minValue\" [(highValue)]=\"maxValue\" [options]=\"options\"></ng5-slider>\n          </div>\n      </div>\n      <div class=\"sorting__side\">\n        <div class=\"sorting-view\">\n            <span>Сортировка</span>\n            <div class=\"sorting-view__select\">\n              <select class=\"sorting__select\" name=\"sorting\">\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingName()\">По наименованию</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceUp()\">Дорогие сверху</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceDown()\">Дешевые сверху</option>\n              </select>\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n              </svg>\n            </div>\n        </div>\n        <div class=\"sorting-quantity\">\n          <span>Товаров на странице</span>\n          <div class=\"sorting-quantity__select\">\n            <select class=\"sorting__select\" name=\"sorting\">\n                <option class=\"sorting__option\" value=\"\">14</option>\n                <option class=\"sorting__option\" value=\"\">22</option>\n                <option class=\"sorting__option\" value=\"\">30</option>\n            </select>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n            </svg>\n          </div>\n        </div>\n      </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"sorting\">\n    <div class=\"sorting-block\">\n      <div class=\"sorting-price\">\n          Цена\n          <div class=\"sorting-price__form custom-slider\">\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"minValue\">\n                        —\n            <input type=\"number\" step=\"{{options.step}}\" class=\"input-main input-main--sorting\" [(ngModel)]=\"maxValue\">\n            <ng5-slider [(value)]=\"minValue\" [(highValue)]=\"maxValue\" [options]=\"options\"></ng5-slider>\n          </div>\n      </div>\n      <div class=\"sorting__side\">\n        <div class=\"sorting-view\">\n            <span>Сортировка</span>\n            <div class=\"sorting-view__select\">\n              <select class=\"sorting__select\" name=\"sorting\">\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingName()\">По наименованию</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceUp()\">Дорогие сверху</option>\n                  <option class=\"sorting__option\" value=\"\" (click)=\"sortingPriceDown()\">Дешевые сверху</option>\n              </select>\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n              </svg>\n            </div>\n        </div>\n        <div class=\"sorting-quantity\">\n          <span>Товаров на странице</span>\n          <div class=\"sorting-quantity__select\">\n\n            <select class=\"sorting__select\" name=\"sorting\" [(ngModel)]=\"sortingPage\">\n                <option class=\"sorting__option\" value=\"14\" (click)=\"change()\">14</option>\n                <option class=\"sorting__option\" value=\"22\" (click)=\"change()\">22</option>\n                <option class=\"sorting__option\" value=\"30\" (click)=\"change()\">30</option>\n            </select>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"11px\" height=\"6px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(161, 168, 189)\" d=\"M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z\" />\n            </svg>\n          </div>\n        </div>\n      </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -6680,6 +7185,7 @@ var SortingComponent = /** @class */ (function () {
         this.filter = filter;
         this.minValue = 1;
         this.maxValue = 15000;
+        this.sortingPage = 14;
         this.options = {
             floor: 0,
             translate: function () {

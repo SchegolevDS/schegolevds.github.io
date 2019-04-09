@@ -65,7 +65,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', loadChildren: './pages/catalog/catalog.module#CatalogModule' },
-    { path: 'product', loadChildren: './pages/product-card/product-card.module#ProductCardModule' },
+    { path: 'product/:id', loadChildren: './pages/product-card/product-card.module#ProductCardModule' },
     { path: 'shopping-cart', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartModule' },
     { path: 'order-status', loadChildren: './pages/order-status/order-status.module#OrderStatusModule' }
 ];

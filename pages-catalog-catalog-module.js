@@ -7387,7 +7387,7 @@ var KitchenComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\"{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"product\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n\n</div>\n"
+module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\"{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"/product/{{product.id}}\"\n      [queryParams]=\"\n      {\n        'name': product.name,\n        'price': product.price,\n        'img': product.imgURL,\n        'img2': product.imgURL2,\n        'img3': product.imgURL3,\n        'img4': product.imgURL4,\n        'img5': product.imgURL5,\n        'img6': product.imgURL6\n      }\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n\n</div>\n"
 
 /***/ }),
 

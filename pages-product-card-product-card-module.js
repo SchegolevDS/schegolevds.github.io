@@ -115,7 +115,7 @@ var ProductCardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"product-card\">\n    <div class=\"product-card__img-collapse\">\n      <app-img-collapse></app-img-collapse>\n    </div>\n    <div class=\"card-info\">\n      <div class=\"card-info__name\"> Кресло\n        Ханна </div>\n      <div class=\"card-info__code\"> Код товара 1049556 </div>\n      <div class=\"card-info__availability\">\n        <div class=\"card-info__indicator\"></div> В\n        наличии\n      </div>\n      <div class=\"info-purchase\">\n        <div class=\"info-purchase__price\">\n          9 399 ₽ </div>\n        <button type=\"button\" name=\"button\" class=\"btn\">Купить</button>\n      </div>\n    </div>\n    <div class=\"card-description\">\n      <h3>Описание</h3>\n      Кресло Ханна — элегантное решение для кухни или столовой,\n      выдержанной в современном стиле. Каркас модели выполнен из\n      массива древесины, видимые элементы отделаны березовым шпоном и\n      покрыты белой эмалью. Велюровая обивка приятна на ощупь, долго\n      сохраняет опрятный вид и первоначальный цвет. Мягкое сиденье\n      обеспечивает комфорт во время длительной трапезы или дружеской\n      беседы за столом. Высокая спинка с легким изгибом позволяет\n      принять удобное положение, расслабив спину. <h3>Материал обивки\n        — ткань</h3> Удовольствие от трапезы за кухонным столом во\n      многом зависит от качества кухонных стульев. При выборе важно\n      все, в том числе материал обивки. Кухонные стулья с тканевой\n      обивкой сиденья и спинки практичны, комфортны и гигиеничны:\n      текстиль приятен на ощупь, не способствует образованию\n      конденсата при соприкосновении с телом, стоек к механическим\n      повреждениям, долго сохраняет первоначальный вид.\n    </div>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"product-card\">\n    <div class=\"product-card__img-collapse\">\n      <app-img-collapse></app-img-collapse>\n    </div>\n    <div class=\"card-info\">\n      <div class=\"card-info__name\"> {{name}}</div>\n      <div class=\"card-info__code\"> Код товара {{id}} </div>\n      <div class=\"card-info__availability\">\n        <div class=\"card-info__indicator\"></div> В\n        наличии\n      </div>\n      <div class=\"info-purchase\">\n        <div class=\"info-purchase__price\">\n          {{price | currency:' ':'':'0.0-0'}} ₽ </div>\n        <button type=\"button\" name=\"button\" class=\"btn\">Купить</button>\n      </div>\n    </div>\n    <div class=\"card-description\">\n      <h3>Описание</h3>\n      Кресло Ханна — элегантное решение для кухни или столовой,\n      выдержанной в современном стиле. Каркас модели выполнен из\n      массива древесины, видимые элементы отделаны березовым шпоном и\n      покрыты белой эмалью. Велюровая обивка приятна на ощупь, долго\n      сохраняет опрятный вид и первоначальный цвет. Мягкое сиденье\n      обеспечивает комфорт во время длительной трапезы или дружеской\n      беседы за столом. Высокая спинка с легким изгибом позволяет\n      принять удобное положение, расслабив спину. <h3>Материал обивки\n        — ткань</h3> Удовольствие от трапезы за кухонным столом во\n      многом зависит от качества кухонных стульев. При выборе важно\n      все, в том числе материал обивки. Кухонные стулья с тканевой\n      обивкой сиденья и спинки практичны, комфортны и гигиеничны:\n      текстиль приятен на ощупь, не способствует образованию\n      конденсата при соприкосновении с телом, стоек к механическим\n      повреждениям, долго сохраняет первоначальный вид.\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -142,20 +142,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductCardComponent", function() { return ProductCardComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 var ProductCardComponent = /** @class */ (function () {
-    function ProductCardComponent() {
+    function ProductCardComponent(route) {
+        var _this = this;
+        this.route = route;
+        this.routeSubscription = route.params.subscribe(function (params) { return _this.id = params['id']; });
+        this.querySubscription = route.queryParams.subscribe(function (queryParam) {
+            _this.name = queryParam['name'];
+            _this.price = queryParam['price'];
+            _this.img = queryParam['img'];
+            _this.img2 = queryParam['img2'];
+            _this.img3 = queryParam['img3'];
+            _this.img4 = queryParam['img4'];
+            _this.img5 = queryParam['img5'];
+            _this.img6 = queryParam['img6'];
+        });
     }
-    ProductCardComponent.prototype.ngOnInit = function () {
-    };
+    ProductCardComponent.prototype.ngOnInit = function () { };
     ProductCardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-product-card',
             template: __webpack_require__(/*! ./product-card.component.html */ "./src/app/pages/product-card/product-card.component.html"),
             styles: [__webpack_require__(/*! ./product-card.component.scss */ "./src/app/pages/product-card/product-card.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], ProductCardComponent);
     return ProductCardComponent;
 }());

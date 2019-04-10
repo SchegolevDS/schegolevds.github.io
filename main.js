@@ -758,7 +758,6 @@ var ShoppingCartService = /** @class */ (function () {
         this.cart = [];
         this.cartID = [];
         this.cartPrice = [];
-        this.quantity = 1;
         this.totalQuantityStr = 'Товар';
         if (JSON.parse(localStorage.getItem('Shopping-cart-Product')) != null) {
             this.cart = JSON.parse(localStorage.getItem('Shopping-cart-Product'));
@@ -766,6 +765,9 @@ var ShoppingCartService = /** @class */ (function () {
         if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
             this.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
         }
+        //    if (JSON.parse(localStorage.getItem('Shopping-cart-price')) != null) {
+        //      this.cartPrice = JSON.parse(localStorage.getItem('Shopping-cart-price'));
+        //    }
     }
     ShoppingCartService.prototype.add = function (product) {
         function cartID(value) {
@@ -809,6 +811,7 @@ var ShoppingCartService = /** @class */ (function () {
         for (var i = 0; i < this.cartPrice.length; i++) {
             this.cartSum += this.cartPrice[i];
         }
+        //    localStorage.setItem('Shopping-cart-price', JSON.stringify(this.cartPrice));
     };
     ShoppingCartService.prototype._totalQuantityStr = function () {
         if (this.totalQuantity == 1) {

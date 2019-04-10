@@ -1,6 +1,7 @@
 .content {
   min-height: calc(100vh - 147px - 187px);
   box-sizing: border-box;
+  padding: 1px;
   @media (max-width: 1000px) {
     padding-top: 1px;
     margin-top: 70px;

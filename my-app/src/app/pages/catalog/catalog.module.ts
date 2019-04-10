@@ -6,17 +6,26 @@ import { OrderByPipe} from 'angular-pipes';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { CatalogRoutingModule } from './catalog-routing.module';
-import { CatalogComponent } from './catalog.component';
 import { SortingComponent } from './sorting/sorting.component';
 import { ProductCardMinComponent } from './product-card-min/product-card-min.component';
 import { SearchPipe } from './search.pipe';
+import { ChairsComponent } from './chairs/chairs.component';
+import { BedsComponent } from './beds/beds.component';
+import { CabinetsComponent } from './cabinets/cabinets.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [CatalogComponent,
+  declarations: [
     SortingComponent,
     ProductCardMinComponent,
     SearchPipe,
-    OrderByPipe],
+    OrderByPipe,
+    ChairsComponent,
+    BedsComponent,
+    CabinetsComponent,
+    KitchenComponent,
+    HomeComponent],
   imports: [
     CommonModule,
     CatalogRoutingModule,

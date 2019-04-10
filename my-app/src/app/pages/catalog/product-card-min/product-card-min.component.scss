@@ -5,6 +5,7 @@
   height: 384px;
   background-color: white;
   border-radius: 5px;
+  padding: 0 30px;
 
   &:hover {
     box-shadow: 0 9px 21px rgba(168, 172, 185, 0.44);
@@ -18,7 +19,8 @@
     height: 223px;
 
     img {
-      width: auto;
+      max-height: 223px;
+      max-width: 229px;
     }
   }
 

@@ -238,7 +238,6 @@ __webpack_require__.r(__webpack_exports__);
 var ProductComponent = /** @class */ (function () {
     function ProductComponent(_cartService) {
         this._cartService = _cartService;
-        this.quantity = 1;
     }
     ProductComponent.prototype.productQuantity = function () {
     };
@@ -251,6 +250,7 @@ var ProductComponent = /** @class */ (function () {
         this._cartService.cartPrices(this.product.price * this.quantity);
         this.sum = this.product.price * this.quantity;
         this._cartService.arraySum();
+        localStorage.setItem('quantityProduct-' + this.id, JSON.stringify(this.quantity));
     };
     ProductComponent.prototype.productQuantityUp = function () {
         if (this.quantity !== 1) {
@@ -261,6 +261,7 @@ var ProductComponent = /** @class */ (function () {
         this._cartService.cartPrices(this.product.price * this.quantity);
         this.sum = this.product.price * this.quantity;
         this._cartService.arraySum();
+        localStorage.setItem('quantityProduct-' + this.id, JSON.stringify(this.quantity));
     };
     ProductComponent.prototype.deleteProduct = function () {
         this._cartService.cartPrices(-this.product.price * this.quantity);
@@ -268,8 +269,14 @@ var ProductComponent = /** @class */ (function () {
         this._cartService.delete(this.id);
     };
     ProductComponent.prototype.ngOnInit = function () {
+        if (JSON.parse(localStorage.getItem('quantityProduct-' + this.id)) != null) {
+            this.quantity = JSON.parse(localStorage.getItem('quantityProduct-' + this.id));
+        }
+        else {
+            this.quantity = 1;
+        }
         this.sum = this.product.price * this.quantity;
-        this._cartService.cartPrices(this.product.price);
+        this._cartService.cartPrices(this.product.price * this.quantity);
         this._cartService.arraySum();
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

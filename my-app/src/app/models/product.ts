@@ -3,5 +3,12 @@ export class Product {
   name: string;
   price: number;
   imgURL: string;
-  quantity: number = 1;
+  imgURL2: string;
+  imgURL3: string;
+  imgURL4: string;
+  imgURL5: string;
+  imgURL6: string;
+  description: string;
+  additionalDescriptionHeadline: string;
+  additionalDescription: string;
 }

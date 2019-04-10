@@ -9,10 +9,9 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 export class ProductComponent implements OnInit {
   @Input () product:any;
   @Input () id:number;
-  quantity:number = 1;
+  quantity:number;
   btnDisabled:Boolean;
   sum: number;
-
   constructor(private _cartService:ShoppingCartService) {
   }
 
@@ -28,6 +27,7 @@ export class ProductComponent implements OnInit {
     this._cartService.cartPrices(this.product.price*this.quantity);
     this.sum = this.product.price*this.quantity;
     this._cartService.arraySum()
+    localStorage.setItem('quantityProduct-' + this.id, JSON.stringify(this.quantity))
   }
 
   productQuantityUp() {
@@ -39,6 +39,7 @@ export class ProductComponent implements OnInit {
     this._cartService.cartPrices(this.product.price*this.quantity);
     this.sum = this.product.price*this.quantity;
     this._cartService.arraySum()
+    localStorage.setItem('quantityProduct-' + this.id, JSON.stringify(this.quantity))
   }
 
   deleteProduct() {
@@ -48,8 +49,13 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (JSON.parse(localStorage.getItem('quantityProduct-' + this.id)) != null) {
+      this.quantity = JSON.parse(localStorage.getItem('quantityProduct-' + this.id));
+    } else {
+      this.quantity = 1;
+    }
     this.sum = this.product.price*this.quantity;
-    this._cartService.cartPrices(this.product.price);
+    this._cartService.cartPrices(this.product.price*this.quantity);
     this._cartService.arraySum()
   }
 

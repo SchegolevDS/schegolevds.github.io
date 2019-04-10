@@ -1,39 +1,44 @@
 <div class="container">
   <div class="product-card">
     <div class="product-card__img-collapse">
-      <app-img-collapse></app-img-collapse>
+      <div class="img-collapse">
+        <div class="img-collapse__side">
+          <button (click)="select()" class="img-collapse__button">
+            <img src="{{img}}" class="img-collapse__min-img" alt="">
+          </button>
+          <button (click)="select2()" class="img-collapse__button">
+            <img src="{{img2}}" class="img-collapse__min-img" alt="">
+          </button>
+          <button (click)="select3()" class="img-collapse__button">
+            <img src="{{img3}}" class="img-collapse__min-img" alt="">
+          </button>
+          <button (click)="select4()" class="img-collapse__button">
+            <img src="{{img4}}" class="img-collapse__min-img" alt="">
+          </button>
+        </div>
+        <div class="img-collapse__select-img">
+          <img src="{{selectImg}}" class="img-collapse__img" alt="">
+        </div>
+      </div>
     </div>
     <div class="card-info">
-      <div class="card-info__name"> Кресло
-        Ханна </div>
-      <div class="card-info__code"> Код товара 1049556 </div>
+      <div class="card-info__name"> {{name}}</div>
+      <div class="card-info__code"> Код товара {{id}} </div>
       <div class="card-info__availability">
         <div class="card-info__indicator"></div> В
         наличии
       </div>
       <div class="info-purchase">
         <div class="info-purchase__price">
-          9 399 ₽ </div>
+          {{price | currency:' ':'':'0.0-0'}} ₽ </div>
         <button type="button" name="button" class="btn">Купить</button>
       </div>
     </div>
     <div class="card-description">
       <h3>Описание</h3>
-      Кресло Ханна — элегантное решение для кухни или столовой,
-      выдержанной в современном стиле. Каркас модели выполнен из
-      массива древесины, видимые элементы отделаны березовым шпоном и
-      покрыты белой эмалью. Велюровая обивка приятна на ощупь, долго
-      сохраняет опрятный вид и первоначальный цвет. Мягкое сиденье
-      обеспечивает комфорт во время длительной трапезы или дружеской
-      беседы за столом. Высокая спинка с легким изгибом позволяет
-      принять удобное положение, расслабив спину. <h3>Материал обивки
-        — ткань</h3> Удовольствие от трапезы за кухонным столом во
-      многом зависит от качества кухонных стульев. При выборе важно
-      все, в том числе материал обивки. Кухонные стулья с тканевой
-      обивкой сиденья и спинки практичны, комфортны и гигиеничны:
-      текстиль приятен на ощупь, не способствует образованию
-      конденсата при соприкосновении с телом, стоек к механическим
-      повреждениям, долго сохраняет первоначальный вид.
+      {{description}}
+      <h3>{{additionalDescriptionHeadline}}</h3>
+      {{additionalDescription}}
     </div>
   </div>
 

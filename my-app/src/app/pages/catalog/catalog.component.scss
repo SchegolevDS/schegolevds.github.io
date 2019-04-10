@@ -1,4 +1,5 @@
 .head-banner {
+  margin-top: -1px;
   background-color: white;
 
   .container {
@@ -81,6 +82,20 @@ app-product-card-min {
     padding: 10px;
   }
 
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    font-size: 14px;
+    color: #142558;
+    box-sizing: border-box;
+    &--active {
+      color: #f54732;
+    }
+  }
+
   .current{
     display: flex;
     justify-content: center;
@@ -106,6 +121,23 @@ app-product-card-min {
     border-radius: 100%;
     border: 2px solid #e3e8f0;
     background: none;
+
+    &--fast {
+      width: 51px;
+      height: 51px;
+    }
+  }
+
+  &__previous {
+    &--fast {
+      margin-right: -15px;
+    }
+  }
+
+  &__next {
+    &--fast {
+      margin-left: -15px;
+    }
   }
 
   }

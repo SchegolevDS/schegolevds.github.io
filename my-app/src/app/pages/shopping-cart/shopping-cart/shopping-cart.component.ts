@@ -17,6 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._cartService.cartPrice = [0];
   }
 
 

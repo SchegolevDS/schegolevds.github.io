@@ -348,6 +348,7 @@ var ShoppingCartComponent = /** @class */ (function () {
         this._cartService._totalQuantityStr();
     }
     ShoppingCartComponent.prototype.ngOnInit = function () {
+        this._cartService.cartPrice = [0];
     };
     ShoppingCartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

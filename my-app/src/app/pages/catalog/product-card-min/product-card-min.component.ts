@@ -11,7 +11,7 @@ export class ProductCardMinComponent implements OnInit {
   @Input () product:any;
   inCart: boolean = true;
 
-  constructor(public _cartService:ShoppingCartService) {
+  constructor(private _cartService:ShoppingCartService) {
 
   }
 

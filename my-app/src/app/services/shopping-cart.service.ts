@@ -19,9 +19,6 @@ export class ShoppingCartService {
     if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
       this.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
     }
-//    if (JSON.parse(localStorage.getItem('Shopping-cart-price')) != null) {
-//      this.cartPrice = JSON.parse(localStorage.getItem('Shopping-cart-price'));
-//    }
   }
 
   public add(product) {
@@ -67,7 +64,6 @@ export class ShoppingCartService {
     for (var i = 0; i < this.cartPrice.length; i++) {
       this.cartSum += this.cartPrice[i];
     }
-//    localStorage.setItem('Shopping-cart-price', JSON.stringify(this.cartPrice));
   }
 
   public _totalQuantityStr() {

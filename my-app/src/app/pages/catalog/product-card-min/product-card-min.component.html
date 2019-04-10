@@ -3,21 +3,8 @@
     <img src="{{product.imgURL}}" alt="">
   </div>
   <div class="product-card__name">
-    <a routerLink="/product/{{product.id}}"
-      [queryParams]="
-      {
-        'name': product.name,
-        'price': product.price,
-        'img': product.imgURL,
-        'img2': product.imgURL2,
-        'img3': product.imgURL3,
-        'img4': product.imgURL4,
-        'img5': product.imgURL5,
-        'img6': product.imgURL6,
-        'description': product.description,
-        'additionalDescriptionHeadline': product.additionalDescriptionHeadline,
-        'additionalDescription': product.additionalDescription
-      }">{{product.name}}</a>
+    <a routerLink="/products/{{product.id}}"
+      [queryParams]="product">{{product.name}}</a>
   </div>
   <div class="product-card__price">
     {{product.price | currency:' ':'':'0.0-0'}} ₽

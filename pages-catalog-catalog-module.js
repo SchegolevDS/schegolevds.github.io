@@ -6862,164 +6862,6 @@ var NgxPaginationModule = (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/catalog/beds/beds.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/pages/catalog/beds/beds.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Кровати <br>и матрасы</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of productsBeds\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n            <a (click)=\"p.previous()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n            </a>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span>{{ page.label }}</span>\n            </a>\n            <div *ngIf=\"p.getCurrent() === page.value\">\n                <span>{{ page.label }}</span>\n            </div>\n        </div>\n\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n            <a (click)=\"p.next()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </a>\n        </div>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/beds/beds.component.scss":
-/*!********************************************************!*\
-  !*** ./src/app/pages/catalog/beds/beds.component.scss ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9iZWRzL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxiZWRzXFxiZWRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QixFQUFBO0VBRnpCO0lBS0ksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXpCRjtNQTJCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvYmVkcy9iZWRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBtYXJnaW4tdG9wOiAtMXB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG5cclxuICAuY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBoZWlnaHQ6IDIzNnB4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICB9XHJcblxyXG4gICZfX2ltZyB7XHJcbiAgICBhbGlnbi1zZWxmOiBmbGV4LWVuZDtcclxuICAgIG1hcmdpbi1yaWdodDogODRweDtcclxuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG4gICAgLW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtbXMtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgJl9faW1nIHtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIC5jb250YWluZXIge1xyXG4gICAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIHdpZHRoOiAxMjNweDtcclxuICAgICAgaGVpZ2h0OiAxMDFweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5jYXRhbG9nIHtcclxuICBtYXJnaW46IDQ4cHggMCA5N3B4O1xyXG59XHJcblxyXG4ucHJvZHVjdC1saXN0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtd3JhcDogd3JhcDtcclxuICBtYXJnaW46IDEzcHggLTE1cHg7XHJcbn1cclxuXHJcbmFwcC1wcm9kdWN0LWNhcmQtbWluIHtcclxuICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiAzIC0gMzBweCk7XHJcbiAgbWFyZ2luOiAxM3B4IDE1cHg7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogNCAtIDMwcHgpO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAzMHB4KTtcclxuICB9XHJcbn1cclxuXHJcbi5zZWFyY2gge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1hcmdpbjogMCAxNXB4O1xyXG4gIGlucHV0IHtcclxuICAgIGhlaWdodDogNDBweDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbn1cclxuXHJcblxyXG4vL3BhZ2luYXRpb25cclxuXHJcbi5wYWdpbmF0aW9uIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIGhlaWdodDogOTBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gIG1hcmdpbi1ib3R0b206IDk3cHg7XHJcbiAgcGFkZGluZzogMCAyNDJweDtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICB9XHJcblxyXG4gIC5jdXJyZW50e1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3gtc2hhZG93OiAwIDlweCAxOHB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC41Myk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gICAgY29sb3I6ICNmNTQ3MzI7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICB9XHJcblxyXG4gICZfX3ByZXZpb3VzLCAmX19uZXh0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCAjZTNlOGYwO1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICB9XHJcblxyXG4gIH1cclxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/beds/beds.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/pages/catalog/beds/beds.component.ts ***!
-  \******************************************************/
-/*! exports provided: BedsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BedsComponent", function() { return BedsComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
-
-
-
-
-
-var BedsComponent = /** @class */ (function () {
-    function BedsComponent(_filterService, _productService, _cartService) {
-        this._filterService = _filterService;
-        this._productService = _productService;
-        this._cartService = _cartService;
-        this.productsBeds = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 16,
-            currentPage: 1
-        };
-    }
-    BedsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-        }
-        this._productService.getProductsBeds().subscribe(function (data) { return _this.productsBeds = data; });
-    };
-    BedsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-beds',
-            template: __webpack_require__(/*! ./beds.component.html */ "./src/app/pages/catalog/beds/beds.component.html"),
-            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
-            styles: [__webpack_require__(/*! ./beds.component.scss */ "./src/app/pages/catalog/beds/beds.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
-            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
-    ], BedsComponent);
-    return BedsComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/cabinets/cabinets.component.html":
-/*!****************************************************************!*\
-  !*** ./src/app/pages/catalog/cabinets/cabinets.component.html ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Шкафы <br>и комоды</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of productsCabinets\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n            <a (click)=\"p.previous()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n            </a>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span>{{ page.label }}</span>\n            </a>\n            <div *ngIf=\"p.getCurrent() === page.value\">\n                <span>{{ page.label }}</span>\n            </div>\n        </div>\n\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n            <a (click)=\"p.next()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </a>\n        </div>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/cabinets/cabinets.component.scss":
-/*!****************************************************************!*\
-  !*** ./src/app/pages/catalog/cabinets/cabinets.component.scss ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9jYWJpbmV0cy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2FiaW5ldHNcXGNhYmluZXRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QixFQUFBO0VBRnpCO0lBS0ksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXpCRjtNQTJCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvY2FiaW5ldHMvY2FiaW5ldHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZC1iYW5uZXIge1xyXG4gIG1hcmdpbi10b3A6IC0xcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcblxyXG4gIC5jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGhlaWdodDogMjM2cHg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIH1cclxuXHJcbiAgJl9faW1nIHtcclxuICAgIGFsaWduLXNlbGY6IGZsZXgtZW5kO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA4NHB4O1xyXG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XHJcbiAgICAtbW96LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLXdlYmtpdC11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC1tcy11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIHVzZXItc2VsZWN0OiBub25lO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICAmX19pbWcge1xyXG4gICAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7XHJcbiAgICB9XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgLmNvbnRhaW5lciB7XHJcbiAgICAgIGhlaWdodDogMTIwcHg7XHJcbiAgICB9XHJcblxyXG4gICAgJl9faW1nIHtcclxuICAgICAgd2lkdGg6IDEyM3B4O1xyXG4gICAgICBoZWlnaHQ6IDEwMXB4O1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuLmNhdGFsb2cge1xyXG4gIG1hcmdpbjogNDhweCAwIDk3cHg7XHJcbn1cclxuXHJcbi5wcm9kdWN0LWxpc3Qge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC13cmFwOiB3cmFwO1xyXG4gIG1hcmdpbjogMTNweCAtMTVweDtcclxufVxyXG5cclxuYXBwLXByb2R1Y3QtY2FyZC1taW4ge1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDMgLSAzMHB4KTtcclxuICBtYXJnaW46IDEzcHggMTVweDtcclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiA0IC0gMzBweCk7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDMwcHgpO1xyXG4gIH1cclxufVxyXG5cclxuLnNlYXJjaCB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgbWFyZ2luOiAwIDE1cHg7XHJcbiAgaW5wdXQge1xyXG4gICAgaGVpZ2h0OiA0MHB4O1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gIH1cclxufVxyXG5cclxuXHJcbi8vcGFnaW5hdGlvblxyXG5cclxuLnBhZ2luYXRpb24ge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgaGVpZ2h0OiA5MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgbWFyZ2luLWJvdHRvbTogOTdweDtcclxuICBwYWRkaW5nOiAwIDI0MnB4O1xyXG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDk5MS45OHB4KSB7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gIH1cclxuXHJcbiAgLmN1cnJlbnR7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgd2lkdGg6IDQ4cHg7XHJcbiAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJveC1zaGFkb3c6IDAgOXB4IDE4cHggcmdiYSgxNjgsIDE3MiwgMTg1LCAwLjUzKTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgICBjb2xvcjogI2Y1NDczMjtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIH1cclxuXHJcbiAgJl9fcHJldmlvdXMsICZfX25leHQge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkICNlM2U4ZjA7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gIH1cclxuXHJcbiAgfVxyXG4iXX0= */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/cabinets/cabinets.component.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/pages/catalog/cabinets/cabinets.component.ts ***!
-  \**************************************************************/
-/*! exports provided: CabinetsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CabinetsComponent", function() { return CabinetsComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
-
-
-
-
-
-var CabinetsComponent = /** @class */ (function () {
-    function CabinetsComponent(_filterService, _productService, _cartService) {
-        this._filterService = _filterService;
-        this._productService = _productService;
-        this._cartService = _cartService;
-        this.productsCabinets = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 16,
-            currentPage: 1
-        };
-    }
-    CabinetsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-        }
-        this._productService.getProductsCabinets().subscribe(function (data) { return _this.productsCabinets = data; });
-    };
-    CabinetsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-cabinets',
-            template: __webpack_require__(/*! ./cabinets.component.html */ "./src/app/pages/catalog/cabinets/cabinets.component.html"),
-            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
-            styles: [__webpack_require__(/*! ./cabinets.component.scss */ "./src/app/pages/catalog/cabinets/cabinets.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
-            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
-    ], CabinetsComponent);
-    return CabinetsComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/pages/catalog/catalog-routing.module.ts":
 /*!*********************************************************!*\
   !*** ./src/app/pages/catalog/catalog-routing.module.ts ***!
@@ -7033,25 +6875,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _beds_beds_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./beds/beds.component */ "./src/app/pages/catalog/beds/beds.component.ts");
-/* harmony import */ var _chairs_chairs_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./chairs/chairs.component */ "./src/app/pages/catalog/chairs/chairs.component.ts");
-/* harmony import */ var _cabinets_cabinets_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cabinets/cabinets.component */ "./src/app/pages/catalog/cabinets/cabinets.component.ts");
-/* harmony import */ var _kitchen_kitchen_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./kitchen/kitchen.component */ "./src/app/pages/catalog/kitchen/kitchen.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/pages/catalog/home/home.component.ts");
-
-
-
-
+/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
 
 
 
 
 var routes = [
-    { path: "", component: _chairs_chairs_component__WEBPACK_IMPORTED_MODULE_4__["ChairsComponent"] },
-    { path: "beds", component: _beds_beds_component__WEBPACK_IMPORTED_MODULE_3__["BedsComponent"] },
-    { path: "cabinets", component: _cabinets_cabinets_component__WEBPACK_IMPORTED_MODULE_5__["CabinetsComponent"] },
-    { path: "kitchen", component: _kitchen_kitchen_component__WEBPACK_IMPORTED_MODULE_6__["KitchenComponent"] },
-    { path: "home", component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"] }
+    { path: "", component: _catalog_component__WEBPACK_IMPORTED_MODULE_3__["CatalogComponent"] },
+    { path: "beds", component: _catalog_component__WEBPACK_IMPORTED_MODULE_3__["CatalogComponent"] },
+    { path: "cabinets", component: _catalog_component__WEBPACK_IMPORTED_MODULE_3__["CatalogComponent"] },
+    { path: "kitchen", component: _catalog_component__WEBPACK_IMPORTED_MODULE_3__["CatalogComponent"] },
+    { path: "home", component: _catalog_component__WEBPACK_IMPORTED_MODULE_3__["CatalogComponent"] }
 ];
 var CatalogRoutingModule = /** @class */ (function () {
     function CatalogRoutingModule() {
@@ -7063,6 +6897,103 @@ var CatalogRoutingModule = /** @class */ (function () {
         })
     ], CatalogRoutingModule);
     return CatalogRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/catalog/catalog.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/pages/catalog/catalog.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Стулья <br>и кресла</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of products\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n      <ng-container *ngFor=\"let page of p.pages; let first = first\">\n          <button (click)=\"p.setCurrent(page.value)\" *ngIf=\"first\" class=\"pagination__previous pagination__previous--fast\">\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n            </svg>\n            <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n            </svg>\n          </button>\n      </ng-container>\n\n        <div (click)=\"p.previous()\" class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <button (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\" class=\"pagination__btn\">\n                <span>{{ page.label }}</span>\n            </button>\n            <button *ngIf=\"p.getCurrent() === page.value\" class=\"pagination__btn pagination__btn--active\">\n                <span>{{ page.label }}</span>\n            </button>\n        </div>\n        <div (click)=\"p.next()\" class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n        </div>\n\n        <ng-container *ngFor=\"let page of p.pages; let last = last\">\n            <button (click)=\"p.setCurrent(page.value)\" *ngIf=\"last\" class=\"pagination__next pagination__next--fast\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </button>\n        </ng-container>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/pages/catalog/catalog.component.scss":
+/*!******************************************************!*\
+  !*** ./src/app/pages/catalog/catalog.component.scss ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination__btn {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    font-size: 14px;\n    color: #142558;\n    box-sizing: border-box; }\n  .pagination__btn--active {\n      color: #f54732; }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n  .pagination__previous--fast, .pagination__next--fast {\n      width: 51px;\n      height: 51px; }\n  .pagination__previous--fast {\n    margin-right: -15px; }\n  .pagination__next--fast {\n    margin-left: -15px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9FOlxc0KDQsNCx0L7RgtGLXFxnaXRodWJcXHN0b3JlL3NyY1xcYXBwXFxwYWdlc1xcY2F0YWxvZ1xcY2F0YWxvZy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFnQjtFQUNoQix1QkFBdUIsRUFBQTtFQUZ6QjtJQUtJLGFBQWE7SUFDYixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLDhCQUE4QixFQUFBO0VBR2hDO0lBQ0Usb0JBQW9CO0lBQ3BCLGtCQUFrQjtJQUNsQixvQkFBb0I7SUFDcEIsc0JBQXNCO0lBQ3RCLHlCQUF5QjtJQUN6QixxQkFBcUI7SUFDckIsaUJBQWlCLEVBQUE7RUFFbkI7SUFDRTtNQUNFLGtCQUFrQixFQUFBLEVBQ25CO0VBRUg7SUF6QkY7TUEyQk0sYUFBYSxFQUFBO0lBR2Y7TUFDRSxZQUFZO01BQ1osYUFBYSxFQUFBLEVBQ2Q7RUFJTDtFQUNFLG1CQUFtQixFQUFBO0VBR3JCO0VBQ0UsYUFBYTtFQUNiLGVBQWU7RUFDZixrQkFBa0IsRUFBQTtFQUdwQjtFQUNFLGlDQUFpQztFQUNqQyxpQkFBaUIsRUFBQTtFQUNqQjtJQUhGO01BSUksaUNBQWlDLEVBQUEsRUFLcEM7RUFIQztJQU5GO01BT0ksd0JBQXdCLEVBQUEsRUFFM0I7RUFFRDtFQUNFLFdBQVc7RUFDWCxjQUFjLEVBQUE7RUFGaEI7SUFJSSxZQUFZO0lBQ1osWUFBWTtJQUNaLFlBQVksRUFBQTtFQU9oQjtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsOEJBQThCO0VBQzlCLFlBQVk7RUFDWix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLGdCQUFnQjtFQUNoQixzQkFBc0IsRUFBQTtFQUN0QjtJQVRGO01BVUksYUFBYSxFQUFBLEVBNkRkO0VBMUREO0lBQ0UsYUFBYTtJQUNiLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsV0FBVztJQUNYLFlBQVk7SUFDWixlQUFlO0lBQ2YsY0FBYztJQUNkLHNCQUFzQixFQUFBO0VBQ3RCO01BQ0UsY0FBYyxFQUFBO0VBdkJwQjtJQTRCSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQTtFQUVoQjtNQUNFLFdBQVc7TUFDWCxZQUFZLEVBQUE7RUFLZDtJQUNFLG1CQUFtQixFQUFBO0VBS3JCO0lBQ0Usa0JBQWtCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9jYXRhbG9nL2NhdGFsb2cuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZC1iYW5uZXIge1xyXG4gIG1hcmdpbi10b3A6IC0xcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcblxyXG4gIC5jb250YWluZXIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGhlaWdodDogMjM2cHg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIH1cclxuXHJcbiAgJl9faW1nIHtcclxuICAgIGFsaWduLXNlbGY6IGZsZXgtZW5kO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA4NHB4O1xyXG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XHJcbiAgICAtbW96LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLXdlYmtpdC11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC1tcy11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIHVzZXItc2VsZWN0OiBub25lO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICAmX19pbWcge1xyXG4gICAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7XHJcbiAgICB9XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgLmNvbnRhaW5lciB7XHJcbiAgICAgIGhlaWdodDogMTIwcHg7XHJcbiAgICB9XHJcblxyXG4gICAgJl9faW1nIHtcclxuICAgICAgd2lkdGg6IDEyM3B4O1xyXG4gICAgICBoZWlnaHQ6IDEwMXB4O1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuLmNhdGFsb2cge1xyXG4gIG1hcmdpbjogNDhweCAwIDk3cHg7XHJcbn1cclxuXHJcbi5wcm9kdWN0LWxpc3Qge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgZmxleC13cmFwOiB3cmFwO1xyXG4gIG1hcmdpbjogMTNweCAtMTVweDtcclxufVxyXG5cclxuYXBwLXByb2R1Y3QtY2FyZC1taW4ge1xyXG4gIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDMgLSAzMHB4KTtcclxuICBtYXJnaW46IDEzcHggMTVweDtcclxuICBAbWVkaWEgKG1heC13aWR0aDogMTAwMHB4KSB7XHJcbiAgICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiA0IC0gMzBweCk7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDMwcHgpO1xyXG4gIH1cclxufVxyXG5cclxuLnNlYXJjaCB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgbWFyZ2luOiAwIDE1cHg7XHJcbiAgaW5wdXQge1xyXG4gICAgaGVpZ2h0OiA0MHB4O1xyXG4gICAgd2lkdGg6IDMwMHB4O1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gIH1cclxufVxyXG5cclxuXHJcbi8vcGFnaW5hdGlvblxyXG5cclxuLnBhZ2luYXRpb24ge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgaGVpZ2h0OiA5MHB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgbWFyZ2luLWJvdHRvbTogOTdweDtcclxuICBwYWRkaW5nOiAwIDI0MnB4O1xyXG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDk5MS45OHB4KSB7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG4gIH1cclxuXHJcbiAgJl9fYnRuIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIGNvbG9yOiAjMTQyNTU4O1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgICYtLWFjdGl2ZSB7XHJcbiAgICAgIGNvbG9yOiAjZjU0NzMyO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLmN1cnJlbnR7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgd2lkdGg6IDQ4cHg7XHJcbiAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJveC1zaGFkb3c6IDAgOXB4IDE4cHggcmdiYSgxNjgsIDE3MiwgMTg1LCAwLjUzKTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmZmZmY7XHJcbiAgICBjb2xvcjogI2Y1NDczMjtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIH1cclxuXHJcbiAgJl9fcHJldmlvdXMsICZfX25leHQge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkICNlM2U4ZjA7XHJcbiAgICBiYWNrZ3JvdW5kOiBub25lO1xyXG5cclxuICAgICYtLWZhc3Qge1xyXG4gICAgICB3aWR0aDogNTFweDtcclxuICAgICAgaGVpZ2h0OiA1MXB4O1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgJl9fcHJldmlvdXMge1xyXG4gICAgJi0tZmFzdCB7XHJcbiAgICAgIG1hcmdpbi1yaWdodDogLTE1cHg7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICAmX19uZXh0IHtcclxuICAgICYtLWZhc3Qge1xyXG4gICAgICBtYXJnaW4tbGVmdDogLTE1cHg7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICB9XHJcbiJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/pages/catalog/catalog.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/pages/catalog/catalog.component.ts ***!
+  \****************************************************/
+/*! exports provided: CatalogComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CatalogComponent", function() { return CatalogComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
+/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+
+
+var CatalogComponent = /** @class */ (function () {
+    function CatalogComponent(router, _filterService, _productService, _cartService) {
+        this.router = router;
+        this._filterService = _filterService;
+        this._productService = _productService;
+        this._cartService = _cartService;
+        this.products = [];
+        this.config = {
+            id: 'custom',
+            itemsPerPage: 16,
+            currentPage: 1
+        };
+    }
+    CatalogComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
+            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
+        }
+        if (this.router.url === '/') {
+            this._productService.getProductsChairs().subscribe(function (data) { return _this.products = data; });
+        }
+        if (this.router.url === '/beds') {
+            this._productService.getProductsBeds().subscribe(function (data) { return _this.products = data; });
+        }
+        if (this.router.url === '/cabinets') {
+            this._productService.getProductsCabinets().subscribe(function (data) { return _this.products = data; });
+        }
+        if (this.router.url === '/kitchen') {
+            this._productService.getProductsKitchen().subscribe(function (data) { return _this.products = data; });
+        }
+        if (this.router.url === '/home') {
+            this._productService.getProductsHome().subscribe(function (data) { return _this.products = data; });
+        }
+    };
+    CatalogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-catalog',
+            template: __webpack_require__(/*! ./catalog.component.html */ "./src/app/pages/catalog/catalog.component.html"),
+            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
+            styles: [__webpack_require__(/*! ./catalog.component.scss */ "./src/app/pages/catalog/catalog.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
+            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
+            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
+    ], CatalogComponent);
+    return CatalogComponent;
 }());
 
 
@@ -7090,15 +7021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sorting_sorting_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./sorting/sorting.component */ "./src/app/pages/catalog/sorting/sorting.component.ts");
 /* harmony import */ var _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./product-card-min/product-card-min.component */ "./src/app/pages/catalog/product-card-min/product-card-min.component.ts");
 /* harmony import */ var _search_pipe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./search.pipe */ "./src/app/pages/catalog/search.pipe.ts");
-/* harmony import */ var _chairs_chairs_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./chairs/chairs.component */ "./src/app/pages/catalog/chairs/chairs.component.ts");
-/* harmony import */ var _beds_beds_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./beds/beds.component */ "./src/app/pages/catalog/beds/beds.component.ts");
-/* harmony import */ var _cabinets_cabinets_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./cabinets/cabinets.component */ "./src/app/pages/catalog/cabinets/cabinets.component.ts");
-/* harmony import */ var _kitchen_kitchen_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./kitchen/kitchen.component */ "./src/app/pages/catalog/kitchen/kitchen.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./home/home.component */ "./src/app/pages/catalog/home/home.component.ts");
-
-
-
-
+/* harmony import */ var _catalog_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./catalog.component */ "./src/app/pages/catalog/catalog.component.ts");
 
 
 
@@ -7121,11 +7044,7 @@ var CatalogModule = /** @class */ (function () {
                 _product_card_min_product_card_min_component__WEBPACK_IMPORTED_MODULE_9__["ProductCardMinComponent"],
                 _search_pipe__WEBPACK_IMPORTED_MODULE_10__["SearchPipe"],
                 angular_pipes__WEBPACK_IMPORTED_MODULE_5__["OrderByPipe"],
-                _chairs_chairs_component__WEBPACK_IMPORTED_MODULE_11__["ChairsComponent"],
-                _beds_beds_component__WEBPACK_IMPORTED_MODULE_12__["BedsComponent"],
-                _cabinets_cabinets_component__WEBPACK_IMPORTED_MODULE_13__["CabinetsComponent"],
-                _kitchen_kitchen_component__WEBPACK_IMPORTED_MODULE_14__["KitchenComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_15__["HomeComponent"]
+                _catalog_component__WEBPACK_IMPORTED_MODULE_11__["CatalogComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -7143,243 +7062,6 @@ var CatalogModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/catalog/chairs/chairs.component.html":
-/*!************************************************************!*\
-  !*** ./src/app/pages/catalog/chairs/chairs.component.html ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Стулья <br>и кресла</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of productsChairs\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n            <a (click)=\"p.previous()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n            </a>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span>{{ page.label }}</span>\n            </a>\n            <div *ngIf=\"p.getCurrent() === page.value\">\n                <span>{{ page.label }}</span>\n            </div>\n        </div>\n\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n            <a (click)=\"p.next()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </a>\n        </div>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/chairs/chairs.component.scss":
-/*!************************************************************!*\
-  !*** ./src/app/pages/catalog/chairs/chairs.component.scss ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9jaGFpcnMvRTpcXNCg0LDQsdC+0YLRi1xcZ2l0aHViXFxzdG9yZS9zcmNcXGFwcFxccGFnZXNcXGNhdGFsb2dcXGNoYWlyc1xcY2hhaXJzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QixFQUFBO0VBRnpCO0lBS0ksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXpCRjtNQTJCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvY2hhaXJzL2NoYWlycy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkLWJhbm5lciB7XHJcbiAgbWFyZ2luLXRvcDogLTFweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuXHJcbiAgLmNvbnRhaW5lciB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgaGVpZ2h0OiAyMzZweDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgfVxyXG5cclxuICAmX19pbWcge1xyXG4gICAgYWxpZ24tc2VsZjogZmxleC1lbmQ7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDg0cHg7XHJcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxuICAgIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgLW1zLXVzZXItc2VsZWN0OiBub25lO1xyXG4gICAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgfVxyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiAxMDAwcHgpIHtcclxuICAgICZfX2ltZyB7XHJcbiAgICAgIG1hcmdpbi1yaWdodDogMTBweDtcclxuICAgIH1cclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KSB7XHJcbiAgICAuY29udGFpbmVyIHtcclxuICAgICAgaGVpZ2h0OiAxMjBweDtcclxuICAgIH1cclxuXHJcbiAgICAmX19pbWcge1xyXG4gICAgICB3aWR0aDogMTIzcHg7XHJcbiAgICAgIGhlaWdodDogMTAxcHg7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4uY2F0YWxvZyB7XHJcbiAgbWFyZ2luOiA0OHB4IDAgOTdweDtcclxufVxyXG5cclxuLnByb2R1Y3QtbGlzdCB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgbWFyZ2luOiAxM3B4IC0xNXB4O1xyXG59XHJcblxyXG5hcHAtcHJvZHVjdC1jYXJkLW1pbiB7XHJcbiAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogMyAtIDMwcHgpO1xyXG4gIG1hcmdpbjogMTNweCAxNXB4O1xyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiAxMDAwcHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLyAxMiAqIDQgLSAzMHB4KTtcclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KSB7XHJcbiAgICB3aWR0aDogY2FsYygxMDAlIC0gMzBweCk7XHJcbiAgfVxyXG59XHJcblxyXG4uc2VhcmNoIHtcclxuICB3aWR0aDogMTAwJTtcclxuICBtYXJnaW46IDAgMTVweDtcclxuICBpbnB1dCB7XHJcbiAgICBoZWlnaHQ6IDQwcHg7XHJcbiAgICB3aWR0aDogMzAwcHg7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgfVxyXG59XHJcblxyXG5cclxuLy9wYWdpbmF0aW9uXHJcblxyXG4ucGFnaW5hdGlvbiB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICBoZWlnaHQ6IDkwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcclxuICBtYXJnaW4tYm90dG9tOiA5N3B4O1xyXG4gIHBhZGRpbmc6IDAgMjQycHg7XHJcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICBAbWVkaWEgKG1heC13aWR0aDogOTkxLjk4cHgpIHtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgfVxyXG5cclxuICAuY3VycmVudHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMDAlO1xyXG4gICAgYm94LXNoYWRvdzogMCA5cHggMThweCByZ2JhKDE2OCwgMTcyLCAxODUsIDAuNTMpO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZmZmZjtcclxuICAgIGNvbG9yOiAjZjU0NzMyO1xyXG4gICAgZm9udC13ZWlnaHQ6IDcwMDtcclxuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgfVxyXG5cclxuICAmX19wcmV2aW91cywgJl9fbmV4dCB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgd2lkdGg6IDQ4cHg7XHJcbiAgICBoZWlnaHQ6IDQ4cHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMDAlO1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgI2UzZThmMDtcclxuICAgIGJhY2tncm91bmQ6IG5vbmU7XHJcbiAgfVxyXG5cclxuICB9XHJcbiJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/chairs/chairs.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/pages/catalog/chairs/chairs.component.ts ***!
-  \**********************************************************/
-/*! exports provided: ChairsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChairsComponent", function() { return ChairsComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
-
-
-
-
-
-var ChairsComponent = /** @class */ (function () {
-    function ChairsComponent(_filterService, _productService, _cartService) {
-        this._filterService = _filterService;
-        this._productService = _productService;
-        this._cartService = _cartService;
-        this.productsChairs = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 16,
-            currentPage: 1
-        };
-    }
-    ChairsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-        }
-        this._productService.getProductsChairs().subscribe(function (data) { return _this.productsChairs = data; });
-    };
-    ChairsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-chairs',
-            template: __webpack_require__(/*! ./chairs.component.html */ "./src/app/pages/catalog/chairs/chairs.component.html"),
-            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
-            styles: [__webpack_require__(/*! ./chairs.component.scss */ "./src/app/pages/catalog/chairs/chairs.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
-            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
-    ], ChairsComponent);
-    return ChairsComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/home/home.component.html":
-/*!********************************************************!*\
-  !*** ./src/app/pages/catalog/home/home.component.html ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Товары <br>для дома</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of productsHome\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n            <a (click)=\"p.previous()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n            </a>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span>{{ page.label }}</span>\n            </a>\n            <div *ngIf=\"p.getCurrent() === page.value\">\n                <span>{{ page.label }}</span>\n            </div>\n        </div>\n\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n            <a (click)=\"p.next()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </a>\n        </div>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/home/home.component.scss":
-/*!********************************************************!*\
-  !*** ./src/app/pages/catalog/home/home.component.scss ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9ob21lL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxob21lXFxob21lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QixFQUFBO0VBRnpCO0lBS0ksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXpCRjtNQTJCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBtYXJnaW4tdG9wOiAtMXB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG5cclxuICAuY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBoZWlnaHQ6IDIzNnB4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICB9XHJcblxyXG4gICZfX2ltZyB7XHJcbiAgICBhbGlnbi1zZWxmOiBmbGV4LWVuZDtcclxuICAgIG1hcmdpbi1yaWdodDogODRweDtcclxuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG4gICAgLW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtbXMtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgJl9faW1nIHtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIC5jb250YWluZXIge1xyXG4gICAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIHdpZHRoOiAxMjNweDtcclxuICAgICAgaGVpZ2h0OiAxMDFweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5jYXRhbG9nIHtcclxuICBtYXJnaW46IDQ4cHggMCA5N3B4O1xyXG59XHJcblxyXG4ucHJvZHVjdC1saXN0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtd3JhcDogd3JhcDtcclxuICBtYXJnaW46IDEzcHggLTE1cHg7XHJcbn1cclxuXHJcbmFwcC1wcm9kdWN0LWNhcmQtbWluIHtcclxuICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiAzIC0gMzBweCk7XHJcbiAgbWFyZ2luOiAxM3B4IDE1cHg7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogNCAtIDMwcHgpO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAzMHB4KTtcclxuICB9XHJcbn1cclxuXHJcbi5zZWFyY2gge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1hcmdpbjogMCAxNXB4O1xyXG4gIGlucHV0IHtcclxuICAgIGhlaWdodDogNDBweDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbn1cclxuXHJcblxyXG4vL3BhZ2luYXRpb25cclxuXHJcbi5wYWdpbmF0aW9uIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIGhlaWdodDogOTBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gIG1hcmdpbi1ib3R0b206IDk3cHg7XHJcbiAgcGFkZGluZzogMCAyNDJweDtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICB9XHJcblxyXG4gIC5jdXJyZW50e1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3gtc2hhZG93OiAwIDlweCAxOHB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC41Myk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gICAgY29sb3I6ICNmNTQ3MzI7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICB9XHJcblxyXG4gICZfX3ByZXZpb3VzLCAmX19uZXh0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCAjZTNlOGYwO1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICB9XHJcblxyXG4gIH1cclxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/home/home.component.ts":
-/*!******************************************************!*\
-  !*** ./src/app/pages/catalog/home/home.component.ts ***!
-  \******************************************************/
-/*! exports provided: HomeComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
-
-
-
-
-
-var HomeComponent = /** @class */ (function () {
-    function HomeComponent(_filterService, _productService, _cartService) {
-        this._filterService = _filterService;
-        this._productService = _productService;
-        this._cartService = _cartService;
-        this.productsHome = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 16,
-            currentPage: 1
-        };
-    }
-    HomeComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-        }
-        this._productService.getProductsHome().subscribe(function (data) { return _this.productsHome = data; });
-    };
-    HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-home',
-            template: __webpack_require__(/*! ./home.component.html */ "./src/app/pages/catalog/home/home.component.html"),
-            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
-            styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/pages/catalog/home/home.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
-            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
-    ], HomeComponent);
-    return HomeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/kitchen/kitchen.component.html":
-/*!**************************************************************!*\
-  !*** ./src/app/pages/catalog/kitchen/kitchen.component.html ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"head-banner\">\n  <div class=\"container\">\n    <h1>Товары <br>для кухни</h1>\n    <img src=\"/assets/img/general/head-banner.png\" alt=\"\" class=\"head-banner__img\">\n  </div>\n</div>\n<div class=\"container\">\n  <div class=\"catalog\">\n    <app-sorting></app-sorting>\n    <div class=\"product-list\">\n      <app-product-card-min *ngFor=\"let product of productsKitchen\n        | search: _filterService.searchStr\n        | orderBy: _filterService.Type\n        | paginate: config\"\n        [product]=\"product\">\n      </app-product-card-min>\n    </div>\n\n\n\n<pagination-template #p=\"paginationApi\"\n                     [id]=\"config.id\"\n                     (pageChange)=\"config.currentPage = $event\"\n                     [maxSize]=\"10\">\n\n\n    <div class=\"pagination\">\n        <div class=\"pagination__previous\" [class.disabled]=\"p.isFirstPage()\">\n            <a (click)=\"p.previous()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"7px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M2.534,5.015 L5.702,8.172 C6.126,8.594 6.126,9.279 5.702,9.701 C5.278,10.124 4.592,10.124 4.168,9.701 L0.333,5.879 C0.095,5.642 0.005,5.324 0.034,5.015 C0.005,4.705 0.095,4.388 0.333,4.150 L4.168,0.328 C4.592,-0.095 5.278,-0.095 5.702,0.328 C6.126,0.750 6.126,1.434 5.702,1.857 L2.534,5.015 Z\" />\n              </svg>\n            </a>\n        </div>\n\n        <div *ngFor=\"let page of p.pages\" [class.current]=\"p.getCurrent() === page.value\">\n            <a (click)=\"p.setCurrent(page.value)\" *ngIf=\"p.getCurrent() !== page.value\">\n                <span>{{ page.label }}</span>\n            </a>\n            <div *ngIf=\"p.getCurrent() === page.value\">\n                <span>{{ page.label }}</span>\n            </div>\n        </div>\n\n        <div class=\"pagination__next\" [class.disabled]=\"p.isLastPage()\">\n            <a (click)=\"p.next()\">\n              <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"6px\" height=\"11px\">\n                  <path fill-rule=\"evenodd\" fill=\"rgb(58, 64, 91)\" d=\"M5.666,5.879 L1.831,9.701 C1.408,10.124 0.721,10.124 0.297,9.701 C-0.127,9.280 -0.127,8.595 0.297,8.172 L3.465,5.015 L0.297,1.857 C-0.127,1.434 -0.127,0.750 0.297,0.328 C0.721,-0.094 1.408,-0.094 1.831,0.328 L5.666,4.151 C5.904,4.388 5.993,4.705 5.964,5.015 C5.993,5.324 5.904,5.642 5.666,5.879 Z\" />\n              </svg>\n            </a>\n        </div>\n    </div>\n</pagination-template>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/kitchen/kitchen.component.scss":
-/*!**************************************************************!*\
-  !*** ./src/app/pages/catalog/kitchen/kitchen.component.scss ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".head-banner {\n  margin-top: -1px;\n  background-color: white; }\n  .head-banner .container {\n    display: flex;\n    height: 236px;\n    align-items: center;\n    justify-content: space-between; }\n  .head-banner__img {\n    align-self: flex-end;\n    margin-right: 84px;\n    pointer-events: none;\n    -moz-user-select: none;\n    -webkit-user-select: none;\n    -ms-user-select: none;\n    user-select: none; }\n  @media (max-width: 1000px) {\n    .head-banner__img {\n      margin-right: 10px; } }\n  @media (max-width: 768px) {\n    .head-banner .container {\n      height: 120px; }\n    .head-banner__img {\n      width: 123px;\n      height: 101px; } }\n  .catalog {\n  margin: 48px 0 97px; }\n  .product-list {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 13px -15px; }\n  app-product-card-min {\n  width: calc(100% / 12 * 3 - 30px);\n  margin: 13px 15px; }\n  @media (max-width: 1000px) {\n    app-product-card-min {\n      width: calc(100% / 12 * 4 - 30px); } }\n  @media (max-width: 768px) {\n    app-product-card-min {\n      width: calc(100% - 30px); } }\n  .search {\n  width: 100%;\n  margin: 0 15px; }\n  .search input {\n    height: 40px;\n    width: 300px;\n    border: none; }\n  .pagination {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 90px;\n  background-color: #ffffff;\n  margin-bottom: 97px;\n  padding: 0 242px;\n  box-sizing: border-box; }\n  @media (max-width: 991.98px) {\n    .pagination {\n      padding: 10px; } }\n  .pagination .current {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    background: none;\n    border: none;\n    border-radius: 100%;\n    box-shadow: 0 9px 18px rgba(168, 172, 185, 0.53);\n    background-color: #ffffff;\n    color: #f54732;\n    font-weight: 700;\n    box-sizing: border-box; }\n  .pagination__previous, .pagination__next {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 48px;\n    height: 48px;\n    border-radius: 100%;\n    border: 2px solid #e3e8f0;\n    background: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2F0YWxvZy9raXRjaGVuL0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxjYXRhbG9nXFxraXRjaGVuXFxraXRjaGVuLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QixFQUFBO0VBRnpCO0lBS0ksYUFBYTtJQUNiLGFBQWE7SUFDYixtQkFBbUI7SUFDbkIsOEJBQThCLEVBQUE7RUFHaEM7SUFDRSxvQkFBb0I7SUFDcEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQixzQkFBc0I7SUFDdEIseUJBQXlCO0lBQ3pCLHFCQUFxQjtJQUNyQixpQkFBaUIsRUFBQTtFQUVuQjtJQUNFO01BQ0Usa0JBQWtCLEVBQUEsRUFDbkI7RUFFSDtJQXpCRjtNQTJCTSxhQUFhLEVBQUE7SUFHZjtNQUNFLFlBQVk7TUFDWixhQUFhLEVBQUEsRUFDZDtFQUlMO0VBQ0UsbUJBQW1CLEVBQUE7RUFHckI7RUFDRSxhQUFhO0VBQ2IsZUFBZTtFQUNmLGtCQUFrQixFQUFBO0VBR3BCO0VBQ0UsaUNBQWlDO0VBQ2pDLGlCQUFpQixFQUFBO0VBQ2pCO0lBSEY7TUFJSSxpQ0FBaUMsRUFBQSxFQUtwQztFQUhDO0lBTkY7TUFPSSx3QkFBd0IsRUFBQSxFQUUzQjtFQUVEO0VBQ0UsV0FBVztFQUNYLGNBQWMsRUFBQTtFQUZoQjtJQUlJLFlBQVk7SUFDWixZQUFZO0lBQ1osWUFBWSxFQUFBO0VBT2hCO0VBQ0UsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQiw4QkFBOEI7RUFDOUIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixtQkFBbUI7RUFDbkIsZ0JBQWdCO0VBQ2hCLHNCQUFzQixFQUFBO0VBQ3RCO0lBVEY7TUFVSSxhQUFhLEVBQUEsRUE4QmQ7RUF4Q0g7SUFjSSxhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjtJQUNoQixZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLGdEQUFnRDtJQUNoRCx5QkFBeUI7SUFDekIsY0FBYztJQUNkLGdCQUFnQjtJQUNoQixzQkFBc0IsRUFBQTtFQUd4QjtJQUNFLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLFdBQVc7SUFDWCxZQUFZO0lBQ1osbUJBQW1CO0lBQ25CLHlCQUF5QjtJQUN6QixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NhdGFsb2cva2l0Y2hlbi9raXRjaGVuLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWQtYmFubmVyIHtcclxuICBtYXJnaW4tdG9wOiAtMXB4O1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xyXG5cclxuICAuY29udGFpbmVyIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBoZWlnaHQ6IDIzNnB4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICB9XHJcblxyXG4gICZfX2ltZyB7XHJcbiAgICBhbGlnbi1zZWxmOiBmbGV4LWVuZDtcclxuICAgIG1hcmdpbi1yaWdodDogODRweDtcclxuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG4gICAgLW1vei11c2VyLXNlbGVjdDogbm9uZTtcclxuICAgIC13ZWJraXQtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICAtbXMtdXNlci1zZWxlY3Q6IG5vbmU7XHJcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcclxuICB9XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgJl9faW1nIHtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xyXG4gICAgfVxyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIC5jb250YWluZXIge1xyXG4gICAgICBoZWlnaHQ6IDEyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIHdpZHRoOiAxMjNweDtcclxuICAgICAgaGVpZ2h0OiAxMDFweDtcclxuICAgIH1cclxuICB9XHJcbn1cclxuXHJcbi5jYXRhbG9nIHtcclxuICBtYXJnaW46IDQ4cHggMCA5N3B4O1xyXG59XHJcblxyXG4ucHJvZHVjdC1saXN0IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtd3JhcDogd3JhcDtcclxuICBtYXJnaW46IDEzcHggLTE1cHg7XHJcbn1cclxuXHJcbmFwcC1wcm9kdWN0LWNhcmQtbWluIHtcclxuICB3aWR0aDogY2FsYygxMDAlIC8gMTIgKiAzIC0gMzBweCk7XHJcbiAgbWFyZ2luOiAxM3B4IDE1cHg7XHJcbiAgQG1lZGlhIChtYXgtd2lkdGg6IDEwMDBweCkge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDEyICogNCAtIDMwcHgpO1xyXG4gIH1cclxuICBAbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcclxuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAzMHB4KTtcclxuICB9XHJcbn1cclxuXHJcbi5zZWFyY2gge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1hcmdpbjogMCAxNXB4O1xyXG4gIGlucHV0IHtcclxuICAgIGhlaWdodDogNDBweDtcclxuICAgIHdpZHRoOiAzMDBweDtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICB9XHJcbn1cclxuXHJcblxyXG4vL3BhZ2luYXRpb25cclxuXHJcbi5wYWdpbmF0aW9uIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIGhlaWdodDogOTBweDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gIG1hcmdpbi1ib3R0b206IDk3cHg7XHJcbiAgcGFkZGluZzogMCAyNDJweDtcclxuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG4gIEBtZWRpYSAobWF4LXdpZHRoOiA5OTEuOThweCkge1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICB9XHJcblxyXG4gIC5jdXJyZW50e1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgaGVpZ2h0OiA0OHB4O1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3gtc2hhZG93OiAwIDlweCAxOHB4IHJnYmEoMTY4LCAxNzIsIDE4NSwgMC41Myk7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmZmZmO1xyXG4gICAgY29sb3I6ICNmNTQ3MzI7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICB9XHJcblxyXG4gICZfX3ByZXZpb3VzLCAmX19uZXh0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogNDhweDtcclxuICAgIGhlaWdodDogNDhweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XHJcbiAgICBib3JkZXI6IDJweCBzb2xpZCAjZTNlOGYwO1xyXG4gICAgYmFja2dyb3VuZDogbm9uZTtcclxuICB9XHJcblxyXG4gIH1cclxuIl19 */"
-
-/***/ }),
-
-/***/ "./src/app/pages/catalog/kitchen/kitchen.component.ts":
-/*!************************************************************!*\
-  !*** ./src/app/pages/catalog/kitchen/kitchen.component.ts ***!
-  \************************************************************/
-/*! exports provided: KitchenComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KitchenComponent", function() { return KitchenComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
-/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
-/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
-
-
-
-
-
-var KitchenComponent = /** @class */ (function () {
-    function KitchenComponent(_filterService, _productService, _cartService) {
-        this._filterService = _filterService;
-        this._productService = _productService;
-        this._cartService = _cartService;
-        this.productsKitchen = [];
-        this.config = {
-            id: 'custom',
-            itemsPerPage: 16,
-            currentPage: 1
-        };
-    }
-    KitchenComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-            this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-        }
-        this._productService.getProductsKitchen().subscribe(function (data) { return _this.productsKitchen = data; });
-    };
-    KitchenComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-kitchen',
-            template: __webpack_require__(/*! ./kitchen.component.html */ "./src/app/pages/catalog/kitchen/kitchen.component.html"),
-            providers: [src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"]],
-            styles: [__webpack_require__(/*! ./kitchen.component.scss */ "./src/app/pages/catalog/kitchen/kitchen.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"],
-            src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"],
-            src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingCartService"]])
-    ], KitchenComponent);
-    return KitchenComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/pages/catalog/product-card-min/product-card-min.component.html":
 /*!********************************************************************************!*\
   !*** ./src/app/pages/catalog/product-card-min/product-card-min.component.html ***!
@@ -7387,7 +7069,7 @@ var KitchenComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\"{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"/product/{{product.id}}\"\n      [queryParams]=\"\n      {\n        'name': product.name,\n        'price': product.price,\n        'img': product.imgURL,\n        'img2': product.imgURL2,\n        'img3': product.imgURL3,\n        'img4': product.imgURL4,\n        'img5': product.imgURL5,\n        'img6': product.imgURL6,\n        'description': product.description,\n        'additionalDescriptionHeadline': product.additionalDescriptionHeadline,\n        'additionalDescription': product.additionalDescription\n      }\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n\n</div>\n"
+module.exports = "<div  class=\"product-card\">\n  <div class=\"product-card__img\">\n    <img src=\"{{product.imgURL}}\" alt=\"\">\n  </div>\n  <div class=\"product-card__name\">\n    <a routerLink=\"/products/{{product.id}}\"\n      [queryParams]=\"product\">{{product.name}}</a>\n  </div>\n  <div class=\"product-card__price\">\n    {{product.price | currency:' ':'':'0.0-0'}} ₽\n  </div>\n  <button type=\"button\" name=\"button\" class=\"btn-min\" (click)=\"addCart(product)\">В корзину</button>\n\n</div>\n"
 
 /***/ }),
 

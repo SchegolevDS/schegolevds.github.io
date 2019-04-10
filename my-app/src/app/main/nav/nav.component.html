@@ -1,10 +1,10 @@
 <nav class="nav">
   <input class="nav__check" type="checkbox" id="showmenu" />
   <ul class="menu {{classMod}}">
-    <li><a class="menu__item" routerLink="/">Стулья и кресла</a></li>
-    <li><a class="menu__item" routerLink="/beds">Кровати и матрасы</a></li>
-    <li><a class="menu__item" routerLink="/cabinets">Шкафы и комоды</a></li>
-    <li><a class="menu__item" routerLink="/kitchen">Мебель для кухни</a></li>
-    <li><a class="menu__item" routerLink="/home">Товары для дома</a></li>
+    <li><a class="menu__item" routerLink="/" routerLinkActive="menu__item--active" [routerLinkActiveOptions]="{exact:true}">Стулья и кресла</a></li>
+    <li><a class="menu__item" routerLink="/beds" routerLinkActive="menu__item--active">Кровати и матрасы</a></li>
+    <li><a class="menu__item" routerLink="/cabinets" routerLinkActive="menu__item--active">Шкафы и комоды</a></li>
+    <li><a class="menu__item" routerLink="/kitchen" routerLinkActive="menu__item--active">Мебель для кухни</a></li>
+    <li><a class="menu__item" routerLink="/home" routerLinkActive="menu__item--active">Товары для дома</a></li>
   </ul>
 </nav>

@@ -45,9 +45,7 @@
     box-sizing: border-box;
     transition: all .0s ease-in-out;
 
-    &:active,
-    &:focus,
-    &:hover {
+    &--active {
       padding-top: 3px;
       border-bottom: 3px solid #f54732;
       @media (max-width: 1000px) {

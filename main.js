@@ -215,46 +215,6 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/app.service.ts":
-/*!********************************!*\
-  !*** ./src/app/app.service.ts ***!
-  \********************************/
-/*! exports provided: AppService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppService", function() { return AppService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var AppService = /** @class */ (function () {
-    function AppService() {
-        this.Type = 'name';
-    }
-    AppService.prototype.sortingName = function () {
-        this.Type = 'name';
-    };
-    AppService.prototype.sortingPriceUp = function () {
-        this.Type = '-price';
-    };
-    AppService.prototype.sortingPriceDown = function () {
-        this.Type = 'price';
-    };
-    AppService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], AppService);
-    return AppService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/main/content/content.component.html":
 /*!*****************************************************!*\
   !*** ./src/app/main/content/content.component.html ***!
@@ -466,7 +426,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_app_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/app.service */ "./src/app/app.service.ts");
+/* harmony import */ var src_app_services_filter_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/filter.service */ "./src/app/services/filter.service.ts");
 
 
 
@@ -482,7 +442,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/main/header/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.scss */ "./src/app/main/header/search/search.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_app_service__WEBPACK_IMPORTED_MODULE_2__["AppService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_filter_service__WEBPACK_IMPORTED_MODULE_2__["FilterService"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -741,6 +701,37 @@ var OrderstatusLinkComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/filter.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/filter.service.ts ***!
+  \********************************************/
+/*! exports provided: FilterService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterService", function() { return FilterService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var FilterService = /** @class */ (function () {
+    function FilterService() {
+        this.Type = 'name';
+    }
+    FilterService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FilterService);
+    return FilterService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/shopping-cart.service.ts":
 /*!***************************************************!*\
   !*** ./src/app/services/shopping-cart.service.ts ***!
@@ -780,27 +771,14 @@ var ShoppingCartService = /** @class */ (function () {
             localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
             localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
         }
-        this.totalQuantity = this.cart.length;
-        if (this.totalQuantity == 0) {
-            this.totalQuantityEmpty = true;
-        }
-        else {
-            this.totalQuantityEmpty = false;
-        }
+        this._totalQuantity();
     };
     ShoppingCartService.prototype.delete = function (id) {
         this.cart.splice(id, 1);
         this.cartID.splice(id, 1);
         localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
         localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
-        this.totalQuantity = this.cart.length;
-        this._totalQuantityStr();
-        if (this.totalQuantity == 0) {
-            this.totalQuantityEmpty = true;
-        }
-        else {
-            this.totalQuantityEmpty = false;
-        }
+        this._totalQuantity();
     };
     ShoppingCartService.prototype.cartPrices = function (price) {
         this.cartPrice.push(price);
@@ -811,7 +789,17 @@ var ShoppingCartService = /** @class */ (function () {
             this.cartSum += this.cartPrice[i];
         }
     };
-    ShoppingCartService.prototype._totalQuantityStr = function () {
+    ShoppingCartService.prototype._totalQuantity = function () {
+        this.totalQuantity = this.cart.length;
+        this.TotalQuantityStr();
+        if (this.totalQuantity == 0) {
+            this.totalQuantityEmpty = true;
+        }
+        else {
+            this.totalQuantityEmpty = false;
+        }
+    };
+    ShoppingCartService.prototype.TotalQuantityStr = function () {
         if (this.totalQuantity == 1) {
             this.totalQuantityStr = 'Товар';
         }

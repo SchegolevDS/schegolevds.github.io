@@ -345,7 +345,7 @@ var ShoppingCartComponent = /** @class */ (function () {
         this._cartService = _cartService;
         this.quantity = [];
         this._cartService.totalQuantity = this._cartService.cart.length;
-        this._cartService._totalQuantityStr();
+        this._cartService.TotalQuantityStr();
     }
     ShoppingCartComponent.prototype.ngOnInit = function () {
         this._cartService.cartPrice = [0];

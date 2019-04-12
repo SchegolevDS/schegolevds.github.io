@@ -1,12 +1,30 @@
 .img-collapse {
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+
+    &__svg-1 {
+      transform: rotate(-45deg);
+    }
+
+    &__svg-2 {
+      transform: rotate(-90deg);
+    }
+  }
 
   &__side {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px 83px 0 51px;
+    margin: 30px 83px 0 0;
     width: 65px;
+    @media (max-width: 768px) {
+      flex-direction: row;
+      order: 1;
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   &__button {
@@ -18,13 +36,16 @@
     border-radius: 5px;
     border: 2px solid white;
     margin: 5px 0;
+    @media (max-width: 768px) {
+      margin: 0 5px;
+    }
 
-    &--active {
+    &:hover {
       border-radius: 5px;
       border: 2px solid #e3e8f0;
     }
 
-    &:focus {
+    &--active {
       border-radius: 5px;
       border: 2px solid #e3e8f0;
     }

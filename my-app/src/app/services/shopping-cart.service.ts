@@ -33,12 +33,7 @@ export class ShoppingCartService {
       localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
       localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
     }
-    this.totalQuantity = this.cart.length;
-    if (this.totalQuantity == 0) {
-      this.totalQuantityEmpty = true;
-    } else {
-      this.totalQuantityEmpty = false;
-    }
+    this._totalQuantity();
   }
 
   public delete (id) {
@@ -46,13 +41,7 @@ export class ShoppingCartService {
   this.cartID.splice(id, 1);
   localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
   localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
-  this.totalQuantity = this.cart.length;
-  this._totalQuantityStr();
-  if (this.totalQuantity == 0) {
-    this.totalQuantityEmpty = true;
-  } else {
-    this.totalQuantityEmpty = false;
-  }
+  this._totalQuantity()
   }
 
   public cartPrices(price) {
@@ -66,7 +55,17 @@ export class ShoppingCartService {
     }
   }
 
-  public _totalQuantityStr() {
+  private _totalQuantity() {
+    this.totalQuantity = this.cart.length;
+    this.TotalQuantityStr()
+    if (this.totalQuantity == 0) {
+      this.totalQuantityEmpty = true;
+    } else {
+      this.totalQuantityEmpty = false;
+    }
+  }
+
+  public TotalQuantityStr() {
     if (this.totalQuantity == 1) {
       this.totalQuantityStr = 'Товар'
     }

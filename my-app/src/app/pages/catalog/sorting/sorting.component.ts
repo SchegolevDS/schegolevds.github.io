@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { AppService } from 'src/app/app.service';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-sorting',
@@ -20,7 +20,7 @@ export class SortingComponent implements OnInit {
     }
   };
 
-  constructor(public filter: AppService) {}
+  constructor(public filter: FilterService) {}
 
   ngOnInit() {
   }

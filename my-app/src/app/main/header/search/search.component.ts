@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/app.service';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-search',
@@ -7,8 +7,8 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  
-  constructor(private search: AppService) { }
+
+  constructor(public search: FilterService) { }
 
   ngOnInit() {
   }

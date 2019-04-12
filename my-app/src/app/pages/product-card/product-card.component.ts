@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { ProductService } from 'src/app/services/product.service';
-import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-product-card',
@@ -18,7 +17,6 @@ export class ProductCardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
   private _cartService:ShoppingCartService,
-  private _filterService: AppService,
   private _productService: ProductService,) { }
 
   getProduct(category) {

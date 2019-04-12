@@ -2,18 +2,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 30px 100px 92px 0;
+    padding: 30px 100px 92px 51px;
     margin: 68px 0 118px;
     background-color: white;
+    @media (max-width: 1000px) {
+      padding: 33px;
+    }
 
     &__img-collapse {
       width: calc((100% + 30px) / 12 * 7 - 30px);
       box-sizing: border-box;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
     }
 
     .card-info {
         margin-top: 55px;
-
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
         &__name {
             font-size: 36px;
             font-weight: 700;
@@ -51,6 +59,16 @@
             margin: 35px 0;
             padding: 38px 30px;
             box-sizing: border-box;
+            @media (max-width: 1000px) {
+              width: 100%;
+              flex-direction: column;
+              align-items: center;
+              justify-content: space-around;
+            }
+
+            &__btn {
+              width: 370px;
+            }
 
             &__price {
                 font-size: 30px;
@@ -62,11 +80,15 @@
 
     .card-description {
         margin-top: -40px;
-        margin-left: calc((100% + 30px) / 12 * 2);
+        margin-left: calc((100% + 30px) / 12 * 2 - 51px);
         width: calc((100% + 30px) / 12 * 9 - 30px);
         color: #828aa2;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
+        @media (max-width: 1000px) {
+          width: 100%;
+          margin: 0;
+        }
     }
 }

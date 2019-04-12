@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { PaginationInstance } from 'ngx-pagination';
-import { AppService } from 'src/app/app.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Router } from '@angular/router';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-catalog',
@@ -23,7 +23,7 @@ export class CatalogComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private _filterService: AppService,
+    private _filterService: FilterService,
     private _productService: ProductService,
     private _cartService:ShoppingCartService) {
     }

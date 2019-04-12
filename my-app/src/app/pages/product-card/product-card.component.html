@@ -16,7 +16,7 @@
         <div class="info-purchase">
           <div class="info-purchase__price">
             {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>
-          <button type="button" name="button" class="btn" (click)="addCart(product)">Купить</button>
+          <button type="button" name="button" class="info-purchase__btn btn" (click)="addCart(product)">Купить</button>
         </div>
       </div>
       <div class="card-description">

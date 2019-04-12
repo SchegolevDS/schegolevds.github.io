@@ -1,47 +1,53 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
-/***/ "./src/app/services/shopping-cart.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/services/shopping-cart.service.ts ***!
-  \***************************************************/
-/*! exports provided: ShoppingCartService */
+/***/ "./src/app/services/product.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/product.service.ts ***!
+  \*********************************************/
+/*! exports provided: ProductService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShoppingCartService", function() { return ShoppingCartService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductService", function() { return ProductService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 
 
-var ShoppingCartService = /** @class */ (function () {
-    function ShoppingCartService() {
-        this.cart = [];
-        this.cartPrice = [];
+
+
+var ProductService = /** @class */ (function () {
+    function ProductService(http) {
+        this.http = http;
     }
-    ShoppingCartService.prototype.add = function (product) {
-        this.cart.push(product);
-        this.cartPrice.push(product.price);
-        localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
-        this.arraySum(this.cartPrice);
+    ProductService.prototype.getProducts = function (productCategory) {
+        return this.http.get('assets/json/products.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
+            var productList = data[productCategory];
+            return productList.map(function (product) {
+                return { id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    imgUrls: product.imgUrls,
+                    description: product.description,
+                    additionalDescriptionHeadline: product.additionalDescriptionHeadline,
+                    additionalDescription: product.additionalDescription
+                };
+            });
+        }));
     };
-    ShoppingCartService.prototype.arraySum = function (cartPrice) {
-        this.cartSum = 0;
-        for (var i = 0; i < cartPrice.length; i++) {
-            this.cartSum += cartPrice[i];
-        }
+    ProductService.prototype.getProductById = function (id, category) {
+        return this.http.get('assets/json/products.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
+            var productList = data[category];
+            return productList.filter(function (d) { return d.id === id; })[0] || null;
+        }));
     };
-    ShoppingCartService.prototype.delete = function (id) {
-        this.cart.splice(id, 1);
-        localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
-    };
-    ShoppingCartService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], ShoppingCartService);
-    return ShoppingCartService;
+    ProductService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], ProductService);
+    return ProductService;
 }());
 
 

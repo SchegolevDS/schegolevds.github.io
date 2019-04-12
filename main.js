@@ -10,6 +10,7 @@
 var map = {
 	"./pages/catalog/catalog.module": [
 		"./src/app/pages/catalog/catalog.module.ts",
+		"common",
 		"pages-catalog-catalog-module"
 	],
 	"./pages/order-status/order-status.module": [
@@ -18,6 +19,7 @@ var map = {
 	],
 	"./pages/product-card/product-card.module": [
 		"./src/app/pages/product-card/product-card.module.ts",
+		"common",
 		"pages-product-card-product-card-module"
 	],
 	"./pages/shopping-cart/shopping-cart.module": [
@@ -34,7 +36,7 @@ function webpackAsyncContext(req) {
 			throw e;
 		});
 	}
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		var id = ids[0];
 		return __webpack_require__(id);
 	});

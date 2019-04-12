@@ -28,24 +28,20 @@ export class CatalogComponent implements OnInit {
     private _cartService:ShoppingCartService) {
     }
 
+  getProducts(url, category) {
+    if (this.router.url === url) {
+      this._productService.getProducts(category).subscribe(data => this.products=data);
+    }
+  }
+
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
       this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
     }
-    if (this.router.url === '/') {
-      this._productService.getProductsChairs().subscribe(data => this.products=data);
-    }
-    if (this.router.url === '/beds') {
-      this._productService.getProductsBeds().subscribe(data => this.products=data);
-    }
-    if (this.router.url === '/cabinets') {
-      this._productService.getProductsCabinets().subscribe(data => this.products=data);
-    }
-    if (this.router.url === '/kitchen') {
-      this._productService.getProductsKitchen().subscribe(data => this.products=data);
-    }
-    if (this.router.url === '/home') {
-      this._productService.getProductsHome().subscribe(data => this.products=data);
-    }
+    this.getProducts('/', "productList__Chairs");
+    this.getProducts('/beds', "productList__Beds");
+    this.getProducts('/cabinets', "productList__Cabinets");
+    this.getProducts('/kitchen', "productList__Kitchen");
+    this.getProducts('/home', "productList__Home");
   }
 }

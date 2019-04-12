@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-img-collapse',
@@ -6,25 +6,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./img-collapse.component.scss']
 })
 export class ImgCollapseComponent implements OnInit {
+  @Input() images: [];
+  selectedImg: number;
+  selectedImgIndex: number;
+  lastImgIndex:number;
+  imgCollapseFirst:number;
+  imgCollapseLast:number;
 
-  productImg = ['/assets/img/content/01.jpg', '/assets/img/content/2.jpg',
-'/assets/img/content/3.jpg','/assets/img/content/4.jpg',];
-  selectImg:string = this.productImg[0];
-  select() {
-    this.selectImg = this.productImg[0];
+  constructor(private refresh: ChangeDetectorRef) { }
+
+  public selectImg(i:number) {
+    this.selectedImgIndex = i;
+    this.selectedImg = this.images[this.selectedImgIndex];
+    this.refresh.detectChanges();
   }
-  select1() {
-    this.selectImg = this.productImg[1];
+
+  public selectImgDown() {
+    if(this.selectedImgIndex > 0) {
+      this.selectImg(this.selectedImgIndex - 1)
+      if (this.imgCollapseLast > 4) {
+        this.imgCollapse(-1);
+      }
+    }
+    this.refresh.detectChanges();
   }
-  select2() {
-    this.selectImg = this.productImg[2];
+
+  public selectImgUp() {
+    if (this.selectedImgIndex < this.lastImgIndex) {
+      this.selectImg(this.selectedImgIndex + 1);
+      if (this.imgCollapseFirst < this.images.length - 4) {
+        this.imgCollapse(1);
+      }
+    }
+    this.refresh.detectChanges();
   }
-  select3() {
-    this.selectImg = this.productImg[3];
+
+  private lastImage() {
+    this.lastImgIndex = this.images.length - 1;
   }
-  constructor() { }
+
+  private imgCollapse(value) {
+    this.imgCollapseFirst = this.imgCollapseFirst + value;
+    this.imgCollapseLast = this.imgCollapseLast + value;
+  }
 
   ngOnInit() {
+    this.imgCollapseFirst = 0;
+    this.imgCollapseLast = 4;
+    this.selectImg(0);
+    this.lastImage();
   }
-
 }

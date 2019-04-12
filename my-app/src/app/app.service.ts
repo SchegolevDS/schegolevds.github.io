@@ -6,7 +6,6 @@ import { Options } from 'ng5-slider';
 })
 
 export class AppService {
-
   searchStr:string;
   Type: string = 'name';
 

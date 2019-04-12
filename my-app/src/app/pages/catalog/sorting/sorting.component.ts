@@ -20,19 +20,7 @@ export class SortingComponent implements OnInit {
     }
   };
 
-  constructor(private filter: AppService) {}
-
-  sortingName() {
-    this.filter.sortingName();
-  }
-
-  sortingPriceUp() {
-    this.filter.sortingPriceUp();
-  }
-
-  sortingPriceDown() {
-    this.filter.sortingPriceDown();
-  }
+  constructor(public filter: AppService) {}
 
   ngOnInit() {
   }

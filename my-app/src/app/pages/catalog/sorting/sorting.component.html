@@ -13,10 +13,10 @@
         <div class="sorting-view">
             <span>Сортировка</span>
             <div class="sorting-view__select">
-              <select class="sorting__select" name="sorting">
-                  <option class="sorting__option" value="" (click)="sortingName()">По наименованию</option>
-                  <option class="sorting__option" value="" (click)="sortingPriceUp()">Дорогие сверху</option>
-                  <option class="sorting__option" value="" (click)="sortingPriceDown()">Дешевые сверху</option>
+              <select class="sorting__select" name="sorting" [(ngModel)]="filter.Type" >
+                  <option class="sorting__option" value="name">По наименованию</option>
+                  <option class="sorting__option" value="-price">Дорогие сверху</option>
+                  <option class="sorting__option" value="price">Дешевые сверху</option>
               </select>
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11px" height="6px">
                   <path fill-rule="evenodd" fill="rgb(161, 168, 189)" d="M9.701,1.828 L5.866,5.663 C5.628,5.901 5.309,5.991 4.999,5.962 C4.689,5.991 4.370,5.901 4.133,5.663 L0.297,1.828 C-0.126,1.404 -0.126,0.718 0.297,0.294 C0.721,-0.130 1.408,-0.130 1.831,0.294 L4.999,3.461 L8.167,0.294 C8.590,-0.130 9.277,-0.130 9.701,0.294 C10.124,0.718 10.124,1.404 9.701,1.828 Z" />

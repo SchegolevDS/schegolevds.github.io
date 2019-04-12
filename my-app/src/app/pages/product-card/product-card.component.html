@@ -1,46 +1,30 @@
 <app-breadcrumbs></app-breadcrumbs>
-<div class="container">
-  <div class="product-card">
-    <div class="product-card__img-collapse">
-      <div class="img-collapse">
-        <div class="img-collapse__side">
-          <button (click)="select()" class="img-collapse__button">
-            <img src="{{product.imgURL}}" class="img-collapse__min-img" alt="">
-          </button>
-          <button (click)="select2()" class="img-collapse__button">
-            <img src="{{product.imgURL2}}" class="img-collapse__min-img" alt="">
-          </button>
-          <button (click)="select3()" class="img-collapse__button">
-            <img src="{{product.imgURL3}}" class="img-collapse__min-img" alt="">
-          </button>
-          <button (click)="select4()" class="img-collapse__button">
-            <img src="{{product.imgURL4}}" class="img-collapse__min-img" alt="">
-          </button>
+  <div class="container">
+    <div class="product-card">
+      <div class="product-card__img-collapse">
+      <app-img-collapse
+        [images]="product.imgUrls">
+      </app-img-collapse>
+      </div>
+      <div class="card-info">
+        <div class="card-info__name"> {{product.name}}</div>
+        <div class="card-info__code"> Код товара {{product.id}}</div>
+        <div class="card-info__availability">
+          <div class="card-info__indicator"></div> В
+          наличии
         </div>
-        <div class="img-collapse__select-img">
-          <img src="{{selectImg}}" class="img-collapse__img" alt="">
+        <div class="info-purchase">
+          <div class="info-purchase__price">
+            {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>
+          <button type="button" name="button" class="btn" (click)="addCart(product)">Купить</button>
         </div>
       </div>
-    </div>
-    <div class="card-info">
-      <div class="card-info__name"> {{product.name}}</div>
-      <div class="card-info__code"> Код товара {{product.id}} </div>
-      <div class="card-info__availability">
-        <div class="card-info__indicator"></div> В
-        наличии
-      </div>
-      <div class="info-purchase">
-        <div class="info-purchase__price">
-          {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>
-        <button type="button" name="button" class="btn" (click)="addCart(product)">Купить</button>
+      <div class="card-description">
+        <h3>Описание</h3>
+        {{product.description}}
+        <h3>{{product.additionalDescriptionHeadline}}</h3>
+        {{product.additionalDescription}}
       </div>
     </div>
-    <div class="card-description">
-      <h3>Описание</h3>
-      {{product.description}}
-      <h3>{{product.additionalDescriptionHeadline}}</h3>
-      {{product.additionalDescription}}
-    </div>
-  </div>
 
-</div>
+  </div>

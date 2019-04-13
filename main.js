@@ -717,6 +717,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var FilterService = /** @class */ (function () {
     function FilterService() {
+        this.productPriceMin = 0;
+        this.productPriceMax = 30000;
         this.Type = 'name';
     }
     FilterService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

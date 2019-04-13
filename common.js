@@ -40,7 +40,7 @@ var ProductService = /** @class */ (function () {
     ProductService.prototype.getProductById = function (id, category) {
         return this.http.get('assets/json/products.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             var productList = data[category];
-            return productList.filter(function (d) { return d.id === id; })[0] || null;
+            return productList.filter(function (product) { return product.id === id; })[0] || null;
         }));
     };
     ProductService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

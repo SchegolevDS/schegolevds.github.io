@@ -198,7 +198,7 @@ var ProductCardRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-breadcrumbs></app-breadcrumbs>\n  <div class=\"container\">\n    <div class=\"product-card\">\n      <div class=\"product-card__img-collapse\">\n      <app-img-collapse\n        [images]=\"product.imgUrls\">\n      </app-img-collapse>\n      </div>\n      <div class=\"card-info\">\n        <div class=\"card-info__name\"> {{product.name}}</div>\n        <div class=\"card-info__code\"> Код товара {{product.id}}</div>\n        <div class=\"card-info__availability\">\n          <div class=\"card-info__indicator\"></div> В\n          наличии\n        </div>\n        <div class=\"info-purchase\">\n          <div class=\"info-purchase__price\">\n            {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>\n          <button type=\"button\" name=\"button\" class=\"info-purchase__btn btn\" (click)=\"addCart(product)\">Купить</button>\n        </div>\n      </div>\n      <div class=\"card-description\">\n        <h3>Описание</h3>\n        {{product.description}}\n        <h3>{{product.additionalDescriptionHeadline}}</h3>\n        {{product.additionalDescription}}\n      </div>\n    </div>\n\n  </div>\n"
+module.exports = "<app-breadcrumbs></app-breadcrumbs>\n<div class=\"container\">\n  <div class=\"product-card\">\n    <div class=\"product-card__img-collapse\">\n    <app-img-collapse\n      [images]=\"product.imgUrls\">\n    </app-img-collapse>\n    </div>\n    <div class=\"card-info\">\n      <div class=\"card-info__name\"> {{product.name}}</div>\n      <div class=\"card-info__code\"> Код товара {{product.id}}</div>\n      <div class=\"card-info__availability\">\n        <div class=\"card-info__indicator\"></div> В\n        наличии\n      </div>\n      <div class=\"info-purchase\">\n        <div class=\"info-purchase__price\">\n          {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>\n        <button type=\"button\" name=\"button\" class=\"info-purchase__btn btn\" (click)=\"addCart(product)\">Купить</button>\n      </div>\n    </div>\n    <div class=\"card-description\">\n      <h3>Описание</h3>\n      {{product.description}}\n      <h3>{{product.additionalDescriptionHeadline}}</h3>\n      {{product.additionalDescription}}\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -241,7 +241,7 @@ var ProductCardComponent = /** @class */ (function () {
     }
     ProductCardComponent.prototype.getProduct = function (category) {
         var _this = this;
-        this._productService.getProductById(this.id, category).subscribe(function (d) { return _this.product = d; });
+        this._productService.getProductById(this.id, category).subscribe(function (product) { return _this.product = product; });
     };
     ProductCardComponent.prototype.searchProduct = function () {
         this.getProduct("productList__Chairs");

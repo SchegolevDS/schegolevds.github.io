@@ -3,7 +3,7 @@
     <img src="{{product.imgUrls[0]}}" alt="">
   </div>
   <div class="product-card__name">
-    <a routerLink="/products/{{product.id}}">{{product.name}}</a>
+    <a routerLink="product/{{product.id}}">{{product.name}}</a>
   </div>
   <div class="product-card__price">
     {{product.price | currency:' ':'':'0.0-0'}} ₽

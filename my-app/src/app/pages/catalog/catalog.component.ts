@@ -15,33 +15,38 @@ import { FilterService } from 'src/app/services/filter.service';
 export class CatalogComponent implements OnInit {
   products: Product[] = [];
   error: any;
+  title: string;
+
   public config: PaginationInstance = {
         id: 'custom',
-        itemsPerPage: 16,
+        itemsPerPage: 14,
         currentPage: 1
     };
 
-  constructor(
-    public router: Router,
-    private _filterService: FilterService,
-    private _productService: ProductService,
-    private _cartService:ShoppingCartService) {
-    }
+  constructor(public router: Router,
+              public filterService: FilterService,
+              private _productService: ProductService,
+              private _cartService:ShoppingCartService) { }
 
-  getProducts(url, category) {
+  getProducts(url, category, title) {
     if (this.router.url === url) {
       this._productService.getProducts(category).subscribe(data => this.products=data);
+      this.title = title;
     }
+  }
+
+  theGetProducts() {
+    this.getProducts('/chairs', "productList__Chairs", "Стулья и кресла");
+    this.getProducts('/beds', "productList__Beds", "Кровати и матрасы");
+    this.getProducts('/cabinets', "productList__Cabinets", "Шкафы и комоды");
+    this.getProducts('/kitchen', "productList__Kitchen", "Мебель для кухни");
+    this.getProducts('/home', "productList__Home", "Товары для дома");
   }
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
       this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
     }
-    this.getProducts('/', "productList__Chairs");
-    this.getProducts('/beds', "productList__Beds");
-    this.getProducts('/cabinets', "productList__Cabinets");
-    this.getProducts('/kitchen', "productList__Kitchen");
-    this.getProducts('/home', "productList__Home");
+    this.theGetProducts();
   }
 }

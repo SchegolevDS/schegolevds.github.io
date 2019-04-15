@@ -6,5 +6,4 @@ export class Product {
   description: string;
   additionalDescriptionHeadline: string;
   additionalDescription: string;
-  static id: any;
 }

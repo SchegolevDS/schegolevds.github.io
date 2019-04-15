@@ -1,5 +1,5 @@
-<div *ngFor="let product of products" class="status-product__item">
-    <img src=".{{product.imgURL}}" class="status-product__img" alt="">
+<div class="status-product__item">
+    <img src="{{product.imgUrls[0]}}" class="status-product__img" alt="">
     <div class="status-product__name">
       {{product.name}}
         <div class="status-product__code">

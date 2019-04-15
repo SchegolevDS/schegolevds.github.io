@@ -146,7 +146,7 @@ var StatusAuthComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngFor=\"let product of products\" class=\"status-product__item\">\n    <img src=\".{{product.imgURL}}\" class=\"status-product__img\" alt=\"\">\n    <div class=\"status-product__name\">\n      {{product.name}}\n        <div class=\"status-product__code\">\n        {{product.id}}\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"status-product__item\">\n    <img src=\"{{product.imgUrls[0]}}\" class=\"status-product__img\" alt=\"\">\n    <div class=\"status-product__name\">\n      {{product.name}}\n        <div class=\"status-product__code\">\n        {{product.id}}\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -157,7 +157,7 @@ module.exports = "<div *ngFor=\"let product of products\" class=\"status-product
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".status-product {\n  font-size: 16px;\n  font-weight: 700;\n  line-height: 21px;\n  margin-top: 65px; }\n  .status-product__quantity {\n    padding-bottom: 14px;\n    border-bottom: 1px solid #f0f2f7; }\n  .status-product__item {\n    display: flex;\n    align-items: center;\n    height: 100px;\n    border-bottom: 1px solid #f0f2f7; }\n  .status-product__img {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    height: 99px;\n    width: 99px; }\n  .status-product__name {\n    font-size: 16px;\n    font-weight: 400;\n    margin-left: 20px; }\n  .status-product__code {\n    color: #a1a8bd;\n    font-size: 14px;\n    font-weight: 400; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvb3JkZXItc3RhdHVzL3N0YXR1cy9wcm9kdWN0L0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxvcmRlci1zdGF0dXNcXHN0YXR1c1xccHJvZHVjdFxccHJvZHVjdC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBO0VBRWhCO0lBQ0ksb0JBQW9CO0lBQ3BCLGdDQUFnQyxFQUFBO0VBR3BDO0lBQ0ksYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsZ0NBQWdDLEVBQUE7RUFHcEM7SUFDRSxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixZQUFZO0lBQ1osV0FBVyxFQUFBO0VBR2I7SUFDSSxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLGlCQUFpQixFQUFBO0VBR3JCO0lBQ0ksY0FBYztJQUNkLGVBQWU7SUFDZixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL29yZGVyLXN0YXR1cy9zdGF0dXMvcHJvZHVjdC9wcm9kdWN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0YXR1cy1wcm9kdWN0IHtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBsaW5lLWhlaWdodDogMjFweDtcclxuICAgIG1hcmdpbi10b3A6IDY1cHg7XHJcblxyXG4gICAgJl9fcXVhbnRpdHkge1xyXG4gICAgICAgIHBhZGRpbmctYm90dG9tOiAxNHB4O1xyXG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZjBmMmY3O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2l0ZW0ge1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBoZWlnaHQ6IDEwMHB4O1xyXG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZjBmMmY3O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICBoZWlnaHQ6IDk5cHg7XHJcbiAgICAgIHdpZHRoOiA5OXB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX25hbWUge1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgICBmb250LXdlaWdodDogNDAwO1xyXG4gICAgICAgIG1hcmdpbi1sZWZ0OiAyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2NvZGUge1xyXG4gICAgICAgIGNvbG9yOiAjYTFhOGJkO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgICAgICBmb250LXdlaWdodDogNDAwO1xyXG4gICAgfVxyXG59XHJcbiJdfQ== */"
+module.exports = ".status-product {\n  font-size: 16px;\n  font-weight: 700;\n  line-height: 21px;\n  margin-top: 65px; }\n  .status-product__quantity {\n    padding-bottom: 14px;\n    border-bottom: 1px solid #f0f2f7; }\n  .status-product__item {\n    display: flex;\n    align-items: center;\n    height: 100px;\n    border-bottom: 1px solid #f0f2f7; }\n  .status-product__img {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    height: 99px;\n    width: 99px; }\n  .status-product__img img {\n      max-width: 99px;\n      max-height: 99px; }\n  .status-product__name {\n    font-size: 16px;\n    font-weight: 400;\n    margin-left: 20px; }\n  .status-product__code {\n    color: #a1a8bd;\n    font-size: 14px;\n    font-weight: 400; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvb3JkZXItc3RhdHVzL3N0YXR1cy9wcm9kdWN0L0U6XFzQoNCw0LHQvtGC0YtcXGdpdGh1Ylxcc3RvcmUvc3JjXFxhcHBcXHBhZ2VzXFxvcmRlci1zdGF0dXNcXHN0YXR1c1xccHJvZHVjdFxccHJvZHVjdC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBO0VBRWhCO0lBQ0ksb0JBQW9CO0lBQ3BCLGdDQUFnQyxFQUFBO0VBR3BDO0lBQ0ksYUFBYTtJQUNiLG1CQUFtQjtJQUNuQixhQUFhO0lBQ2IsZ0NBQWdDLEVBQUE7RUFHcEM7SUFDRSxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixZQUFZO0lBQ1osV0FBVyxFQUFBO0VBTFo7TUFPRyxlQUFlO01BQ2YsZ0JBQWdCLEVBQUE7RUFJcEI7SUFDSSxlQUFlO0lBQ2YsZ0JBQWdCO0lBQ2hCLGlCQUFpQixFQUFBO0VBR3JCO0lBQ0ksY0FBYztJQUNkLGVBQWU7SUFDZixnQkFBZ0IsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL29yZGVyLXN0YXR1cy9zdGF0dXMvcHJvZHVjdC9wcm9kdWN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0YXR1cy1wcm9kdWN0IHtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbiAgICBsaW5lLWhlaWdodDogMjFweDtcclxuICAgIG1hcmdpbi10b3A6IDY1cHg7XHJcblxyXG4gICAgJl9fcXVhbnRpdHkge1xyXG4gICAgICAgIHBhZGRpbmctYm90dG9tOiAxNHB4O1xyXG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZjBmMmY3O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2l0ZW0ge1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgICAgICBoZWlnaHQ6IDEwMHB4O1xyXG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZjBmMmY3O1xyXG4gICAgfVxyXG5cclxuICAgICZfX2ltZyB7XHJcbiAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgICBoZWlnaHQ6IDk5cHg7XHJcbiAgICAgIHdpZHRoOiA5OXB4O1xyXG4gICAgICBpbWcge1xyXG4gICAgICAgIG1heC13aWR0aDogOTlweDtcclxuICAgICAgICBtYXgtaGVpZ2h0OiA5OXB4O1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgJl9fbmFtZSB7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDIwcHg7XHJcbiAgICB9XHJcblxyXG4gICAgJl9fY29kZSB7XHJcbiAgICAgICAgY29sb3I6ICNhMWE4YmQ7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgICAgIGZvbnQtd2VpZ2h0OiA0MDA7XHJcbiAgICB9XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -173,16 +173,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductComponent", function() { return ProductComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _products_shopping_cart_products__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../products/shopping-cart-products */ "./src/app/pages/products/shopping-cart-products.ts");
+/* harmony import */ var src_app_models_product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/product */ "./src/app/models/product.ts");
 
 
 
 var ProductComponent = /** @class */ (function () {
     function ProductComponent() {
-        this.products = _products_shopping_cart_products__WEBPACK_IMPORTED_MODULE_2__["Products"];
     }
     ProductComponent.prototype.ngOnInit = function () {
     };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", src_app_models_product__WEBPACK_IMPORTED_MODULE_2__["Product"])
+    ], ProductComponent.prototype, "product", void 0);
     ProductComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-product',
@@ -205,7 +208,7 @@ var ProductComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"headline\">\n        <h2>Проверить статус заказа</h2>\n    </div>\n    <div class=\"status\">\n        <div class=\"status-head\">\n          <div class=\"status__headline\">\n              Заказ ARU04889781\n              <div class=\"status__date\">\n                  Дата заказа: 7 февраля 2019\n              </div>\n          </div>\n          <a routerLink=\"/order-status\" class=\"status__exit\">Проверить другой заказ</a>\n        </div>\n        <div class=\"current-state\">\n            <div class=\"progress-bar\">\n                <div class=\"progress-bar__circle progress-bar__circle--current\">1</div>\n                <div class=\"progress-bar__line\"></div>\n                <div class=\"progress-bar__circle\">2</div>\n                <div class=\"progress-bar__line\"></div>\n                <div class=\"progress-bar__circle\">3</div>\n            </div>\n            <div class=\"status-name\">\n                <div class=\"status-name__confirm status-name__confirm--current\">Подтверждение</div>\n                <div class=\"status-name__ready\">Готовится к отправке</div>\n                <div class=\"status-name__sent\">Отправлен</div>\n            </div>\n        </div>\n        <div class=\"status-product\">\n            <div class=\"status-product__quantity\">\n                3 товара\n            </div>\n            <app-product></app-product>\n        </div>\n        <div class=\"status-adress\">\n            <div class=\"status__headline\">\n                Адрес доставки\n            </div>\n            Севастополь, Победы пр-кт, д. 2А\n            Россия\n        </div>\n        <div class=\"recipient\">\n            <div class=\"status__headline\">\n                Получатель\n            </div>\n            Иван Иванов\n            ivanov@gmail.com\n            +7 (978) 123-45-67\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n    <div class=\"headline\">\n        <h2>Проверить статус заказа</h2>\n    </div>\n    <div class=\"status\">\n        <div class=\"status-head\">\n          <div class=\"status__headline\">\n              Заказ ARU04889781\n              <div class=\"status__date\">\n                  Дата заказа: {{date | date:'shortDate'}}\n              </div>\n          </div>\n          <a routerLink=\"/order-status\" class=\"status__exit\">Проверить другой заказ</a>\n        </div>\n        <div class=\"current-state\">\n            <div class=\"progress-bar\">\n                <div class=\"progress-bar__circle progress-bar__circle--current\">1</div>\n                <div class=\"progress-bar__line\"></div>\n                <div class=\"progress-bar__circle\">2</div>\n                <div class=\"progress-bar__line\"></div>\n                <div class=\"progress-bar__circle\">3</div>\n            </div>\n            <div class=\"status-name\">\n                <div class=\"status-name__confirm status-name__confirm--current\">Подтверждение</div>\n                <div class=\"status-name__ready\">Готовится к отправке</div>\n                <div class=\"status-name__sent\">Отправлен</div>\n            </div>\n        </div>\n        <div class=\"status-product\">\n            <div class=\"status-product__quantity\">\n                {{totalQuantity}} {{totalQuantityStr}}\n            </div>\n            <app-product *ngFor=\"let product of products\"\n                        [product]=\"product\"></app-product>\n        </div>\n        <div class=\"status-adress\">\n            <div class=\"status__headline\">\n                Адрес доставки\n            </div>\n            {{orderService.order.city}}\n            {{orderService.order.room}}\n            {{orderService.order.floor}}\n            {{orderService.order.entrance}}\n            <br>\n            Россия\n        </div>\n        <div class=\"recipient\">\n            <div class=\"status__headline\">\n                Получатель\n            </div>\n            {{orderService.order.name}}{{orderService.order.family}}\n            {{orderService.order.email}}\n            {{orderService.order.phone}}\n        </div>\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -232,12 +235,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatusComponent", function() { return StatusComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_order_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/order.service */ "./src/app/services/order.service.ts");
+
 
 
 var StatusComponent = /** @class */ (function () {
-    function StatusComponent() {
+    function StatusComponent(orderService) {
+        this.orderService = orderService;
     }
     StatusComponent.prototype.ngOnInit = function () {
+        this.products = this.orderService.orderProducts;
+        this.totalQuantity = this.orderService.totalQuantity;
+        this.totalQuantityStr = this.orderService.totalQuantityStr;
+        this.date = this.orderService.date;
     };
     StatusComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -245,30 +255,11 @@ var StatusComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./status.component.html */ "./src/app/pages/order-status/status/status.component.html"),
             styles: [__webpack_require__(/*! ./status.component.scss */ "./src/app/pages/order-status/status/status.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_order_service__WEBPACK_IMPORTED_MODULE_2__["OrderService"]])
     ], StatusComponent);
     return StatusComponent;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/app/pages/products/shopping-cart-products.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/pages/products/shopping-cart-products.ts ***!
-  \**********************************************************/
-/*! exports provided: Products */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Products", function() { return Products; });
-var Products = [
-    { id: 1049556, name: 'Кресло Ханна', price: 9399, imgURL: '/assets/img/content/8.jpg' },
-    { id: 1049557, name: 'Кресло Гоа', price: 9399, imgURL: '/assets/img/content/6.jpg' },
-    { id: 1049558, name: 'Стул Бланес', price: 9399, imgURL: '/assets/img/content/13.jpg' }
-];
 
 
 /***/ })

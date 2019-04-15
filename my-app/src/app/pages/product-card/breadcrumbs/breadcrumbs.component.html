@@ -1,1 +1,19 @@
-
+<div class="breadcrumbs">
+  <a routerLink = "/">Главная</a>
+  <svg
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="6px" height="8px">
+        <path fill-rule="evenodd"  fill="rgb(130, 138, 162)"
+         d="M5.807,3.930 L2.537,0.504 L2.052,-0.004 L1.446,0.504 L0.719,1.392 L3.142,3.930 L0.719,6.596 L1.446,7.358 L2.052,7.992 L2.537,7.358 L5.807,3.930 Z"/>
+  </svg>
+  <a routerLink = "/{{category}}">{{categoryStr}}</a>
+  <svg
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="6px" height="8px">
+        <path fill-rule="evenodd"  fill="rgb(130, 138, 162)"
+         d="M5.807,3.930 L2.537,0.504 L2.052,-0.004 L1.446,0.504 L0.719,1.392 L3.142,3.930 L0.719,6.596 L1.446,7.358 L2.052,7.992 L2.537,7.358 L5.807,3.930 Z"/>
+  </svg>
+  <a routerLink = "/product/{{id}}">{{name}}</a>
+</div>

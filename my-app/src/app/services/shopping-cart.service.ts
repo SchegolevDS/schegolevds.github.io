@@ -25,8 +25,6 @@ export class ShoppingCartService {
     function cartID(value) {
       return value == product.id;
     }
-    if (this.cartID.filter(cartID) == product.id) {
-    }
     if (this.cartID.filter(cartID) != product.id) {
       this.cart.push(product);
       this.cartID.push(product.id);
@@ -36,9 +34,9 @@ export class ShoppingCartService {
     this._totalQuantity();
   }
 
-  public delete (id) {
-  this.cart.splice(id, 1);
-  this.cartID.splice(id, 1);
+  public delete (index) {
+  this.cart.splice(index, 1);
+  this.cartID.splice(index, 1);
   localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
   localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
   this._totalQuantity()

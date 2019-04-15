@@ -14,38 +14,41 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductCardComponent implements OnInit {
   id:number;
   product: Product;
+  category:string;
 
   constructor(private route: ActivatedRoute,
-  private _cartService:ShoppingCartService,
-  private _productService: ProductService,) { }
+  public _cartService:ShoppingCartService,
+  private _productService: ProductService) { }
 
   getProduct(category) {
-    this._productService.getProductById(this.id, category).subscribe(d => this.product = d)
+    this._productService.getProductById(this.id, category).subscribe(product => this.product = product)
   }
 
   searchProduct() {
-    this.getProduct("productList__Chairs")
-    if (this.product == null) {
+    if (this.product == undefined) {
+        this.getProduct("productList__Chairs");
+    }
+    if (this.product == undefined) {
       this.getProduct("productList__Beds");
     }
-    if (this.product == null) {
+    if (this.product == undefined) {
       this.getProduct("productList__Cabinets");
     }
-    if (this.product == null) {
+    if (this.product == undefined) {
       this.getProduct("productList__Kitchen");
     }
-    if (this.product == null) {
+    if (this.product == undefined) {
       this.getProduct("productList__Home");
     }
   }
 
-  public addCart(product: any) {
-    this._cartService.add(product);
+  public addCart(product) {
+      this._cartService.add(product);
   }
 
   ngOnInit() {
-      this.id = +this.route.snapshot.paramMap.get('id');
-      this.searchProduct();
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.searchProduct();
   }
 
 }

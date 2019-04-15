@@ -7,7 +7,7 @@
           <div class="status__headline">
               Заказ ARU04889781
               <div class="status__date">
-                  Дата заказа: 7 февраля 2019
+                  Дата заказа: {{date | date:'shortDate'}}
               </div>
           </div>
           <a routerLink="/order-status" class="status__exit">Проверить другой заказ</a>
@@ -28,24 +28,30 @@
         </div>
         <div class="status-product">
             <div class="status-product__quantity">
-                3 товара
+                {{totalQuantity}} {{totalQuantityStr}}
             </div>
-            <app-product></app-product>
+            <app-product *ngFor="let product of products"
+                        [product]="product"></app-product>
         </div>
         <div class="status-adress">
             <div class="status__headline">
                 Адрес доставки
             </div>
-            Севастополь, Победы пр-кт, д. 2А
+            {{orderService.order.city}}
+            {{orderService.order.room}}
+            {{orderService.order.floor}}
+            {{orderService.order.entrance}}
+            <br>
             Россия
         </div>
         <div class="recipient">
             <div class="status__headline">
                 Получатель
             </div>
-            Иван Иванов
-            ivanov@gmail.com
-            +7 (978) 123-45-67
+            {{orderService.order.name}}{{orderService.order.family}}
+            {{orderService.order.email}}
+            {{orderService.order.phone}}
         </div>
+
     </div>
 </div>

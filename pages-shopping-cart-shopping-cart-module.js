@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container container--shoping-card\">\n  <div class=\"checkout\">\n    <h2>Оформление заказа</h2>\n    <form action=\"\" class=\"chekout-form\">\n      <h4>Адрес доставки</h4>\n      <div class=\"chekout-form__item\">\n        <input type=\"text\" required placeholder=\" \" name=\"\" value=\"\" class=\"input-main\">\n        <label class=\"chekout-form__label\">Город, улица, номер дома*</label>\n      </div>\n      <div class=\"chekout-form__item chekout-form__item--min\">\n        <input type=\"text\" placeholder=\" \" name=\"\" value=\"\" class=\"input-main input-main--min\">\n        <label class=\"chekout-form__label\">Кв/офис</label>\n      </div>\n      <div class=\"chekout-form__item chekout-form__item--min\">\n        <input type=\"text\" placeholder=\" \" name=\"\" value=\"\" class=\"input-main input-main--min\">\n        <label class=\"chekout-form__label\">Этаж</label>\n      </div>\n      <div class=\"chekout-form__item chekout-form__item--min\">\n        <input type=\"text\" placeholder=\" \" name=\"\" value=\"\" class=\"input-main input-main--min\">\n        <label class=\"chekout-form__label\">Подъезд</label>\n      </div>\n      <div class=\"chekout-form__item\">\n          <textarea type=\"text\" placeholder=\" \" name=\"\" value=\"\" class=\"input-main input-main--comment\"></textarea>\n        <label class=\"chekout-form__label\">Комментарий к заказу</label>\n      </div>\n      <h4>Получатель</h4>\n      <div class=\"chekout-form__item\">\n        <input type=\"text\" required placeholder=\" \" name=\"\" value=\"\" class=\"input-main\">\n        <label class=\"chekout-form__label\">Имя*</label>\n      </div>\n      <div class=\"chekout-form__item\">\n        <input type=\"text\" required placeholder=\" \" name=\"\" value=\"\" class=\"input-main\">\n        <label class=\"chekout-form__label\">Фамилия*</label>\n      </div>\n      <div class=\"chekout-form__item\">\n      <input type=\"text\" required placeholder=\" \" name=\"\" value=\"\" class=\"input-main\">\n        <label class=\"chekout-form__label\">Электронная почта*</label>\n      </div>\n      <div class=\"chekout-form__item\">\n      <input type=\"number\" required placeholder=\" \" name=\"\" value=\"\" class=\"input-main\">\n        <label class=\"chekout-form__label\">Номер телефона*</label>\n      </div>\n      <button type=\"submit\" name=\"button\" class=\"btn chekout-form__btn\">Оформить заказ</button>\n    </form>\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"container container--shoping-card\">\r\n  <div class=\"checkout\">\r\n    {{myDate | date:'shortDate'}}\r\n    <h2>Оформление заказа</h2>\r\n    <form action=\"\" (ngSubmit)=\"Submit()\" class=\"chekout-form\">\r\n      <h4>Адрес доставки</h4>\r\n      <div class=\"chekout-form__item\">\r\n        <input type=\"text\" required placeholder=\" \" name=\"city\" [(ngModel)]=\"city\"  class=\"input-main\">\r\n        <label class=\"chekout-form__label\">Город, улица, номер дома*</label>\r\n      </div>\r\n      <div class=\"chekout-form__item chekout-form__item--min\">\r\n        <input type=\"text\" placeholder=\" \" name=\"room\" [(ngModel)]=\"room\" class=\"input-main input-main--min\">\r\n        <label class=\"chekout-form__label\">Кв/офис</label>\r\n      </div>\r\n      <div class=\"chekout-form__item chekout-form__item--min\">\r\n        <input type=\"text\" placeholder=\" \" name=\"floor\" [(ngModel)]=\"floor\" class=\"input-main input-main--min\">\r\n        <label class=\"chekout-form__label\">Этаж</label>\r\n      </div>\r\n      <div class=\"chekout-form__item chekout-form__item--min\">\r\n        <input type=\"text\" placeholder=\" \" name=\"entrance\" [(ngModel)]=\"entrance\" class=\"input-main input-main--min\">\r\n        <label class=\"chekout-form__label\">Подъезд</label>\r\n      </div>\r\n      <div class=\"chekout-form__item\">\r\n        <textarea type=\"text\" placeholder=\" \" name=\"comment\" [(ngModel)]=\"comment\" class=\"input-main input-main--comment\"></textarea>\r\n        <label class=\"chekout-form__label\">Комментарий к заказу</label>\r\n      </div>\r\n      <h4>Получатель</h4>\r\n      <div class=\"chekout-form__item\">\r\n        <input type=\"text\" required placeholder=\" \" name=\"name\" [(ngModel)]=\"name\" class=\"input-main\">\r\n        <label class=\"chekout-form__label\">Имя*</label>\r\n      </div>\r\n      <div class=\"chekout-form__item\">\r\n        <input type=\"text\" required placeholder=\" \" name=\"family\" [(ngModel)]=\"family\" class=\"input-main\">\r\n        <label class=\"chekout-form__label\">Фамилия*</label>\r\n      </div>\r\n      <div class=\"chekout-form__item\">\r\n        <input type=\"text\" required placeholder=\" \" name=\"email\" [(ngModel)]=\"email\" class=\"input-main\">\r\n        <label class=\"chekout-form__label\">Электронная почта*</label>\r\n      </div>\r\n      <div class=\"chekout-form__item\">\r\n        <input type=\"text\" required placeholder=\" \" name=\"phone\" [(ngModel)]=\"phone\" class=\"input-main\">\r\n        <label class=\"chekout-form__label\">Номер телефона*</label>\r\n      </div>\r\n      <button type=\"submit\" name=\"button\" class=\"btn chekout-form__btn\">Оформить заказ</button>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -34,11 +34,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckoutComponent", function() { return CheckoutComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/shopping-cart.service */ "./src/app/services/shopping-cart.service.ts");
+/* harmony import */ var src_app_services_order_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/order.service */ "./src/app/services/order.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
 
 
 var CheckoutComponent = /** @class */ (function () {
-    function CheckoutComponent() {
+    function CheckoutComponent(_cartService, _orderService, router) {
+        this._cartService = _cartService;
+        this._orderService = _orderService;
+        this.router = router;
     }
+    CheckoutComponent.prototype.Submit = function () {
+        if (this.city != undefined && this.city.length > 0 &&
+            this.name != undefined && this.name.length > 0 &&
+            this.family != undefined && this.family.length > 0 &&
+            this.email != undefined && this.email.length > 0 &&
+            this.phone != undefined && this.phone.length > 0) {
+            this.Undefined();
+            this._orderService.order = {
+                city: this.city + ',',
+                room: this.room,
+                floor: this.floor,
+                entrance: this.entrance,
+                comment: this.comment,
+                name: this.name + ' ',
+                family: this.family,
+                email: this.email,
+                phone: this.phone
+            };
+            this._orderService.orderProducts = this._cartService.cart;
+            this._orderService.totalQuantity = this._cartService.totalQuantity;
+            this._orderService.totalQuantityStr = this._cartService.totalQuantityStr;
+            new Date();
+            this._orderService.date = new Date();
+            this.router.navigateByUrl('/order-status/order_number');
+        }
+    };
+    CheckoutComponent.prototype.Undefined = function () {
+        if (this.room == undefined) {
+            this.room = '';
+        }
+        else {
+            this.room = this.room + ',';
+        }
+        if (this.floor == undefined) {
+            this.floor = '';
+        }
+        else {
+            this.floor = this.floor + ',';
+        }
+        if (this.entrance == undefined) {
+            this.entrance = '';
+        }
+        else {
+            this.entrance = this.entrance + ',';
+        }
+    };
     CheckoutComponent.prototype.ngOnInit = function () {
     };
     CheckoutComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -47,7 +102,9 @@ var CheckoutComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./checkout.component.html */ "./src/app/pages/shopping-cart/checkout/checkout.component.html"),
             styles: [__webpack_require__(/*! ./checkout.component.scss */ "./src/app/pages/shopping-cart/checkout/checkout.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_shopping_cart_service__WEBPACK_IMPORTED_MODULE_2__["ShoppingCartService"],
+            src_app_services_order_service__WEBPACK_IMPORTED_MODULE_3__["OrderService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], CheckoutComponent);
     return CheckoutComponent;
 }());

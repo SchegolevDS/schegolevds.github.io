@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { Product } from 'src/app/models/product';
 
@@ -30,8 +30,7 @@ export class ProductService {
   getProductById(id: number, category:string) {
     return this.http.get('assets/json/products.json').pipe(map(data=>{
         let productList = data[category];
-        return productList.filter(d => d.id === id)[0] || null
+        return productList.filter(product => product.id === id)[0] || null
       }));
     }
-    
 }

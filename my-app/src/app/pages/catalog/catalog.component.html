@@ -1,29 +1,27 @@
 <div class="head-banner">
   <div class="container">
-    <h1>Стулья <br>и кресла</h1>
+    <h1>{{title}}</h1>
     <img src="/assets/img/general/head-banner.png" alt="" class="head-banner__img">
   </div>
 </div>
-
 <div class="container">
   <div class="catalog">
-    <app-sorting></app-sorting>
+    <app-sorting [(itemsPerPage)]="config.itemsPerPage"></app-sorting>
     <div class="product-list">
-      <app-product-card-min *ngFor="let product of products
-        | search: _filterService.searchStr
-        | orderBy: _filterService.Type
-        | paginate: config"
-        [product]="product">
-      </app-product-card-min>
+      <ng-container *ngFor="let product of products
+                            | search: filterService.searchStr
+                            | orderBy: filterService.Type
+                            | paginate: config">
+        <app-product-card-min *ngIf="product.price >= filterService.productPriceMin && product.price <= filterService.productPriceMax"
+                              [product]="product">
+        </app-product-card-min>
+      </ng-container>
     </div>
-
-
 
 <pagination-template #p="paginationApi"
                      [id]="config.id"
                      (pageChange)="config.currentPage = $event"
                      [maxSize]="10">
-
 
     <div class="pagination">
       <ng-container *ngFor="let page of p.pages; let first = first">

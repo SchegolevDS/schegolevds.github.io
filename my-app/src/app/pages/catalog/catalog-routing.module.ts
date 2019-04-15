@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CatalogComponent } from './catalog.component';
 
 const routes: Routes = [
-  {path: "", component: CatalogComponent},
+  {path: "", redirectTo: "chairs", component: CatalogComponent},
+  {path: "chairs", component: CatalogComponent},
   {path: "beds", component: CatalogComponent},
   {path: "cabinets", component: CatalogComponent},
   {path: "kitchen", component: CatalogComponent},

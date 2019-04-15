@@ -1,30 +1,43 @@
-<app-breadcrumbs></app-breadcrumbs>
-  <div class="container">
-    <div class="product-card">
-      <div class="product-card__img-collapse">
-      <app-img-collapse
-        [images]="product.imgUrls">
-      </app-img-collapse>
+<div class="container">
+  <app-breadcrumbs  [id]="id"
+                    [name]="product.name">
+  </app-breadcrumbs>
+  <div class="product-card">
+    <div class="product-card__img-collapse">
+    <app-img-collapse
+      [images]="product.imgUrls">
+    </app-img-collapse>
+    </div>
+    <div class="card-info">
+      <div class="card-info__name"> {{product.name}}</div>
+      <div class="card-info__code"> Код товара {{product.id}}</div>
+      <div class="card-info__availability">
+        <div class="card-info__indicator"></div> В
+        наличии
       </div>
-      <div class="card-info">
-        <div class="card-info__name"> {{product.name}}</div>
-        <div class="card-info__code"> Код товара {{product.id}}</div>
-        <div class="card-info__availability">
-          <div class="card-info__indicator"></div> В
-          наличии
+      <div class="info-purchase">
+        <div class="info-purchase__price">
+          {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>
+        <button type="button" name="button" class="info-purchase__btn btn" (click)="addCart(product)">Купить</button>
+        <div class="info-purchase__delivery">
+          <div class="info-purchase__icon">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                width="20px" height="16px">
+                <path fill-rule="evenodd"  opacity="0.761" fill="rgb(126, 134, 159)"
+                d="M19.000,14.000 L17.000,14.000 C17.000,12.343 15.656,11.000 14.000,11.000 C13.660,11.000 13.339,11.068 13.035,11.173 C13.024,11.115 13.000,11.061 13.000,11.000 L13.000,4.000 C13.000,3.448 13.448,3.000 14.000,3.000 L16.000,3.000 C18.205,3.000 20.000,4.794 20.000,7.000 L20.000,13.000 C20.000,13.551 19.552,14.000 19.000,14.000 ZM18.000,6.000 L15.000,6.000 L15.000,8.000 L18.000,8.000 L18.000,6.000 ZM16.000,14.000 C16.000,15.104 15.104,16.000 14.000,16.000 C12.895,16.000 12.000,15.104 12.000,14.000 C12.000,12.896 12.895,12.000 14.000,12.000 C15.104,12.000 16.000,12.896 16.000,14.000 ZM8.000,14.000 C8.000,12.343 6.656,11.000 5.000,11.000 C3.344,11.000 2.000,12.343 2.000,14.000 L1.000,14.000 C0.448,14.000 -0.000,13.551 -0.000,13.000 L-0.000,2.000 C-0.000,0.896 0.897,-0.000 2.000,-0.000 L10.000,-0.000 C11.103,-0.000 12.000,0.896 12.000,2.000 L12.000,11.779 C11.390,12.328 11.000,13.115 11.000,14.000 L8.000,14.000 ZM5.000,12.000 C6.104,12.000 7.000,12.896 7.000,14.000 C7.000,15.104 6.104,16.000 5.000,16.000 C3.895,16.000 3.000,15.104 3.000,14.000 C3.000,12.896 3.895,12.000 5.000,12.000 Z"/>
+            </svg>
+          </div>
+          Бесплатная доставка
         </div>
-        <div class="info-purchase">
-          <div class="info-purchase__price">
-            {{product.price | currency:' ':'':'0.0-0'}} ₽ </div>
-          <button type="button" name="button" class="info-purchase__btn btn" (click)="addCart(product)">Купить</button>
-        </div>
-      </div>
-      <div class="card-description">
-        <h3>Описание</h3>
-        {{product.description}}
-        <h3>{{product.additionalDescriptionHeadline}}</h3>
-        {{product.additionalDescription}}
       </div>
     </div>
-
+    <div class="card-description">
+      <h3>Описание</h3>
+      {{product.description}}
+      <h3>{{product.additionalDescriptionHeadline}}</h3>
+      {{product.additionalDescription}}
+    </div>
   </div>
+</div>

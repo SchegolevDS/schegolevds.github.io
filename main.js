@@ -15,6 +15,7 @@ var map = {
 	],
 	"./pages/order-status/order-status.module": [
 		"./src/app/pages/order-status/order-status.module.ts",
+		"common",
 		"pages-order-status-order-status-module"
 	],
 	"./pages/product-card/product-card.module": [
@@ -24,6 +25,7 @@ var map = {
 	],
 	"./pages/shopping-cart/shopping-cart.module": [
 		"./src/app/pages/shopping-cart/shopping-cart.module.ts",
+		"common",
 		"pages-shopping-cart-shopping-cart-module"
 	]
 };
@@ -67,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: '', loadChildren: './pages/catalog/catalog.module#CatalogModule' },
-    { path: 'products/:id', loadChildren: './pages/product-card/product-card.module#ProductCardModule' },
+    { path: ':category/product/:id', loadChildren: './pages/product-card/product-card.module#ProductCardModule' },
     { path: 'shopping-cart', loadChildren: './pages/shopping-cart/shopping-cart.module#ShoppingCartModule' },
     { path: 'order-status', loadChildren: './pages/order-status/order-status.module#OrderStatusModule' }
 ];
@@ -718,7 +720,7 @@ __webpack_require__.r(__webpack_exports__);
 var FilterService = /** @class */ (function () {
     function FilterService() {
         this.productPriceMin = 0;
-        this.productPriceMax = 30000;
+        this.productPriceMax = 100000;
         this.Type = 'name';
     }
     FilterService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -765,8 +767,6 @@ var ShoppingCartService = /** @class */ (function () {
         function cartID(value) {
             return value == product.id;
         }
-        if (this.cartID.filter(cartID) == product.id) {
-        }
         if (this.cartID.filter(cartID) != product.id) {
             this.cart.push(product);
             this.cartID.push(product.id);
@@ -775,9 +775,9 @@ var ShoppingCartService = /** @class */ (function () {
         }
         this._totalQuantity();
     };
-    ShoppingCartService.prototype.delete = function (id) {
-        this.cart.splice(id, 1);
-        this.cartID.splice(id, 1);
+    ShoppingCartService.prototype.delete = function (index) {
+        this.cart.splice(index, 1);
+        this.cartID.splice(index, 1);
         localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
         localStorage.setItem('Shopping-cart-ProductID', JSON.stringify(this.cartID));
         this._totalQuantity();

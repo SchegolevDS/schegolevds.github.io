@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Options } from 'ng5-slider';
 import { FilterService } from 'src/app/services/filter.service';
 
@@ -8,10 +8,9 @@ import { FilterService } from 'src/app/services/filter.service';
   styleUrls: ['./sorting.component.scss']
 })
 export class SortingComponent implements OnInit {
+  @Input() itemsPerPage: number;
+  @Output() itemsPerPageChange = new EventEmitter<number>();
 
-  minValue: number = 1;
-  maxValue: number = 15000;
-  sortingPage:number = 14;
 
   options: Options = {
     floor: 0,
@@ -20,9 +19,16 @@ export class SortingComponent implements OnInit {
     }
   };
 
+  change(newValue) {
+     console.log('newvalue', newValue)
+     this.itemsPerPage = newValue;
+     this.itemsPerPageChange.emit(newValue);
+   }
+
   constructor(public filter: FilterService) {}
 
   ngOnInit() {
+    this.itemsPerPage = 16;
   }
 
 }

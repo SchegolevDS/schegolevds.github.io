@@ -8,7 +8,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { CatalogRoutingModule } from './catalog-routing.module';
 import { SortingComponent } from './sorting/sorting.component';
 import { ProductCardMinComponent } from './product-card-min/product-card-min.component';
-import { SearchPipe } from './search.pipe';
+import { SearchPipe } from '../../pipes/search.pipe';
 import { CatalogComponent } from './catalog.component';
 
 @NgModule({

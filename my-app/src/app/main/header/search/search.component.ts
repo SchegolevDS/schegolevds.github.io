@@ -7,7 +7,6 @@ import { FilterService } from 'src/app/services/filter.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
   constructor(public search: FilterService) { }
 
   ngOnInit() {

@@ -11,7 +11,6 @@ export class SortingComponent implements OnInit {
   @Input() itemsPerPage: number;
   @Output() itemsPerPageChange = new EventEmitter<number>();
 
-
   options: Options = {
     floor: 0,
     translate: (): string => {
@@ -19,7 +18,7 @@ export class SortingComponent implements OnInit {
     }
   };
 
-  change(newValue) {
+  change(newValue: number) {
      console.log('newvalue', newValue)
      this.itemsPerPage = newValue;
      this.itemsPerPageChange.emit(newValue);

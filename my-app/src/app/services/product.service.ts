@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http: HttpClient){
   }
 
-  getProducts(productCategory) : Observable<Product[]> {
+  getProducts(productCategory: string) : Observable<Product[]> {
       return this.http.get('assets/json/products.json').pipe(map(data=>{
           let productList = data[productCategory];
           return productList;
@@ -25,7 +25,7 @@ export class ProductService {
                           concat(data["productList__Cabinets"]).
                           concat(data["productList__Kitchen"]).
                           concat(data["productList__Home"]);
-        return productList.filter(product => product.id === id)[0] || null
+        return productList.filter((product: { id: number; }) => product.id === id)[0] || null
       }));
     }
 }

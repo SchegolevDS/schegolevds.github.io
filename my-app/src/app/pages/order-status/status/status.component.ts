@@ -11,16 +11,16 @@ export class StatusComponent implements OnInit {
   products:Product[];
   totalQuantity:number;
   totalQuantityStr:string;
-  date
+  date: any;
 
   constructor(public orderService:OrderService) { }
 
 
   ngOnInit() {
-    this.products = this.orderService.orderProducts
-    this.totalQuantity = this.orderService.totalQuantity
-    this.totalQuantityStr = this.orderService.totalQuantityStr
-    this.date = this.orderService.date
+    this.products = this.orderService.orderProducts;
+    this.totalQuantity = this.orderService.totalQuantity;
+    this.totalQuantityStr = this.orderService.totalQuantityStr;
+    this.date = this.orderService.date;
   }
 
 }

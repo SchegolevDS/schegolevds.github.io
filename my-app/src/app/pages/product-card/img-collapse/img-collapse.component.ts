@@ -7,6 +7,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 })
 export class ImgCollapseComponent implements OnInit {
   @Input() images: [];
+  @Input() name: string;
   selectedImg: number;
   selectedImgIndex: number;
   lastImgIndex:number;
@@ -45,7 +46,7 @@ export class ImgCollapseComponent implements OnInit {
     this.lastImgIndex = this.images.length - 1;
   }
 
-  private imgCollapse(value) {
+  private imgCollapse(value: number) {
     this.imgCollapseFirst = this.imgCollapseFirst + value;
     this.imgCollapseLast = this.imgCollapseLast + value;
   }

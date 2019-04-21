@@ -14,7 +14,7 @@
               [ngClass]= "{'img-collapse__button--active': i == selectedImgIndex}"
               (click)="selectImg(i)"
               *ngIf="i >= imgCollapseFirst && i < imgCollapseLast">
-        <img src="{{img}}" class="img-collapse__min-img" alt="">
+        <img src="{{img}}" class="img-collapse__min-img" alt="{{name}}">
       </button>
     </ng-container>
     <button (click)="selectImgUp()">
@@ -28,6 +28,6 @@
     </button>
   </div>
   <div class="img-collapse__select-img">
-    <img src="{{selectedImg}}" class="img-collapse__img" alt="">
+    <img src="{{selectedImg}}" class="img-collapse__img" alt="{{name}}">
   </div>
 </div>

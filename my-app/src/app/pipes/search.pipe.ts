@@ -6,13 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class SearchPipe implements PipeTransform {
 
-  transform(products, searchStr: number) {
+  transform(products, searchStr: string) {
     if (!products || !searchStr) {
       return products;
     }
 
     return products.filter(product =>
-      product.id === searchStr);
+      product.name.toLowerCase().indexOf(searchStr.toLowerCase()) !== -1);
   }
 
 }

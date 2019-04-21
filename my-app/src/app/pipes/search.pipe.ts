@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
     }
 
     return products.filter(product =>
-      product.name.toLowerCase().indexOf(searchStr.toLowerCase()) !== -1);
+      product.name.toLowerCase().includes(searchStr.toLowerCase()));
   }
 
 }

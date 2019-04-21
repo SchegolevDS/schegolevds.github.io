@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute} from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -20,35 +19,18 @@ export class ProductCardComponent implements OnInit {
   public _cartService:ShoppingCartService,
   private _productService: ProductService) { }
 
-  getProduct(category) {
-    this._productService.getProductById(this.id, category).subscribe(product => this.product = product)
+  getProduct() {
+    this._productService.getProductById(this.id).subscribe(product => this.product = product)
   }
 
-  searchProduct() {
-    if (this.product == undefined) {
-        this.getProduct("productList__Chairs");
-    }
-    if (this.product == undefined) {
-      this.getProduct("productList__Beds");
-    }
-    if (this.product == undefined) {
-      this.getProduct("productList__Cabinets");
-    }
-    if (this.product == undefined) {
-      this.getProduct("productList__Kitchen");
-    }
-    if (this.product == undefined) {
-      this.getProduct("productList__Home");
-    }
-  }
 
-  public addCart(product) {
+  public addCart(product: any) {
       this._cartService.add(product);
   }
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.searchProduct();
+    this.getProduct();
   }
 
 }

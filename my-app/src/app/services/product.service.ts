@@ -18,9 +18,13 @@ export class ProductService {
       }));
   }
 
-  getProductById(id: number, category:string) {
+  getProductById(id: number) {
     return this.http.get('assets/json/products.json').pipe(map(data=>{
-        let productList = data[category];
+        let productList = data["productList__Chairs"].
+                          concat(data["productList__Beds"]).
+                          concat(data["productList__Cabinets"]).
+                          concat(data["productList__Kitchen"]).
+                          concat(data["productList__Home"]);
         return productList.filter(product => product.id === id)[0] || null
       }));
     }

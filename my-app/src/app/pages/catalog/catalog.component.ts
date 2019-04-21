@@ -25,12 +25,12 @@ export class CatalogComponent implements OnInit {
         currentPage: 1
     };
 
-  constructor(public router: Router,
-              public filterService: FilterService,
+  constructor(public filterService: FilterService,
+              private router: Router,
               private _productService: ProductService,
               private _cartService:ShoppingCartService) { }
 
-  getProducts(category, title) {
+  getProducts(category: any, title: string) {
       this._productService.getProducts(category).subscribe(data => this.products=data);
       this.title = title;
   }

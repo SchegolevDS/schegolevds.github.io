@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Router } from '@angular/router';
 import { FilterService } from 'src/app/services/filter.service';
+import { Categories } from 'src/app/models/categories';
 
 @Component({
   selector: 'app-catalog',
@@ -14,6 +15,28 @@ import { FilterService } from 'src/app/services/filter.service';
 })
 export class CatalogComponent implements OnInit {
   products: Product[] = [];
+  categories = {
+    chairs: {
+       categoryName: 'productList__Chairs',
+       title: 'Стулья и кресла'
+    },
+    beds: {
+       categoryName: 'productList__Beds',
+       title: 'Кровати и матрасы'
+    },
+    cabinets: {
+       categoryName: 'productList__Cabinets',
+       title: 'Шкафы и комоды'
+    },
+    kitchen: {
+       categoryName: 'productList__Kitchen',
+       title: 'Мебель для кухни'
+    },
+    home: {
+       categoryName: 'productList__Home',
+       title: 'Товары для дома'
+    }
+  }
   error: any;
   title: string;
 
@@ -28,25 +51,17 @@ export class CatalogComponent implements OnInit {
               private _productService: ProductService,
               private _cartService:ShoppingCartService) { }
 
-  getProducts(url, category, title) {
-    if (this.router.url === url) {
+  getProducts(category, title) {
       this._productService.getProducts(category).subscribe(data => this.products=data);
       this.title = title;
-    }
-  }
-
-  theGetProducts() {
-    this.getProducts('/chairs', "productList__Chairs", "Стулья и кресла");
-    this.getProducts('/beds', "productList__Beds", "Кровати и матрасы");
-    this.getProducts('/cabinets', "productList__Cabinets", "Шкафы и комоды");
-    this.getProducts('/kitchen', "productList__Kitchen", "Мебель для кухни");
-    this.getProducts('/home', "productList__Home", "Товары для дома");
   }
 
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
       this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
     }
-    this.theGetProducts();
+
+    const currentCategory = this.categories[this.router.url.replace('/', '')];
+    this.getProducts(currentCategory.categoryName, currentCategory.title)
   }
 }

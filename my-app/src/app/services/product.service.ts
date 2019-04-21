@@ -14,16 +14,7 @@ export class ProductService {
   getProducts(productCategory) : Observable<Product[]> {
       return this.http.get('assets/json/products.json').pipe(map(data=>{
           let productList = data[productCategory];
-          return productList.map(function(product:any) {
-              return {id: product.id,
-                      name: product.name,
-                      price: product.price,
-                      imgUrls: product.imgUrls,
-                      description: product.description,
-                      additionalDescriptionHeadline: product.additionalDescriptionHeadline,
-                      additionalDescription: product.additionalDescription
-                    };
-            });
+          return productList;
       }));
   }
 

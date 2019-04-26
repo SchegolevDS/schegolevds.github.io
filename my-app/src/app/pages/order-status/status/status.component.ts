@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/services/order.service';
-import { Product } from 'src/app/models/product';
+import { Order } from 'src/app/models/order';
 
 @Component({
   selector: 'app-status',
@@ -8,19 +7,10 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./status.component.scss']
 })
 export class StatusComponent implements OnInit {
-  products:Product[];
-  totalQuantity:number;
-  totalQuantityStr:string;
-  date: any;
 
-  constructor(public orderService:OrderService) { }
-
+  constructor(public order:Order) { }
 
   ngOnInit() {
-    this.products = this.orderService.orderProducts;
-    this.totalQuantity = this.orderService.totalQuantity;
-    this.totalQuantityStr = this.orderService.totalQuantityStr;
-    this.date = this.orderService.date;
   }
 
 }

@@ -7,7 +7,7 @@
           <div class="status__headline">
               Заказ ARU04889781
               <div class="status__date">
-                  Дата заказа: {{date | date:'shortDate'}}
+                  Дата заказа: {{order.date | date:'shortDate'}}
               </div>
           </div>
           <a routerLink="/order-status" class="status__exit">Проверить другой заказ</a>
@@ -28,7 +28,7 @@
         </div>
         <div class="status-product">
             <div class="status-product__quantity">
-                {{totalQuantity}} {{totalQuantityStr}}
+                {{order.totalQuantity}} {{order.totalQuantityStr}}
             </div>
             <app-product *ngFor="let product of products"
                         [product]="product"></app-product>
@@ -37,10 +37,10 @@
             <div class="status__headline">
                 Адрес доставки
             </div>
-            {{orderService.order.city}}
-            {{orderService.order.room}}
-            {{orderService.order.floor}}
-            {{orderService.order.entrance}}
+            {{order.order.value.city}}
+            {{order.order.value.room}}
+            {{order.order.value.floor}}
+            {{order.order.value.entrance}}
             <br>
             Россия
         </div>
@@ -48,9 +48,9 @@
             <div class="status__headline">
                 Получатель
             </div>
-            {{orderService.order.name}}{{orderService.order.family}}
-            {{orderService.order.email}}
-            {{orderService.order.phone}}
+            {{order.order.value.name}}{{order.order.value.family}}
+            {{order.order.value.email}}
+            {{order.order.value.phone}}
         </div>
 
     </div>

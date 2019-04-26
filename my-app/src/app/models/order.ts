@@ -1,11 +1,14 @@
+import { Injectable} from '@angular/core';
+import { Product } from './product';
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class Order {
-  city:string;
-  room:string;
-  floor:string;
-  entrance:string;
-  comment:string;
-  name:string;
-  family:string;
-  email:string;
-  phone:string;
+  order: any;
+  orderProducts:Product[];
+  totalQuantity:number;
+  totalQuantityStr:string;
+  date: any
 }

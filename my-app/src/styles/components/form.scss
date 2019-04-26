@@ -1,0 +1,48 @@
+.form {
+  width: 449px;
+
+  &__group {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+
+    &--min {
+      width: auto;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    pointer-events: none;
+    left: 16px;
+    top: 13px;
+    line-height: 40px;
+    transition: 0.3s;
+    color: #a1a8bd;
+  }
+
+  &__btn {
+    margin-top: 36px;
+    width: 100%;
+    @media (max-width: 991.98px) {
+      width: 100%;
+    }
+    @media (max-width: 575.98px) {
+      width: 100%;
+    }
+  }
+  @media (max-width: 991.98px) {
+    width: 436px;
+  }
+  @media (max-width: 575.98px) {
+    width: 100%;
+  }
+}
+
+.input-main:focus~.form__label,
+p-inputMask~.form__label,
+.input-main:not(:placeholder-shown)~.form__label {
+  top: 0;
+  font-size: 10px;
+}

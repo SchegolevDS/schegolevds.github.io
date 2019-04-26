@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { OrderStatusRoutingModule } from './order-status-routing.module';
 import { StatusAuthComponent } from './status-auth/status-auth.component';
@@ -10,7 +11,8 @@ import { ProductComponent } from './status/product/product.component';
   declarations: [StatusAuthComponent, StatusComponent, ProductComponent],
   imports: [
     CommonModule,
-    OrderStatusRoutingModule
+    OrderStatusRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class OrderStatusModule { }

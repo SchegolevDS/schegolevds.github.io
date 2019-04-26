@@ -13,13 +13,17 @@ export class ShoppingCartService {
   totalQuantityEmpty:boolean;
 
   constructor() {
-    this.getItem('Shopping-cart-Product', this.cart);
-    this.getItem('Shopping-cart-ProductID', this.cartID)
+    this.cartID = this.getItem('Shopping-cart-ProductID');
+    this.cart = this.getItem('Shopping-cart-Product');
   }
 
-  private getItem(key: string, _arr: any[]) {
+  public getItem(key: string) {
     if (JSON.parse(localStorage.getItem(key)) != null) {
-      _arr = JSON.parse(localStorage.getItem(key));
+      let arr: any[];
+      arr = JSON.parse(localStorage.getItem(key));
+      return arr;
+    } else {
+      return [];
     }
   }
 
@@ -38,6 +42,8 @@ export class ShoppingCartService {
       this.setItem('Shopping-cart-ProductID', this.cartID);
     }
     this._totalQuantity();
+    console.log(this.cartID)
+    console.log(this.cart)
   }
 
   public delete (index: number) {

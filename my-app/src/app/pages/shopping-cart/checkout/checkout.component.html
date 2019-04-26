@@ -1,47 +1,50 @@
 <div class="container container--shoping-card">
   <div class="checkout">
-    {{myDate | date:'shortDate'}}
     <h2>Оформление заказа</h2>
-    <form action="" (ngSubmit)="Submit()" class="chekout-form">
+    <form class="chekout-form" [formGroup]="checkoutForm" novalidate
+                              (ngSubmit)="submit()">
       <h4>Адрес доставки</h4>
       <div class="chekout-form__item">
-        <input type="text" required placeholder=" " name="city" [(ngModel)]="city"  class="input-main">
+        <input class="input-main" placeholder=" " name="city" formControlName="city">
         <label class="chekout-form__label">Город, улица, номер дома*</label>
       </div>
       <div class="chekout-form__item chekout-form__item--min">
-        <input type="text" placeholder=" " name="room" [(ngModel)]="room" class="input-main input-main--min">
+        <input class="input-main input-main--min" placeholder=" " name="room" formControlName="room">
         <label class="chekout-form__label">Кв/офис</label>
       </div>
       <div class="chekout-form__item chekout-form__item--min">
-        <input type="text" placeholder=" " name="floor" [(ngModel)]="floor" class="input-main input-main--min">
+        <input class="input-main input-main--min" placeholder=" " name="floor" formControlName="floor">
         <label class="chekout-form__label">Этаж</label>
       </div>
       <div class="chekout-form__item chekout-form__item--min">
-        <input type="text" placeholder=" " name="entrance" [(ngModel)]="entrance" class="input-main input-main--min">
+        <input class="input-main input-main--min" placeholder=" " name="entrance" formControlName="entrance">
         <label class="chekout-form__label">Подъезд</label>
       </div>
       <div class="chekout-form__item">
-        <textarea type="text" placeholder=" " name="comment" [(ngModel)]="comment" class="input-main input-main--comment"></textarea>
+        <textarea class="input-main input-main--comment" placeholder=" " name="comment" formControlName="comment"></textarea>
         <label class="chekout-form__label">Комментарий к заказу</label>
       </div>
       <h4>Получатель</h4>
       <div class="chekout-form__item">
-        <input type="text" required placeholder=" " name="name" [(ngModel)]="name" class="input-main">
+        <input class="input-main" placeholder=" " name="name" formControlName="name">
         <label class="chekout-form__label">Имя*</label>
       </div>
       <div class="chekout-form__item">
-        <input type="text" required placeholder=" " name="family" [(ngModel)]="family" class="input-main">
+        <input class="input-main" placeholder=" " name="family" formControlName="family">
         <label class="chekout-form__label">Фамилия*</label>
       </div>
       <div class="chekout-form__item">
-        <input type="text" required placeholder=" " name="email" [(ngModel)]="email" class="input-main">
+        <input class="input-main" placeholder=" " name="email" formControlName="email">
         <label class="chekout-form__label">Электронная почта*</label>
       </div>
       <div class="chekout-form__item">
-        <input type="text" required placeholder=" " name="phone" [(ngModel)]="phone" class="input-main">
+        <p-inputMask required="true" ariaLabel="Номер телефона*" name="phone" styleClass="input-main"
+                    formControlName="phone" mask="+7 (999) 999-99-99" placeholder="+7"></p-inputMask>
         <label class="chekout-form__label">Номер телефона*</label>
       </div>
-      <button type="submit" name="button" class="btn chekout-form__btn">Оформить заказ</button>
+      <div class="form-group">
+        <button [disabled]="checkoutForm.invalid" class="btn chekout-form__btn">Оформить заказ</button>
+      </div>
     </form>
   </div>
 </div>

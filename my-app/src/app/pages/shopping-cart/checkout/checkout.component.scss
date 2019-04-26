@@ -12,6 +12,7 @@
       display: inline-block;
       vertical-align: top;
       position: relative;
+
       &--min {
         width: auto;
       }
@@ -25,7 +26,6 @@
       line-height: 40px;
       transition: 0.3s;
       color: #a1a8bd;
-
     }
 
     &__btn {
@@ -47,10 +47,9 @@
   }
 
   .input-main:focus~.chekout-form__label,
+  p-inputMask~.chekout-form__label,
   .input-main:not(:placeholder-shown)~.chekout-form__label {
-    top: 0px;
+    top: 0;
     font-size: 10px;
   }
-
-
 }

@@ -28,11 +28,7 @@
     border-color: #315ad5;
   }
 
-  &:invalid {
-    border: 2px solid #f54732;
-  }
-
-  &:-moz-ui-invalid {
+  &.ng-touched.ng-invalid {
     border: 2px solid #f54732;
   }
 

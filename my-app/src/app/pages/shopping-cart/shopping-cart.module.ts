@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { ShoppingCartRoutingModule } from './shopping-cart-routing.module';
 import { ShoppingCartPageComponent } from './shopping-cart-page.component';
@@ -13,7 +15,9 @@ import { ProductComponent } from './shopping-cart/product/product.component';
   imports: [
     CommonModule,
     ShoppingCartRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    InputMaskModule
   ]
 })
 export class ShoppingCartModule { }

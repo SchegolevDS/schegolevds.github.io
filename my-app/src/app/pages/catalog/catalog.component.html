@@ -9,10 +9,10 @@
     <app-sorting [(itemsPerPage)]="config.itemsPerPage"></app-sorting>
     <div class="product-list">
       <ng-container *ngFor="let product of products
-                            | search: filterService.searchStr
-                            | orderBy: filterService.Type
+                            | search: filter.searchStr
+                            | orderBy: filter.Type
                             | paginate: config">
-        <app-product-card-min *ngIf="product.price >= filterService.productPriceMin && product.price <= filterService.productPriceMax"
+        <app-product-card-min *ngIf="product.price >= filter.productPriceMin && product.price <= filter.productPriceMax"
                               [product]="product">
         </app-product-card-min>
       </ng-container>

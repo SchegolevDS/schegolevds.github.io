@@ -1,8 +1,8 @@
 <div class="search">
   <input class="search__check" type="checkbox" id="showsearch" />
   <div class="search__form">
-      <input type="text" placeholder="Поиск по товарам" class="search__input" [(ngModel)]="search.searchStr">
-      <button  type="submit" class="search__button"></button>
+      <input type="text" placeholder="Поиск по товарам" class="search__input" [(ngModel)]="filter.searchStr">
+      <button  type="submit" class="search__button" (click)="submit()"></button>
       <label class="search__showsearch search__showsearch--exit" for="showsearch"></label>
   </div>
   <label class="search__bg" for="showsearch"></label>

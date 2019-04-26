@@ -4,8 +4,8 @@ import { PaginationInstance } from 'ngx-pagination';
 import { ProductService } from 'src/app/services/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Router } from '@angular/router';
-import { FilterService } from 'src/app/services/filter.service';
 import { Categories } from 'src/app/models/categories';
+import { Filter } from 'src/app/models/filter';
 
 @Component({
   selector: 'app-catalog',
@@ -13,6 +13,7 @@ import { Categories } from 'src/app/models/categories';
   styleUrls: ['./catalog.component.scss'],
   providers: [ProductService]
 })
+
 export class CatalogComponent implements OnInit {
   products: Product[] = [];
   categories = Categories;
@@ -25,7 +26,7 @@ export class CatalogComponent implements OnInit {
         currentPage: 1
     };
 
-  constructor(public filterService: FilterService,
+  constructor(public filter: Filter,
               private router: Router,
               private _productService: ProductService,
               private _cartService:ShoppingCartService) { }

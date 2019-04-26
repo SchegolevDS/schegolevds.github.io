@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { FilterService } from 'src/app/services/filter.service';
+import { Filter } from 'src/app/models/filter';
 
 @Component({
   selector: 'app-sorting',
@@ -24,7 +24,7 @@ export class SortingComponent implements OnInit {
      this.itemsPerPageChange.emit(newValue);
    }
 
-  constructor(public filter: FilterService) {}
+  constructor(public filter: Filter) {}
 
   ngOnInit() {
     this.itemsPerPage = 16;

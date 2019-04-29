@@ -37,10 +37,6 @@ export class CatalogComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (JSON.parse(localStorage.getItem('Shopping-cart-ProductID')) != null) {
-      this._cartService.cartID = JSON.parse(localStorage.getItem('Shopping-cart-ProductID'));
-    }
-
     const currentCategory = this.categories[this.router.url.replace('/', '')];
     this.getProducts(currentCategory.categoryName, currentCategory.title)
   }

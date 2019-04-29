@@ -9,15 +9,22 @@ import { ShoppingCartPageComponent } from './shopping-cart-page.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductComponent } from './shopping-cart/product/product.component';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 
 @NgModule({
-  declarations: [ShoppingCartPageComponent, ShoppingCartComponent, CheckoutComponent, ProductComponent],
+  declarations: [
+    ShoppingCartPageComponent,
+    ShoppingCartComponent,
+    CheckoutComponent,
+    ProductComponent
+  ],
   imports: [
     CommonModule,
     ShoppingCartRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    InputMaskModule
+    InputMaskModule,
+    PipeModule,
   ]
 })
 export class ShoppingCartModule { }

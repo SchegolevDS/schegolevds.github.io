@@ -13,7 +13,6 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private _cartService:ShoppingCartService) {
     this._cartService.totalQuantity = this._cartService.cart.length;
-    this._cartService. TotalQuantityStr();
   }
 
   ngOnInit() {

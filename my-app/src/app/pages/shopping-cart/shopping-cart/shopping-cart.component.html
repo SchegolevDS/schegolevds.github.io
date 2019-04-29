@@ -8,7 +8,7 @@
         [id]='i'></app-product>
         <div class="shopping-card__total">
           <div class="shopping-card__quantity">
-            {{_cartService.totalQuantity}} {{_cartService.totalQuantityStr}}
+            {{_cartService.totalQuantity | quantity}}
           </div>
           <div class="shopping-card__amount">
             К оплате: {{_cartService.cartSum}} ₽

@@ -7,7 +7,7 @@ import { Order } from 'src/app/models/order';
   styleUrls: ['./status.component.scss']
 })
 export class StatusComponent implements OnInit {
-
+  
   constructor(public order:Order) { }
 
   ngOnInit() {

@@ -17,12 +17,6 @@ export class ShoppingcartIndicatorComponent implements OnInit {
     this._cartService.totalQuantity = this._cartService.cart.length;
   }
 
-  ngOnInit() {
-    if (this._cartService.totalQuantity == 0) {
-      this._cartService.totalQuantityEmpty = true;
-    } else {
-      this._cartService.totalQuantityEmpty = false;
-    }
-  }
+  ngOnInit() {}
 
 }

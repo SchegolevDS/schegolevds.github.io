@@ -6,13 +6,19 @@ import { OrderStatusRoutingModule } from './order-status-routing.module';
 import { StatusAuthComponent } from './status-auth/status-auth.component';
 import { StatusComponent } from './status/status.component';
 import { ProductComponent } from './status/product/product.component';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 
 @NgModule({
-  declarations: [StatusAuthComponent, StatusComponent, ProductComponent],
+  declarations: [
+    StatusAuthComponent,
+    StatusComponent,
+    ProductComponent,
+  ],
   imports: [
     CommonModule,
     OrderStatusRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipeModule
   ]
 })
 export class OrderStatusModule { }

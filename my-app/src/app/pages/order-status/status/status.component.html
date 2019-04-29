@@ -28,9 +28,9 @@
         </div>
         <div class="status-product">
             <div class="status-product__quantity">
-                {{order.totalQuantity}} {{order.totalQuantityStr}}
+                {{order.totalQuantity | quantity}}
             </div>
-            <app-product *ngFor="let product of products"
+            <app-product *ngFor="let product of order.orderProducts"
                         [product]="product"></app-product>
         </div>
         <div class="status-adress">

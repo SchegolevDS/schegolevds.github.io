@@ -13,6 +13,7 @@ import { ShoppingcartIndicatorComponent } from './main/header/shoppingcart-indic
 import { OrderstatusLinkComponent } from './main/orderstatus-link/orderstatus-link.component';
 import { ContentComponent } from './main/content/content.component';
 import { FooterComponent } from './main/footer/footer.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { FooterComponent } from './main/footer/footer.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

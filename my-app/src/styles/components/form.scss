@@ -22,6 +22,13 @@
     color: #a1a8bd;
   }
 
+  &__alert-danger {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    color: #f54732;
+  }
+
   &__btn {
     margin-top: 36px;
     width: 100%;

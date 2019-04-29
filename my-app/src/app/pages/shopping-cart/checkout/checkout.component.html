@@ -5,6 +5,10 @@
                               (ngSubmit)="submit()">
       <h4>Адрес доставки</h4>
       <div class="form__group">
+        <div class="form__alert-danger"
+                    *ngIf="checkoutForm.controls['city'].invalid && checkoutForm.controls['city'].touched">
+                    Введите город
+        </div>
         <input class="input-main" placeholder=" " name="city" formControlName="city">
         <label class="form__label">Город, улица, номер дома*</label>
       </div>
@@ -26,20 +30,36 @@
       </div>
       <h4>Получатель</h4>
       <div class="form__group">
+        <div class="form__alert-danger"
+                    *ngIf="checkoutForm.controls['name'].invalid && checkoutForm.controls['name'].touched">
+                    Введите имя
+        </div>
         <input class="input-main" placeholder=" " name="name" formControlName="name">
         <label class="form__label">Имя*</label>
       </div>
       <div class="form__group">
+        <div class="form__alert-danger"
+                    *ngIf="checkoutForm.controls['family'].invalid && checkoutForm.controls['family'].touched">
+                    Введите фамилию
+        </div>
         <input class="input-main" placeholder=" " name="family" formControlName="family">
         <label class="form__label">Фамилия*</label>
       </div>
       <div class="form__group">
+        <div class="form__alert-danger"
+                    *ngIf="checkoutForm.controls['email'].invalid && checkoutForm.controls['email'].touched">
+                    Введите электронную почту
+        </div>
         <input class="input-main" placeholder=" " name="email" formControlName="email">
         <label class="form__label">Электронная почта*</label>
       </div>
       <div class="form__group">
+        <div class="form__alert-danger"
+                    *ngIf="checkoutForm.controls['phone'].invalid && checkoutForm.controls['phone'].touched">
+                    Введите номер телефона
+        </div>
         <p-inputMask required="true" ariaLabel="Номер телефона*" name="phone" styleClass="input-main"
-                    formControlName="phone" mask="+7 (999) 999-99-99" placeholder="+7"></p-inputMask>
+                    formControlName="phone" mask="8 999 999-99-99" placeholder="8"></p-inputMask>
         <label class="form__label">Номер телефона*</label>
       </div>
       <div class="form-group">

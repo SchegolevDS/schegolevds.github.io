@@ -1,4 +1,4 @@
-<a routerLink="shopping-cart" class="shoppingcart" [ngClass]="{'shoppingcart--active' : !_cartService.totalQuantityEmpty}">
+<a routerLink="shopping-cart" class="shoppingcart" [ngClass]="{'shoppingcart--active' : _cartService.totalQuantity}">
   <svg class="shoppingcart__img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="17" viewBox="0 0 18 17">
       <path d="M1033 40.052l-1 2.988c-.37.838-.895 1.991-2 1.991h-9.64l.118.997H1033l-1 1.991h-12.648l-.644.075-1.187-10.033H1016c-.552 0-1-.446-1-.995 0-.55.353-1.058.905-1.058l3.387-.014.254 2.15c.125-.049.267-.083.455-.083h12c1.105 0 1 .891 1 1.991zm-12 8.963c1.105 0 2 .89 2 1.992 0 1.1-.895 1.99-2 1.99s-2-.89-2-1.99c0-1.101.895-1.992 2-1.992zm8 0c1.105 0 2 .89 2 1.992 0 1.1-.895 1.99-2 1.99s-2-.89-2-1.99c0-1.101.895-1.992 2-1.992z" transform="translate(-1015 -36)" />
   </svg>

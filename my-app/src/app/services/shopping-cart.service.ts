@@ -26,11 +26,11 @@ export class ShoppingCartService {
   }
 
   public add(product:any) {
-    !this.cart.map(product => product.id).includes(product.id) ? (
-      this.cart.push(product),
-      this.setItem(),
-      this._totalQuantity()
-    ):null;
+    if(!this.cart.map(product => product.id).includes(product.id)) {
+      this.cart.push(product);
+      this.setItem();
+      this._totalQuantity();
+    }
   }
 
   public delete (index: number) {

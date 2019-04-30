@@ -10,32 +10,32 @@ export class ShoppingCartService {
   totalQuantity: any;
 
   constructor() {
-    this.cart = this.getItem('Shopping-cart-Product');
+    this.cart = this.getItem();
   }
 
-  public getItem(key: string) {
+  public getItem() {
     let arr: any[];
-    JSON.parse(localStorage.getItem(key)) != null ? (
-      arr = JSON.parse(localStorage.getItem(key))
+    JSON.parse(localStorage.getItem('Shopping-cart-Product')) != null ? (
+      arr = JSON.parse(localStorage.getItem('Shopping-cart-Product'))
     ): (arr = []);
     return arr;
   }
 
-  private setItem(key: string, arr: any[]) {
-    localStorage.setItem(key, JSON.stringify(arr));
+  private setItem() {
+    localStorage.setItem('Shopping-cart-Product', JSON.stringify(this.cart));
   }
 
   public add(product:any) {
     this.cart.map(product => product.id).includes(product.id) == false ? (
       this.cart.push(product),
-      this.setItem('Shopping-cart-Product', this.cart),
+      this.setItem(),
       this._totalQuantity()
     ):null;
   }
 
   public delete (index: number) {
     this.cart.splice(index, 1);
-    this.setItem('Shopping-cart-Product', this.cart);
+    this.setItem();
     this._totalQuantity();
   }
 

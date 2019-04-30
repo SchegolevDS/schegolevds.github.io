@@ -5,9 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class QuantityPipe implements PipeTransform {
 
-  transform(value: any): any {
-    value == 0 ? value = 'Корзина пустая': value == 1 ? value = value + ' Товар': value;
-    value < 5 ? value = value + ' Товара': value >= 5 ? value = value + ' Товаров': value;
+  transform(value: any) {
+    if (value == 0) {
+      value = 'Корзина пустая'
+    } else if (value == 1) {
+      value = value + ' Товар'
+    } else if (value < 5) {
+      value = value + ' Товара'
+    } else if (value >= 5) {
+      value = value + ' Товаров'
+    }
     return value;
   }
 

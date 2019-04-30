@@ -17,7 +17,7 @@ export class ShoppingCartService {
     let arr: any[];
     JSON.parse(localStorage.getItem(key)) != null ? (
       arr = JSON.parse(localStorage.getItem(key))
-    ): (arr = [])
+    ): (arr = []);
     return arr;
   }
 
@@ -30,13 +30,13 @@ export class ShoppingCartService {
       this.cart.push(product),
       this.setItem('Shopping-cart-Product', this.cart),
       this._totalQuantity()
-    ):(null)
+    ):null;
   }
 
   public delete (index: number) {
     this.cart.splice(index, 1);
     this.setItem('Shopping-cart-Product', this.cart);
-    this._totalQuantity()
+    this._totalQuantity();
   }
 
   public cartPrices(price: number) {
